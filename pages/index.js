@@ -18,14 +18,18 @@ export default function Home() {
               <li><a>Contact</a></li>
             </ul>
           </div>
-          <h1>Eduardo Santos</h1>
-          <h2>Full Stack Web Developer</h2>
-          <a href="">Check my projects</a>
-          <aside>
-            <div className="block blockOne"><a href=""><FaGithub /></a></div>
-            <div className="block blockOne"><a href=""><FaLinkedin /></a></div>
-            <div className="block blockOne"><a href=""><MdEmail /></a></div>
-          </aside>
+          <div className="bg-central-container">
+            <div className="info-container">
+              <h1>Eduardo Santos</h1>
+              <h2>Full Stack Web Developer</h2>
+              <a href="">Check my projects</a>
+            </div>
+            <aside>
+              <div className="block blockOne"><a href=""><FaGithub /></a></div>
+              <div className="block blockOne"><a href=""><FaLinkedin /></a></div>
+              <div className="block blockOne"><a href=""><MdEmail /></a></div>
+            </aside>
+          </div>
         </div>
       </main>
 
@@ -39,6 +43,39 @@ export default function Home() {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+          }
+          .background .header {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+          }
+          .background .header ul {
+            margin: 0;
+            display: flex;
+            width: 500px;
+            justify-content: space-evenly;
+            margin: 20px 0 0 0 ;
+          }
+          .background .header ul li {
+            list-style: none;
+            display: inline-block;
+          }
+          .background .header ul li a {
+            color: #f9f9f9;
+          }
+
+          .background .bg-central-container {
+            width: 100%;
+            posititon: relative;
+          }
+          .background .bg-central-container aside {
+            display: block;
+            posititon: absolute;
+            width: 30%;
+            top: 0;
+          }
+          .background .bg-central-container aside .block {
+            padding: 30px;
           }
         `
       }</style>
