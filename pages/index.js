@@ -22,7 +22,7 @@ export default function Home() {
             <div className="info-container">
               <h1>Eduardo Santos</h1>
               <h2>Full Stack Web Developer</h2>
-              <a href="">Check my projects</a>
+              <a href="">check my projects</a>
             </div>
             <aside>
               <div className="block blockOne"><a href=""><FaGithub /></a></div>
@@ -46,6 +46,7 @@ export default function Home() {
           }
           .background .header {
             width: 100%;
+            min-height: 60px;
             display: flex;
             justify-content: flex-end;
           }
@@ -62,14 +63,38 @@ export default function Home() {
           }
           .background .header ul li a {
             color: #f9f9f9;
+            opacity: 0.8;
           }
-
           .background .bg-central-container {
             width: 100%;
+            min-height: 440px;
             posititon: relative;
           }
+          .background .bg-central-container .info-container{
+            display: inline-block;
+            width: 60%;
+            height: 900%;
+          }
+          .background .bg-central-container .info-container h1{
+            letter-spacing: 3px;
+            width: fit-content;
+          }
+          .background .bg-central-container .info-container h2{
+            font-weight: 300;
+            letter-spacing: 2px;
+            width: fit-content;
+          }
+          .background .bg-central-container .info-container h1,h2,a{
+            color: #ffffff;
+            opacity: 0.95;
+            margin: 0 0 0 0px;
+          }
+          .background .bg-central-container .info-container a{
+            padding: 10px;
+            background-color: #5A0000;
+          }
           .background .bg-central-container aside {
-            display: block;
+            display: inline-block;
             posititon: absolute;
             width: 30%;
             top: 0;
