@@ -2,9 +2,9 @@ import Head from 'next/head'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 
-import styled from 'styled-components';
+import withAnalytics from "~/hoc/withAnalytics"
 
-export default function Home() {
+function Home() {
   return (
     <div className="container">
       <Head>
@@ -106,7 +106,10 @@ export default function Home() {
             padding: 30px;
           }
         `
-      }</style>
+      }
+      </style>
     </div>
   )
 }
+
+export default withAnalytics()(Home);

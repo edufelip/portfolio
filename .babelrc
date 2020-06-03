@@ -7,6 +7,12 @@
         "displayName": true,
         "preprocess":  false
       }
+    ],
+    [
+      "babel-plugin-root-import", 
+      {
+        "rootPathSuffix": "src"
+      }
     ]
   ]
 }
