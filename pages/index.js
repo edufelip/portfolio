@@ -2,6 +2,8 @@ import Head from 'next/head'
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 
+import styled from 'styled-components';
+
 export default function Home() {
   return (
     <div className="container">
@@ -68,12 +70,13 @@ export default function Home() {
           .background .bg-central-container {
             width: 100%;
             min-height: 440px;
+            height: 
             posititon: relative;
           }
           .background .bg-central-container .info-container{
             display: inline-block;
             width: 60%;
-            height: 900%;
+            height: ;
           }
           .background .bg-central-container .info-container h1{
             letter-spacing: 3px;
