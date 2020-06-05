@@ -5,7 +5,7 @@ export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
     const page = renderPage(App => props => 
-      sheet.collectStyles(<App {...proops} />)
+      sheet.collectStyles(<App {...props} />)
     );
     const styleTags = sheet.getStyleElement();
     return {...page, styleTags }
@@ -16,7 +16,9 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <style>
-            {`
+            {
+            this.props.styleTags,
+            `
             html,
             body {
               padding: 0;
@@ -35,8 +37,7 @@ export default class MyDocument extends Document {
             a:hover {
               cursor: pointer;
             }
-            `,
-            this.props.styleTags
+            `
             }
           </style>
         </Head>
