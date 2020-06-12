@@ -3,6 +3,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 
 import withAnalytics from "~/hoc/withAnalytics"
+import {MainPage} from "~/styled/home"
 
 function Home() {
   return (
@@ -12,7 +13,7 @@ function Home() {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
-        <div className="background">
+        <MainPage>
           <div className="header">
             <ul>
               <li><a>About me</a></li>
@@ -20,6 +21,8 @@ function Home() {
               <li><a>Contact</a></li>
             </ul>
           </div>
+        </MainPage>
+        {/* <div className="background">
           <div className="bg-central-container">
             <div className="info-container">
               <h1>Eduardo Santos</h1>
@@ -32,7 +35,7 @@ function Home() {
               <div className="block blockOne"><a href=""><MdEmail /></a></div>
             </aside>
           </div>
-        </div>
+        </div> */}
       </main>
     </div>
   )

@@ -37,6 +37,9 @@ export default class MyDocument extends Document {
             a:hover {
               cursor: pointer;
             }
+            ul {
+              margin: 0;
+            }
             `
             }
           </style>
