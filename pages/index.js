@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 
 import withAnalytics from "~/hoc/withAnalytics"
-import {MainPage} from "~/styled/home"
+import {MainPage, MainContent} from "~/styled/home"
 
 function Home() {
   return (
@@ -21,21 +21,23 @@ function Home() {
               <li><a>Contact</a></li>
             </ul>
           </div>
-        </MainPage>
-        {/* <div className="background">
-          <div className="bg-central-container">
-            <div className="info-container">
-              <h1>Eduardo Santos</h1>
-              <h2>Full Stack Web Developer</h2>
-              <a href="">check my projects</a>
+          <MainContent>
+            <div className="contentLeft">
+              <div className="container">
+                <h1>Eduardo Santos</h1>
+                <h2>Full Stack Web Developer</h2>
+                <a href="">CHECK MY PROJECTS</a>
+              </div>
             </div>
-            <aside>
-              <div className="block blockOne"><a href=""><FaGithub /></a></div>
-              <div className="block blockOne"><a href=""><FaLinkedin /></a></div>
-              <div className="block blockOne"><a href=""><MdEmail /></a></div>
-            </aside>
-          </div>
-        </div> */}
+            <div className="contentRight">
+              <div className="container">
+                <div className="block blockOne"><a href=""><FaGithub size={35} /></a></div>
+                <div className="block blockTwo"><a href=""><FaLinkedin size={35} /></a></div>
+                <div className="block blockThree"><a href=""><MdEmail size={35} /></a></div>
+              </div>  
+            </div>
+          </MainContent>
+        </MainPage>
       </main>
     </div>
   )
