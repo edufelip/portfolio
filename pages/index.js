@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 
 import withAnalytics from "~/hoc/withAnalytics"
-import {MainPage, MainContent} from "~/styled/home"
+import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, ContactSection, BlogSection} from "~/styled/home"
 
 function Home() {
   return (
@@ -13,12 +13,13 @@ function Home() {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
-        <MainPage>
+        <MainPageFace>
           <div className="header">
             <ul>
               <li><a>About me</a></li>
               <li><a>Projects</a></li>
               <li><a>Contact</a></li>
+              <li><a>Blog</a></li>
             </ul>
           </div>
           <MainContent>
@@ -37,7 +38,23 @@ function Home() {
               </div>  
             </div>
           </MainContent>
-        </MainPage>
+        </MainPageFace>
+        <AboutSection>
+          <h2>About me</h2>
+          <p>I'm a full stack web developer wanting to get a react.js developer job </p>
+        </AboutSection>
+        <ProjectsSection>
+          <h2>My Projects</h2>
+          <Project>
+          
+          </Project>
+        </ProjectsSection>
+        <ContactSection>
+
+        </ContactSection>
+        <BlogSection>
+
+        </BlogSection>
       </main>
     </div>
   )

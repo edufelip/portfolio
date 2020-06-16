@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MainPage = styled.div`
+export const MainPageFace = styled.div`
   width: 100%;
   height: 80vh;
   min-height: 400px;
@@ -93,4 +93,24 @@ export const MainContent = styled.div`
       }
     }
   }
+`
+
+export const AboutSection = styled.div`
+
+`
+
+export const ProjectsSection = styled.div`
+
+`
+
+export const Project = styled.div`
+
+`
+
+export const ContactSection = styled.div`
+
+`
+
+export const BlogSection = styled.div`
+
 `
