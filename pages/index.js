@@ -20,13 +20,14 @@ function Home() {
               <li><a>Projects</a></li>
               <li><a>Contact</a></li>
               <li><a>Blog</a></li>
+              <li><span><a>Resume</a></span></li>
             </ul>
           </div>
           <MainContent>
             <div className="contentLeft">
               <div className="container">
                 <h1>Eduardo Santos</h1>
-                <h2>Full Stack Web Developer</h2>
+                <h2>Full Stack Javascript Developer</h2>
                 <a href="">CHECK MY PROJECTS</a>
               </div>
             </div>

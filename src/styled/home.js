@@ -25,6 +25,19 @@ export const MainPageFace = styled.div`
         a {
           letter-spacing: 1px;
           color: white; 
+          transition: all 0.3s ease;
+        }
+        span {
+          padding: 5px 15px;
+          border: 1px solid #f9f9f9;
+          border-radius: 8px;
+          transition: all 0.3s ease;
+          &:hover{
+            background-color: #f9f9f9;
+          }
+          &:hover a {
+            color: black;
+          }
         }
       }
     }
