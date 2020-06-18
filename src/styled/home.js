@@ -32,8 +32,14 @@ export const MainPageFace = styled.div`
           border: 1px solid #f9f9f9;
           border-radius: 8px;
           transition: all 0.3s ease;
+          background: linear-gradient(to right, #f9f9f9 50%, transparent 50%);
+          background-size: 200% 100%;
+          background-position: right bottom;
+          a {
+            font-weight: 500;
+          }
           &:hover{
-            background-color: #f9f9f9;
+            background-position: left bottom;
           }
           &:hover a {
             color: black;
@@ -95,10 +101,22 @@ export const MainContent = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
+        background: linear-gradient(45deg, #f9f9f9 50%, transparent 50%);
+        background-size: 200% 100%;
+        background-position: right bottom;
+        transition: all 0.4s ease;
         a {
           transform: rotate(-45deg);
           color: #f9f9f9;
           margin-top: 5px;
+          transition: all 0.4s ease;
+        }
+        &:hover {
+          background-position: left bottom;
+        }
+        &:hover a {
+          color: black;
+          transform: rotate(-45deg) scale(1.1);
         }
       }
       .blockTwo {
