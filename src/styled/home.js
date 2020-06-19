@@ -127,6 +127,31 @@ export const MainContent = styled.div`
 `
 
 export const AboutSection = styled.div`
+  width: 100%;
+  height: 380px;
+  background-color: #141414;
+  text-align: center;
+  h2, p {
+    width: 70%;
+    margin: 0 auto;
+    color: #f9f9f9;
+    display: inline-block;
+    text-align: start;
+  }
+  h2 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-weight: 300;
+  }
+  p:nth-of-type(3) {
+    margin-top: 15px;
+  }
+  .bar {
+    height: 5px;
+    width: 200px;
+    background-color: #700606;
+    margin: 20px 0 20px 15%;
+  }
 
 `
 
