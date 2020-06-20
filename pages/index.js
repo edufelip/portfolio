@@ -45,20 +45,27 @@ function Home() {
           <p>I'm a full stack web developer passionated about finding new ways to improve my projects in order to deliver beautiful code as well as beautiful design </p>
           <div className="bar"></div>
           <p>I have experience developing and designing <b>software for the web</b>, from single landing pages to progressive web applications. I'm always concerned not only with the design of the product but also with the experience the user may have when using the software</p>
-          <p>Feel free to check out <b>my blog</b> where i post several articles about development and a bunch of useful tips</p>
+          <p>Feel free to check out <b><u><a>my blog</a></u></b> where i post several articles about development and a bunch of useful tips</p>
         </AboutSection>
         <ProjectsSection>
-          <h2>My Projects</h2>
+          <h2>Latest Works</h2>
           <Project>
           
           </Project>
         </ProjectsSection>
-        <ContactSection>
-
-        </ContactSection>
         <BlogSection>
 
         </BlogSection>
+        <ContactSection>
+          <h2>Check me out!</h2>
+          <div className="bundle">
+            <a href="">Github</a>
+            <a href="">Linkedin</a>
+            <a href="">Blog</a>
+          </div>
+          <p>©2020 Eduardo Santos - edu_felip@hotmail.com</p>
+
+        </ContactSection>
       </main>
     </div>
   )

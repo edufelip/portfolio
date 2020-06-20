@@ -156,6 +156,7 @@ export const AboutSection = styled.div`
 `
 
 export const ProjectsSection = styled.div`
+  text-align: center;
 
 `
 
@@ -163,10 +164,37 @@ export const Project = styled.div`
 
 `
 
-export const ContactSection = styled.div`
+export const BlogSection = styled.div`
 
 `
 
-export const BlogSection = styled.div`
-
+export const ContactSection = styled.div`
+  width: 100%;
+  height: 260px;
+  background-color: #141414;
+  text-align: center;
+  h2, a, p {
+    color: #f9f9f9;
+  }
+  h2 {
+    display: inline-block;
+    margin-top: 50px;
+  }
+  p {
+    font-size: 16px;
+    opacity: 0.8;
+  }
+  .bundle {
+    display: flex;
+    justify-content: center;
+    a {
+      display: block;
+      margin: 0 10px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      &:hover {
+        color: black;
+      }
+    }
+  }
 `
