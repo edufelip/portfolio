@@ -49,6 +49,14 @@ function Home() {
         </AboutSection>
         <ProjectsSection>
           <h2>Latest Works</h2>
+          <Project background="/project.jpg">
+            <div className="projectImage">
+              <div className="shadow">
+                <h2>English Moon</h2>
+
+              </div>
+            </div>
+          </Project>
           <Project>
           
           </Project>

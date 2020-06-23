@@ -10,6 +10,7 @@
   "dependencies": {
     "next": "9.3.5",
     "next-server": "^9.0.5",
+    "polished": "^3.6.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-ga": "^2.7.0",

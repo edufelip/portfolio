@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const MainPageFace = styled.div`
   width: 100%;
@@ -161,7 +162,39 @@ export const ProjectsSection = styled.div`
 `
 
 export const Project = styled.div`
-
+  display: inline-block;
+  width: 60%;
+  min-width: 700px;
+  height: 600px;
+  .projectImage {
+    width: 100%;
+    height: 400px;
+    position:relative;
+    background: url(${props => props.background});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    &:hover .shadow {
+      opacity: 1;
+      h2 {
+        opacity: 1;
+      }
+    }
+    .shadow {
+      width: 100%;
+      height: 400px;
+      background-color: #00000070;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      h2 {
+        opacity: 0;
+        transition: all 0.3s ease;
+        color: #f9f9f9;
+      }
+    }
+  }
 `
 
 export const BlogSection = styled.div`
@@ -193,7 +226,7 @@ export const ContactSection = styled.div`
       font-weight: 500;
       transition: all 0.3s ease;
       &:hover {
-        color: black;
+        color: ${darken(0.2, '#f9f9f9')};
       }
     }
   }
