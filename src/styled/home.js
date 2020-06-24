@@ -82,6 +82,10 @@ export const MainContent = styled.div`
         background-color: #881111;
         padding: 8px 10px;
         font-size: 15px;
+        transition: background 0.3s ease;
+        &:hover {
+          background-color: ${darken(0.05, '#881111')};
+        }
       }
     }
   }
@@ -158,40 +162,33 @@ export const AboutSection = styled.div`
 
 export const ProjectsSection = styled.div`
   text-align: center;
-
+  h2 {
+    opacity: 0.9;
+  }
 `
 
 export const Project = styled.div`
-  display: inline-block;
-  width: 60%;
-  min-width: 700px;
-  height: 600px;
+  display: block;
+  width: 800px;
+  height: 500px;
+  margin: 0 auto;
   .projectImage {
     width: 100%;
-    height: 400px;
+    height: 500px;
     position:relative;
     background: url(${props => props.background});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     overflow: hidden;
-    &:hover .shadow {
-      opacity: 1;
-      h2 {
-        opacity: 1;
-      }
-    }
     .shadow {
       width: 100%;
-      height: 400px;
+      height: 500px;
       background-color: #00000070;
       position: absolute;
-      opacity: 0;
-      transition: opacity 0.3s ease;
       h2 {
-        opacity: 0;
-        transition: all 0.3s ease;
-        color: #f9f9f9;
+        color: white;
+        font-size: 60px;
       }
     }
   }

@@ -53,7 +53,7 @@ function Home() {
             <div className="projectImage">
               <div className="shadow">
                 <h2>English Moon</h2>
-
+                <p>English course website</p>
               </div>
             </div>
           </Project>
