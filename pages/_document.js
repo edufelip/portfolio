@@ -15,12 +15,12 @@ export default class MyDocument extends Document {
     return (
       <html>
         <Head>
+          <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
           <style>
             {
             this.props.styleTags,
             `
-            html,
-            body {
+            html, body {
               padding: 0;
               margin: 0;
               font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,

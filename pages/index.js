@@ -1,9 +1,12 @@
 import Head from 'next/head'
+import Link from 'next/link'
+
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 
-import withAnalytics from "~/hoc/withAnalytics"
 import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, ContactSection, BlogSection} from "~/styled/home"
+
+import withAnalytics from "~/hoc/withAnalytics"
 
 function Home() {
   return (
@@ -28,7 +31,7 @@ function Home() {
               <div className="container">
                 <h1>Eduardo Santos</h1>
                 <h2>Software Developer</h2>
-                <a href="">CHECK MY PROJECTS</a>
+                <a href="#projects">CHECK MY PROJECTS</a>
               </div>
             </div>
             <div className="contentRight">
@@ -47,13 +50,19 @@ function Home() {
           <p>I have experience developing and designing <b>software for the web</b>, from single landing pages to progressive web applications. I'm always concerned not only with the design of the product but also with the experience the user may have when using the software</p>
           <p>Feel free to check out <b><u><a>my blog</a></u></b> where i post several articles about development and a bunch of useful tips</p>
         </AboutSection>
-        <ProjectsSection>
-          <h2>Latest Works</h2>
+        <ProjectsSection id="projects">
+          <h2>Latest Projects</h2>
           <Project background="/project.jpg">
-            <div className="projectImage">
-              <div className="shadow">
+            <div className="shadow">
+              <div className="wrap">
                 <h2>English Moon</h2>
                 <p>English course website</p>
+                <div>
+                  <Link href="/contact">
+                    <a>Details</a>
+                  </Link>
+                  <a href="google.com"><FaGithub size="22"/></a>
+                </div>
               </div>
             </div>
           </Project>

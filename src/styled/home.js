@@ -161,34 +161,92 @@ export const AboutSection = styled.div`
 `
 
 export const ProjectsSection = styled.div`
-  text-align: center;
-  h2 {
+  background-color: #ebebeb;
+  overflow: hidden;
+  > h2 {
     opacity: 0.9;
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    margin: 30px auto;
   }
 `
 
 export const Project = styled.div`
   display: block;
-  width: 800px;
-  height: 500px;
-  margin: 0 auto;
-  .projectImage {
+  width: 700px;
+  height: 380px;
+  margin: 0 auto 50px auto;
+  box-shadow: 0px 0px 15px 1px #00000060;
+  background: url(${props => props.background});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease;  
+  &:hover {
+    transform: scale(1.009);
+  }
+  .shadow {
     width: 100%;
-    height: 500px;
+    height: 100%;
     position:relative;
-    background: url(${props => props.background});
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     overflow: hidden;
-    .shadow {
-      width: 100%;
-      height: 500px;
-      background-color: #00000070;
+    background-color: #0f102490;
+    .wrap {
+      width: 50%;
+      height: 50%;
       position: absolute;
+      top: 150px;
+      left: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: start;
+      h2, p {
+        margin: 0;
+      }
       h2 {
+        color: #f9f9f9;
+        opacity: 0.85;
+        font-size: 35px;
+        font-family: 'Montserrat', sans-serif;
+      }
+      p {
+        opacity: 0.9;
         color: white;
-        font-size: 60px;
+        font-size: 20px;
+        font-weight: 300;
+        margin: -10px 0 15px 0;
+      }
+      div {
+        width: 210px;
+        display: flex;
+        justify-content: space-between;
+        a {
+          display: inline-block;
+          width: 100px;
+          padding: 5px 20px;
+          background-color: white;
+          text-align: center;
+          opacity: 0.9;
+        }
+        a:nth-of-type(1){
+          background-color: #13487d;
+          color: #f9f9f9;
+          font-weight: regular;
+          font-size: 16px;
+          transition: background 0.3s ease;
+          &:hover {
+            background-color: ${darken(0.05, '#13487d')}
+          }
+        }
+        a:nth-of-type(2){
+          background-color: #f8f8f8;
+          /* border: 2px solid #13487d; */
+          color: #13487d;
+          font-weight: regular;
+          font-size: 16px;
+        }
       }
     }
   }
