@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import {useEffect} from 'react'
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
@@ -9,6 +10,25 @@ import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, Conta
 import withAnalytics from "~/hoc/withAnalytics"
 
 function Home() {
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      // const returnButton = document.querySelector()
+    })
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (event) => {
+        event.preventDefault()
+        const href = event.target.href.split('#', 2)[1]
+        const element = document.getElementById(href)
+        window.scroll({
+          behavior: 'smooth',
+          top: element.offsetTop
+        })
+      })
+    })
+  }, [])
+
   return (
     <div className="container">
       <Head>
@@ -19,9 +39,9 @@ function Home() {
         <MainPageFace>
           <div className="header">
             <ul>
-              <li><a>About me</a></li>
-              <li><a>Projects</a></li>
-              <li><a>Contact</a></li>
+              <li><a href='#about'>About me</a></li>
+              <li><a href='#projects'>Projects</a></li>
+              <li><a href='#contact'>Contact</a></li>
               <li><a>Blog</a></li>
               <li><span><a>Resume</a></span></li>
             </ul>
@@ -43,7 +63,7 @@ function Home() {
             </div>
           </MainContent>
         </MainPageFace>
-        <AboutSection>
+        <AboutSection id="about">
           <h2>Hey, I'm Eduardo</h2>
           <p>I'm a full stack web developer passionated about finding new ways to improve my projects in order to deliver beautiful code as well as beautiful design </p>
           <div className="bar"></div>
@@ -73,7 +93,7 @@ function Home() {
         <BlogSection>
 
         </BlogSection>
-        <ContactSection>
+        <ContactSection id="contact">
           <h2>Check me out!</h2>
           <div className="bundle">
             <a href="">Github</a>
@@ -81,7 +101,6 @@ function Home() {
             <a href="">Blog</a>
           </div>
           <p>©2020 Eduardo Santos - edu_felip@hotmail.com</p>
-
         </ContactSection>
       </main>
     </div>
