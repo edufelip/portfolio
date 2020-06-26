@@ -23,7 +23,7 @@ function Home() {
         const element = document.getElementById(href)
         window.scroll({
           behavior: 'smooth',
-          top: element.offsetTop
+          top: href === "about" ? element.offsetTop - 150 : element.offsetTop
         })
       })
     })
@@ -81,7 +81,7 @@ function Home() {
                   <Link href="/contact">
                     <a>Details</a>
                   </Link>
-                  <a href="google.com"><FaGithub size="22"/></a>
+                  <a href="google.com"><FaGithub size="24"/></a>
                 </div>
               </div>
             </div>

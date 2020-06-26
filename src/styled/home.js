@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { darken } from 'polished';
+import { darken, lighten } from 'polished';
 
 export const MainPageFace = styled.div`
   width: 100%;
@@ -25,8 +25,12 @@ export const MainPageFace = styled.div`
         margin-right: 35px;
         a {
           letter-spacing: 1px;
-          color: white; 
+          color: #f9f9f9;
+          font-weight: bold;
           transition: all 0.3s ease;
+          &:hover {
+            color: ${darken(0.2, '#f9f9f9')};
+          }
         }
         span {
           padding: 5px 15px;
@@ -224,29 +228,35 @@ export const Project = styled.div`
         display: flex;
         justify-content: space-between;
         a {
-          display: inline-block;
+          display: flex;
+          justify-content: center;
+          align-items: center;
           width: 100px;
           padding: 5px 20px;
-          background-color: white;
-          text-align: center;
           opacity: 0.9;
+          border-radius: 6px;
+          transition: all 0.3s ease;
         }
         a:nth-of-type(1){
-          background-color: #13487d;
+          background-color: #0074BD;
           color: #f9f9f9;
           font-weight: regular;
-          font-size: 16px;
-          transition: background 0.3s ease;
+          font-size: 14px;
+          font-family: 'Montserrat', sans-serif;
           &:hover {
-            background-color: ${darken(0.05, '#13487d')}
+            background-color: ${darken(0.07, "#0074BD")};
+            color: ${darken(0.04, "#f9f9f9")};
           }
         }
         a:nth-of-type(2){
           background-color: #f8f8f8;
-          /* border: 2px solid #13487d; */
-          color: #13487d;
+          color: #114B70;
           font-weight: regular;
           font-size: 16px;
+          &:hover {
+            background-color: ${lighten(0.08,"#f8f8f8")};
+            color: ${lighten(0.08, "#114B79")};
+          }
         }
       }
     }
