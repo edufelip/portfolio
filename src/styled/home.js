@@ -94,10 +94,10 @@ export const MainContent = styled.div`
     width: 50%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     .container {
-      margin: 0 0 30px 0;
+      margin: 0 0 30px 200px;
       .block {
         width: 100px;
         height: 100px;
@@ -138,9 +138,9 @@ export const AboutSection = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   h2, p {
-    width: 70%;
-    max-width: 750px;
+    width: 800px;
     margin: 0 auto;
     color: #f9f9f9;
     text-align: start;
@@ -156,7 +156,7 @@ export const AboutSection = styled.div`
     height: 5px;
     width: 200px;
     background-color: #700606;
-    margin: 20px 0 20px 300px;
+    margin: 20px 600px 20px 0;
   }
 
 `
