@@ -56,9 +56,9 @@ function Home() {
             </div>
             <div className="contentRight">
               <div className="container">
-                <div className="block blockOne"><a href=""><FaGithub size={35} /></a></div>
-                <div className="block blockTwo"><a href=""><FaLinkedin size={35} /></a></div>
-                <div className="block blockThree"><a href=""><MdEmail size={35} /></a></div>
+                <div className="block blockOne"><a href="https://github.com/edufelip" target="_blank"><FaGithub size={35} /></a></div>
+                <div className="block blockTwo"><a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank"><FaLinkedin size={35} /></a></div>
+                <div className="block blockThree"><a href="mailto:edu_felip@hotmail.com"><MdEmail size={35} /></a></div>
               </div>  
             </div>
           </MainContent>
@@ -78,7 +78,7 @@ function Home() {
                 <h2>English Moon</h2>
                 <p>English course website</p>
                 <div>
-                  <Link href="/contact">
+                  <Link href="projects/english-moon">
                     <a>Details</a>
                   </Link>
                   <a href="google.com"><FaGithub size="24"/></a>

@@ -24,12 +24,12 @@ export const MainPageFace = styled.div`
         display: inline-block;
         margin-right: 35px;
         a {
-          letter-spacing: 1px;
-          color: #f9f9f9;
-          font-weight: bold;
+          font-family: 'Josefin Sans', sans-serif;
+          letter-spacing: 0.5px;
+          color: white;
           transition: all 0.3s ease;
           &:hover {
-            color: ${darken(0.2, '#f9f9f9')};
+            color: ${lighten(0.5, '#f9f9f9')};
           }
         }
         span {
@@ -40,9 +40,6 @@ export const MainPageFace = styled.div`
           background: linear-gradient(to right, #f9f9f9 50%, transparent 50%);
           background-size: 200% 100%;
           background-position: right bottom;
-          a {
-            font-weight: 500;
-          }
           &:hover{
             background-position: left bottom;
           }
@@ -148,6 +145,8 @@ export const AboutSection = styled.div`
     margin: 0 auto;
     color: #f9f9f9;
     text-align: start;
+    font-weight: 300;
+    opacity: 0.9;
   }
   h2 {
     margin-bottom: 10px;
@@ -251,7 +250,6 @@ export const Project = styled.div`
         a:nth-of-type(2){
           background-color: #f8f8f8;
           color: #114B70;
-          font-weight: regular;
           font-size: 16px;
           &:hover {
             background-color: ${lighten(0.08,"#f8f8f8")};
