@@ -1,27 +1,20 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { connect } from 'react-redux'
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, ContactSection, BlogSection} from "~/styled/home"
 
 import withAnalytics from "~/hoc/withAnalytics"
+import { changeY } from "~/actions/indexActions"
 
-function Home() {
-  const [positionY, setPositionY] = useState(() => {
-    const storageValue = window.sessionStorage.getItem("pageYOffset")
-    if(storageValue) return JSON.parse(storageValue)
-    return 0
-  })
-  useEffect(() => {
-    window.sessionStorage.setItem("pageYOffset", JSON.stringify(positionY))
-  }, [positionY])
-  
+function Home({pageYOffset, changeY}) {
   useEffect(() => {
     window.scroll({
-      top: positionY
+      top: pageYOffset
     })
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (event) => {
@@ -36,7 +29,7 @@ function Home() {
     })
     document.querySelectorAll('.projectAnchor').forEach(anchor => {
       anchor.addEventListener('click', (event) => {
-        setPositionY(window.pageYOffset);
+        changeY(window.pageYOffset)
       })
     })
   }, [])
@@ -124,4 +117,18 @@ function Home() {
   )
 }
 
-export default withAnalytics()(Home);
+const mapStateToProps = (state) => {
+  return {
+    pageYOffset: state.pageYOffset
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeY: (value) => {
+      dispatch(changeY(value))
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withAnalytics()(Home));
