@@ -1,21 +1,28 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import {useEffect} from 'react'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
-
 import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, ContactSection, BlogSection} from "~/styled/home"
 
 import withAnalytics from "~/hoc/withAnalytics"
 
 function Home() {
-
+  const [positionY, setPositionY] = useState(() => {
+    const storageValue = window.sessionStorage.getItem("pageYOffset")
+    if(storageValue) return JSON.parse(storageValue)
+    return 0
+  })
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      // const returnButton = document.querySelector()
+    window.sessionStorage.setItem("pageYOffset", JSON.stringify(positionY))
+  }, [positionY])
+  
+  useEffect(() => {
+    window.scroll({
+      top: positionY
     })
-
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (event) => {
         event.preventDefault()
@@ -27,10 +34,20 @@ function Home() {
         })
       })
     })
+    document.querySelectorAll('.projectAnchor').forEach(anchor => {
+      anchor.addEventListener('click', (event) => {
+        setPositionY(window.pageYOffset);
+      })
+    })
   }, [])
 
+
   return (
-    <div className="container">
+    <motion.div 
+      exit={{opacity: 0}} 
+      initial={{opacity: 0}}
+      animate={{opacity: 1}}
+    >
       <Head>
         <title>Eduardo Santos</title>
         <link rel="icon" href="/icon.ico" />
@@ -72,14 +89,14 @@ function Home() {
         </AboutSection>
         <ProjectsSection id="projects">
           <h2>Latest Projects</h2>
-          <Project background="/project.jpg">
+          <Project className="english-moon" background="/project.jpg">
             <div className="shadow">
               <div className="wrap">
                 <h2>English Moon</h2>
                 <p>English course website</p>
                 <div>
-                  <Link href="projects/english-moon">
-                    <a>Details</a>
+                  <Link scroll={false} href="projects/english-moon">
+                    <a className="projectAnchor">Details</a>
                   </Link>
                   <a href="google.com"><FaGithub size="24"/></a>
                 </div>
@@ -103,7 +120,7 @@ function Home() {
           <p>©2020 Eduardo Santos - edu_felip@hotmail.com</p>
         </ContactSection>
       </main>
-    </div>
+    </motion.div>
   )
 }
 
