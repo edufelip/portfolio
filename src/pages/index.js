@@ -2,16 +2,19 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { connect } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, ContactSection, BlogSection} from "~/styled/home"
 
 import withAnalytics from "~/hoc/withAnalytics"
-import { changeY } from "~/actions/indexActions"
+import { ChangeY } from "~/actions/indexActions"
 
-function Home({pageYOffset, changeY}) {
+function Home() {
+  const pageYOffset = useSelector(state => state.pageYOffset)
+  const dispatch = useDispatch()
+
   useEffect(() => {
     window.scroll({
       top: pageYOffset
@@ -29,7 +32,7 @@ function Home({pageYOffset, changeY}) {
     })
     document.querySelectorAll('.projectAnchor').forEach(anchor => {
       anchor.addEventListener('click', (event) => {
-        changeY(window.pageYOffset)
+        dispatch(ChangeY(window.pageYOffset))
       })
     })
   }, [])
@@ -117,18 +120,4 @@ function Home({pageYOffset, changeY}) {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    pageYOffset: state.pageYOffset
-  }
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeY: (value) => {
-      dispatch(changeY(value))
-    }
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(withAnalytics()(Home));
+export default withAnalytics()(Home);
