@@ -3,9 +3,9 @@ import App from 'next/app'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { AnimatePresence } from "framer-motion"
-import rootReducer from '~/reducers/rootReducer'
+import mainReducer from '~/reducers/mainReducer'
 
-const store = createStore(rootReducer)
+const store = createStore(mainReducer)
 
 function MyApp({ Component, pageProps, router }) {
   return (

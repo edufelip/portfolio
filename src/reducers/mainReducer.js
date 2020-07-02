@@ -2,7 +2,7 @@ export const initState = {
   pageYOffset: 0
 }
 
-const rootReducer = (state = initState, action) => {
+const mainReducer = (state = initState, action) => {
   switch(action.type) {
       case 'CHANGE_Y':
           return {
@@ -14,4 +14,4 @@ const rootReducer = (state = initState, action) => {
   }
 }
 
-export default rootReducer
+export default mainReducer

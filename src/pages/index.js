@@ -99,8 +99,47 @@ function Home() {
               </div>
             </div>
           </Project>
-          <Project>
-          
+          <Project className="denim-stars">
+            <div className="shadow">
+              <div className="wrap">
+                <h2>Denim Stars</h2>
+                <p>Clothing e-commerce</p>
+                <div>
+                  <Link scroll={false} href="projects/denim-stars">
+                    <a className="projectAnchor">Details</a>
+                  </Link>
+                  <a href="google.com"><FaGithub size="24"/></a>
+                </div>
+              </div>
+            </div>
+          </Project>
+          <Project className="portfolio">
+            <div className="shadow">
+              <div className="wrap">
+                <h2>Porfolio</h2>
+                <p>My portfolio made with NextJS</p>
+                <div>
+                  <Link scroll={false} href="projects/portfolio">
+                    <a className="projectAnchor">Details</a>
+                  </Link>
+                  <a href="google.com"><FaGithub size="24"/></a>
+                </div>
+              </div>
+            </div>
+          </Project>
+          <Project className="">
+            <div className="shadow">
+              <div className="wrap">
+                <h2>Next Project</h2>
+                <p>Future Project to be filled</p>
+                <div>
+                  <Link scroll={false} scroll={false} href="projects/english-moon">
+                    <a className="projectAnchor">Details</a>
+                  </Link>
+                  <a href="google.com"><FaGithub size="24"/></a>
+                </div>
+              </div>
+            </div>
           </Project>
         </ProjectsSection>
         <BlogSection>
@@ -109,8 +148,8 @@ function Home() {
         <ContactSection id="contact">
           <h2>Check me out!</h2>
           <div className="bundle">
-            <a href="">Github</a>
-            <a href="">Linkedin</a>
+            <a href="https://github.com/edufelip" target="_blank">Github</a>
+            <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>
             <a href="">Blog</a>
           </div>
           <p>©2020 Eduardo Santos - edu_felip@hotmail.com</p>

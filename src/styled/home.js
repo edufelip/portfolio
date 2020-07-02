@@ -24,12 +24,14 @@ export const MainPageFace = styled.div`
         display: inline-block;
         margin-right: 35px;
         a {
-          font-family: 'Josefin Sans', sans-serif;
+          font-family: 'Montserrat';
+          font-weight: 300;
+          font-size: 16px;
           letter-spacing: 0.5px;
           color: white;
           transition: all 0.3s ease;
           &:hover {
-            color: ${lighten(0.5, '#f9f9f9')};
+            color: ${darken(0.2, '#f9f9f9')};
           }
         }
         span {
@@ -37,7 +39,7 @@ export const MainPageFace = styled.div`
           border: 1px solid #f9f9f9;
           border-radius: 8px;
           transition: all 0.3s ease;
-          background: linear-gradient(to right, #f9f9f9 50%, transparent 50%);
+          background: linear-gradient(to right, #f2f2f2 50%, transparent 50%);
           background-size: 200% 100%;
           background-position: right bottom;
           &:hover{
@@ -135,7 +137,7 @@ export const MainContent = styled.div`
 export const AboutSection = styled.div`
   width: 100%;
   height: 380px;
-  background-color: #141414;
+  background-color: #0E0E0E;
   display: flex;
   flex-direction: column;
   justify-content: center;

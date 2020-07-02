@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
+import { BsArrowLeft } from 'react-icons/bs'
 
 import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, ContactSection, BlogSection} from "~/styled/home"
 
@@ -21,10 +22,9 @@ function EnglishMoon() {
             <ul>
               <li>
                 <Link href="/" scroll={false}>
-                  <a>Turn Back</a>
+                  <a> <BsArrowLeft size={16}/> Turn Back</a>
                 </Link>
               </li>
-              <li><a href='#projects'>Projects</a></li>
               <li><a href='#contact'>Contact</a></li>
               <li><a>Blog</a></li>
               <li><span><a>Resume</a></span></li>
