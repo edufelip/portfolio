@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
@@ -5,11 +6,26 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
 import { BsArrowLeft } from 'react-icons/bs'
 
-import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, ContactSection, BlogSection} from "~/styled/home"
+import {MainPageFace, MainContent, ContactSection, BlogSection} from "~/styled/home"
 
 import withAnalytics from "~/hoc/withAnalytics"
 
 function EnglishMoon() {
+
+  useEffect(() => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', (event) => {
+        event.preventDefault()
+        const href = event.target.href.split('#', 2)[1]
+        const element = document.getElementById(href)
+        window.scroll({
+          behavior: 'smooth',
+          top: element.offsetTop
+        })
+      })
+    })
+  }, [])
+
   return (
     <motion.div 
       exit={{opacity: 0}}
@@ -47,13 +63,15 @@ function EnglishMoon() {
             </div>
           </MainContent>
         </MainPageFace>
-        {/* <AboutSection id="about">
-          <h2>Hey, I'm Eduardo</h2>
-          <p>I'm a full stack web developer passionated about finding new ways to improve my projects in order to deliver beautiful code as well as beautiful design </p>
-          <div className="bar"></div>
-          <p>I have experience developing and designing <b>software for the web</b>, from single landing pages to progressive web applications. I'm always concerned not only with the design of the product but also with the experience the user may have when using the software</p>
-          <p>Feel free to check out <b><u><a>my blog</a></u></b> where i post several articles about development and a bunch of useful tips</p>
-        </AboutSection> */}
+        <ContactSection id="contact">
+          <h2>Check me out!</h2>
+          <div className="bundle">
+            <a href="https://github.com/edufelip" target="_blank">Github</a>
+            <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>
+            <a href="">Blog</a>
+          </div>
+          <p>©2020 Eduardo Santos - edu_felip@hotmail.com</p>
+        </ContactSection>
       </main>  
     </motion.div>
   )
