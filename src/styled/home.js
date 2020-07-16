@@ -6,7 +6,7 @@ export const MainPageFace = styled.div`
   height: 80vh;
   min-height: 400px;
   display: table;
-  background: url("/background.svg");
+  background: url(${props => props.background});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

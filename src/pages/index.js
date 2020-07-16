@@ -49,7 +49,7 @@ function Home() {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
-        <MainPageFace>
+        <MainPageFace background="/background.svg">
           <div className="header">
             <ul>
               <li><a href='#about'>About me</a></li>

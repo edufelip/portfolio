@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -13,6 +14,9 @@ import withAnalytics from "~/hoc/withAnalytics"
 function EnglishMoon() {
 
   useEffect(() => {
+    window.scroll({
+      top: 0
+    })
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (event) => {
         event.preventDefault()
@@ -32,8 +36,12 @@ function EnglishMoon() {
       initial={{opacity: 0}} 
       animate={{opacity: 1}}
     >
+      <Head>
+        <title>Eduardo Santos - English Moon</title>
+        <link rel="icon" href="/icon.ico" />
+      </Head>
       <main>
-        <MainPageFace>
+        <MainPageFace background="/project.jpg">
           <div className="header">
             <ul>
               <li>
