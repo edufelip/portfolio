@@ -3,11 +3,10 @@ import { useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
-import { MdEmail } from 'react-icons/md'
 import { BsArrowLeft } from 'react-icons/bs'
 
-import {MainPageFace, MainContent, ContactSection, BlogSection} from "~/styled/home"
+import {MainPageFace, MainContent, ContactSection} from "~/styled/home"
+import {EnglishMoonDetails} from '~/styled/english-moon'
 
 import withAnalytics from "~/hoc/withAnalytics"
 
@@ -41,7 +40,7 @@ function EnglishMoon() {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
-        <MainPageFace background="/project.jpg">
+        <MainPageFace background="/project.svg">
           <div className="header">
             <ul>
               <li>
@@ -54,22 +53,10 @@ function EnglishMoon() {
               <li><span><a>Resume</a></span></li>
             </ul>
           </div>
-          <MainContent>
-            <div className="contentLeft">
-              <div className="container">
-                <h1>Eduardo Santos</h1>
-                <h2>Software Developer</h2>
-                <a href="#projects">CHECK MY PROJECTS</a>
-              </div>
-            </div>
-            <div className="contentRight">
-              <div className="container">
-                <div className="block blockOne"><a href=""><FaGithub size={35} /></a></div>
-                <div className="block blockTwo"><a href=""><FaLinkedin size={35} /></a></div>
-                <div className="block blockThree"><a href=""><MdEmail size={35} /></a></div>
-              </div>  
-            </div>
-          </MainContent>
+          <EnglishMoonDetails>
+
+          </EnglishMoonDetails>
+          
         </MainPageFace>
         <ContactSection id="contact">
           <h2>Check me out!</h2>

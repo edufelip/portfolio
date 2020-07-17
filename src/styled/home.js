@@ -18,7 +18,7 @@ export const MainPageFace = styled.div`
       display: flex;
       align-items: center;
       float: right;
-      margin-right: 100px;
+      margin-right: 30px;
       li {
         list-style: none;
         display: inline-block;
@@ -132,16 +132,50 @@ export const MainContent = styled.div`
       }
     }
   }
+
+  @media (max-width: 860px) {
+    .contentLeft {
+      width: 100%;
+      height: 50%;
+      justify-content: center;
+      .container {
+        margin: 50px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        a {
+          width: 50%; 
+        }
+      }
+    }
+    .contentRight {
+      width: 100%;
+      height: 50%;
+      justify-content: center;
+      .container {
+        transform: rotate(-90deg);
+        margin: 0 0 30px 0;
+        .block {
+          transform: rotate(135deg);
+        }
+      }
+    }
+  }
 `
 
 export const AboutSection = styled.div`
+  display: none;
+
+
   width: 100%;
   height: 380px;
   background-color: #0E0E0E;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: -1px;
   h2, p {
     width: 800px;
     margin: 0 auto;
@@ -167,6 +201,8 @@ export const AboutSection = styled.div`
 `
 
 export const ProjectsSection = styled.div`
+  display: none;
+
   background-color: #ebebeb;
   overflow: hidden;
   > h2 {
@@ -197,7 +233,6 @@ export const Project = styled.div`
     height: 100%;
     position:relative;
     overflow: hidden;
-    background-color: #0f102490;
     .wrap {
       width: 50%;
       height: 50%;
@@ -261,13 +296,11 @@ export const Project = styled.div`
       }
     }
   }
-`
-
-export const BlogSection = styled.div`
-
-`
+` 
 
 export const ContactSection = styled.div`
+  display: none;
+
   width: 100%;
   height: 260px;
   background-color: #141414;

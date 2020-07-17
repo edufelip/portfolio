@@ -85,7 +85,7 @@ function Home() {
         </AboutSection>
         <ProjectsSection id="projects">
           <h2>Latest Projects</h2>
-          <Project className="english-moon" background="/project.jpg">
+          <Project className="english-moon" background="/project.svg">
             <div className="shadow">
               <div className="wrap">
                 <h2>English Moon</h2>
@@ -142,9 +142,6 @@ function Home() {
             </div>
           </Project>
         </ProjectsSection>
-        <BlogSection>
-
-        </BlogSection>
         <ContactSection id="contact">
           <h2>Check me out!</h2>
           <div className="bundle">
