@@ -5,9 +5,10 @@ import { motion } from 'framer-motion'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { RiCloseLine } from 'react-icons/ri'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdEmail } from 'react-icons/md'
-import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, ContactSection, BlogSection} from "~/styled/home"
+import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, ContactSection, MobileMenu} from "~/styled/home"
 
 import withAnalytics from "~/hoc/withAnalytics"
 import { ChangeY } from "~/actions/indexActions"
@@ -50,6 +51,16 @@ function Home() {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
+        <MobileMenu>
+          <RiCloseLine size={45} />
+          <ul>
+            <li><a href='#about'>About me</a></li>
+            <li><a href='#projects'>Projects</a></li>
+            <li><a href='#contact'>Contact</a></li>
+            <li><a>Blog</a></li>
+            <li><span><a>Resume</a></span></li>
+          </ul>
+        </MobileMenu>
         <MainPageFace background="/background.svg">
           <div className="header">
             <ul>
@@ -60,9 +71,6 @@ function Home() {
               <li><span><a>Resume</a></span></li>
             </ul>
             <GiHamburgerMenu size={36}/>
-          </div>
-          <div className="mobile-header">
-
           </div>
           <MainContent>
             <div className="contentLeft">

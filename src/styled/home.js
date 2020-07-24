@@ -1,6 +1,29 @@
 import styled from 'styled-components';
 import { darken, lighten } from 'polished';
 
+export const MobileMenu = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #0E0E0E;
+  z-index: 1;
+  svg {
+    color: #f9f9f9;
+    float: right;
+    margin: 20px;
+  }
+  ul {
+    position: absolute;
+    top: 100px;
+    list-style: none;
+    li {
+      a {
+        color: #f9f9f9;
+      }
+    }
+  }
+`
+
 export const MainPageFace = styled.div`
   width: 100%;
   height: 80vh;
