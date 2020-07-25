@@ -51,8 +51,8 @@ function Home() {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
-        <MobileMenu>
-          <RiCloseLine size={45} />
+        <MobileMenu className="mobileMenu">
+          <RiCloseLine className="closeMenuBtn" size={45} />
           <ul>
             <li><a href='#about'>About me</a></li>
             <li><a href='#projects'>Projects</a></li>
@@ -70,7 +70,7 @@ function Home() {
               <li><a>Blog</a></li>
               <li><span><a>Resume</a></span></li>
             </ul>
-            <GiHamburgerMenu size={36}/>
+            <GiHamburgerMenu className="hambMenuBtn" size={36}/>
           </div>
           <MainContent>
             <div className="contentLeft">

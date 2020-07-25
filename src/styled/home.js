@@ -7,6 +7,8 @@ export const MobileMenu = styled.div`
   position: absolute;
   background-color: #0E0E0E;
   z-index: 1;
+  transition: all 0.4s ease;
+  left: -100vw;
   svg {
     color: #f9f9f9;
     float: right;
@@ -15,10 +17,14 @@ export const MobileMenu = styled.div`
   ul {
     position: absolute;
     top: 100px;
+    left: 10%; 
     list-style: none;
     li {
+      margin: 0 0 20px 0;
+      border-bottom: 1px solid #ffffff30;
       a {
         color: #f9f9f9;
+        font-size: 32px;
       }
     }
   }
