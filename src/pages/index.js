@@ -94,7 +94,6 @@ function Home() {
           <p>I'm a full stack web developer passionated about finding new ways to improve my projects in order to deliver beautiful code as well as beautiful design </p>
           <div className="bar"></div>
           <p>I have experience developing and designing <b>software for the web</b>, from single landing pages to progressive web applications. I'm always concerned not only with the design of the product but also with the experience the user may have when using the software</p>
-          <p>Feel free to check out <b><u><a>my blog</a></u></b> where i post several articles about development and a bunch of useful tips</p>
         </AboutSection>
         <ProjectsSection id="projects">
           <h2>Latest Projects</h2>

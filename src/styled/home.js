@@ -251,13 +251,9 @@ export const MainContent = styled.div`
 `
 
 export const AboutSection = styled.div`
-  display: none;
-
-
   width: 100%;
   height: 380px;
   background-color: #0E0E0E;
-  /* display: flex; */
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -279,9 +275,22 @@ export const AboutSection = styled.div`
   }
   .bar {
     height: 5px;
-    width: 200px;
-    background-color: #700606;
-    margin: 20px 600px 20px 0;
+    max-width: 800px;
+    background: linear-gradient(to right, #700606 50%, transparent 50%);
+    margin: 20px auto 20px auto;
+  }
+
+  @media (max-width: 860px) {
+    height: fit-content;
+    h2, p {
+      width: 90%;
+    }
+    p:nth-of-type(2) {
+      padding-bottom: 50px;
+    }
+    .bar {
+      width: 90%;
+    }
   }
 
 `
