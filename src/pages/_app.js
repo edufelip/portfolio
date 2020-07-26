@@ -15,9 +15,12 @@ function MyApp({ Component, pageProps, router }) {
     const closeMenuBtn = document.querySelector(".closeMenuBtn")
     function closeMenu(){
       mobileMenu.style.left = "-100vw"
+      document.body.classList.remove("stop-scrolling")
     }
     function openMenu(){
       mobileMenu.style.left = "0"
+      console.log(document.body)
+      document.body.classList.add("stop-scrolling")
     }
     hambMenuBtn.addEventListener("click", openMenu)
     closeMenuBtn.addEventListener("click", closeMenu)

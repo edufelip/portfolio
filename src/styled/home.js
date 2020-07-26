@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { darken, lighten } from 'polished';
 
 export const MobileMenu = styled.div`
+  position: fixed;
   width: 100%;
   height: 100%;
   position: absolute;
@@ -27,6 +28,18 @@ export const MobileMenu = styled.div`
         font-size: 32px;
       }
     }
+  }
+
+  @media (max-height: 490px) {
+    ul {
+      top: 60px;
+      li {
+        margin: 0 0 10px 0;
+        a {
+          font-size: 24px;
+        }
+      }
+    }  
   }
 `
 
@@ -296,8 +309,6 @@ export const AboutSection = styled.div`
 `
 
 export const ProjectsSection = styled.div`
-  display: none;
-
   background-color: #ebebeb;
   overflow: hidden;
   > h2 {
@@ -329,7 +340,7 @@ export const Project = styled.div`
     position:relative;
     overflow: hidden;
     .wrap {
-      width: 50%;
+      width: 250px;
       height: 50%;
       position: absolute;
       top: 150px;
@@ -388,6 +399,22 @@ export const Project = styled.div`
             color: ${lighten(0.08, "#114B79")};
           }
         }
+      }
+    }
+  }
+
+  @media (max-width: 780px) {
+    width: 90%;
+  }
+
+  @media (max-width: 500px) {
+    height: 300px;
+    .shadow {
+      .wrap {
+        width: 100%;
+        top: 120px;
+        left: 0;
+        align-items: center;
       }
     }
   }

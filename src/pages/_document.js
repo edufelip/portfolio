@@ -41,6 +41,10 @@ export default class MyDocument extends Document {
             ul {
               margin: 0;
             }
+            .stop-scrolling {
+              height: 100%;
+              overflow: hidden;
+            }
             `
             }
           </style>
