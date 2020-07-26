@@ -104,7 +104,7 @@ function Home() {
                 <p>English course website</p>
                 <div>
                   <Link scroll={false} href="projects/english-moon">
-                    <a className="projectAnchor">Details</a>
+                    <a className="projectAnchor">Access</a>
                   </Link>
                   <a href="google.com"><FaGithub size="24"/></a>
                 </div>
@@ -118,7 +118,7 @@ function Home() {
                 <p>Clothing e-commerce</p>
                 <div>
                   <Link scroll={false} href="projects/denim-stars">
-                    <a className="projectAnchor">Details</a>
+                    <a className="projectAnchor">Access</a>
                   </Link>
                   <a href="google.com"><FaGithub size="24"/></a>
                 </div>
@@ -132,7 +132,7 @@ function Home() {
                 <p>My portfolio made with NextJS</p>
                 <div>
                   <Link scroll={false} href="projects/portfolio">
-                    <a className="projectAnchor">Details</a>
+                    <a className="projectAnchor">Access</a>
                   </Link>
                   <a href="google.com"><FaGithub size="24"/></a>
                 </div>
@@ -146,7 +146,7 @@ function Home() {
                 <p>Future Project to be filled</p>
                 <div>
                   <Link scroll={false} scroll={false} href="projects/english-moon">
-                    <a className="projectAnchor">Details</a>
+                    <a className="projectAnchor">Access</a>
                   </Link>
                   <a href="google.com"><FaGithub size="24"/></a>
                 </div>

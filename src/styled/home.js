@@ -421,8 +421,6 @@ export const Project = styled.div`
 ` 
 
 export const ContactSection = styled.div`
-  display: none;
-
   width: 100%;
   height: 260px;
   background-color: #141414;
