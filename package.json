@@ -10,7 +10,7 @@
   "dependencies": {
     "elliptic": "^6.5.3",
     "framer-motion": "^1.11.1",
-    "next": "9.3.5",
+    "next": "11.1.0",
     "next-server": "^9.0.5",
     "polished": "^3.6.5",
     "react": "16.13.1",
