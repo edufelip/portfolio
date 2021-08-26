@@ -10,7 +10,7 @@
   "dependencies": {
     "elliptic": "^6.5.3",
     "framer-motion": "^1.11.1",
-    "next": "9.3.5",
+    "next": "11.1.0",
     "next-server": "^9.0.5",
     "polished": "^3.6.5",
     "react": "16.13.1",
@@ -29,6 +29,9 @@
     "elliptic": "^6.5.3",
     "serialize-javascript": "^3.1.0",
     "node-fetch": "^2.6.1",
-    "object-path": "^0.11.5"
+    "object-path": "^0.11.5",
+    "browserslist": "^4.16.5",
+    "glob-parent": "^5.1.2",
+    "postcss": "^7.0.36"
   }
 }
