@@ -392,11 +392,11 @@ export const Project = styled.div`
         }
         a:nth-of-type(2){
           background-color: #f8f8f8;
-          color: #114B70;
+          color: #000000;
           font-size: 16px;
           &:hover {
             background-color: ${lighten(0.08,"#f8f8f8")};
-            color: ${lighten(0.08, "#114B79")};
+            color: ${lighten(0.008, "#114B79")};
           }
         }
       }

@@ -13,7 +13,7 @@
     "next": "11.1.0",
     "next-server": "^9.0.5",
     "polished": "^3.6.5",
-    "react": "16.13.1",
+    "react": "16.14",
     "react-dom": "16.13.1",
     "react-ga": "^2.7.0",
     "react-icons": "^3.10.0",

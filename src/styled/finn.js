@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const EnglishMoonDetails = styled.div`
+export const FinnDetails = styled.div`
   width:100%;
   height:100%;
   

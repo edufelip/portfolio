@@ -19,7 +19,6 @@ function MyApp({ Component, pageProps, router }) {
     }
     function openMenu(){
       mobileMenu.style.left = "0"
-      console.log(document.body)
       document.body.classList.add("stop-scrolling")
     }
     hambMenuBtn.addEventListener("click", openMenu)
