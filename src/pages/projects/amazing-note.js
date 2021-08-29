@@ -9,7 +9,6 @@ import {MainPageFace, ContactSection, MobileMenu} from "~/styled/home"
 import { BsArrowLeft } from 'react-icons/bs'
 import { FinnDetails } from '~/styled/finn'
 
-import withAnalytics from "~/hoc/withAnalytics"
 
 function AmazingNote() {
   useEffect(() => {
@@ -82,4 +81,4 @@ function AmazingNote() {
   )
 }
 
-export default withAnalytics()(AmazingNote);
+export default (AmazingNote);

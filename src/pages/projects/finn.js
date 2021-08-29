@@ -9,8 +9,6 @@ import {MainPageFace, ContactSection, MobileMenu} from "~/styled/home"
 import { BsArrowLeft } from 'react-icons/bs'
 import { FinnDetails } from '~/styled/finn'
 
-import withAnalytics from "~/hoc/withAnalytics"
-
 function Finn() {
   useEffect(() => {
     window.scroll({
@@ -83,4 +81,4 @@ function Finn() {
   )
 }
 
-export default withAnalytics()(Finn);
+export default (Finn);
