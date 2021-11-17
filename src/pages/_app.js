@@ -21,7 +21,9 @@ function MyApp({ Component, pageProps, router }) {
       mobileMenu.style.left = "0"
       document.body.classList.add("stop-scrolling")
     }
-    hambMenuBtn.addEventListener("click", openMenu)
+    if(hambMenuBtn) {
+      hambMenuBtn.addEventListener("click", openMenu)
+    }
     closeMenuBtn.addEventListener("click", closeMenu)
     mobileMenuLinks.forEach(anchor => {
       anchor.addEventListener("click", closeMenu)

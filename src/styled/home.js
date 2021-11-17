@@ -340,7 +340,7 @@ export const Project = styled.div`
     position:relative;
     overflow: hidden;
     .wrap {
-      width: 250px;
+      width: 270px;
       height: 50%;
       position: absolute;
       top: 150px;
@@ -366,15 +366,15 @@ export const Project = styled.div`
         margin: -10px 0 15px 0;
       }
       div {
-        width: 210px;
         display: flex;
         justify-content: space-between;
         a {
           display: flex;
           justify-content: center;
           align-items: center;
-          width: 100px;
+          width: 90px;
           padding: 5px 20px;
+          margin-right: 12px;
           opacity: 0.9;
           border-radius: 6px;
           transition: all 0.3s ease;
@@ -390,7 +390,7 @@ export const Project = styled.div`
             color: ${darken(0.04, "#f9f9f9")};
           }
         }
-        a:nth-of-type(2){
+        a:nth-of-type(2), a:nth-of-type(3){
           background-color: #f8f8f8;
           color: #000000;
           font-size: 16px;

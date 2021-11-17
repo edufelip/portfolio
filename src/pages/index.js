@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useSelector, useDispatch } from 'react-redux'
-import { FaGithub, FaLinkedin } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaGooglePlay } from 'react-icons/fa'
 import { RiCloseLine } from 'react-icons/ri'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { MdEmail } from 'react-icons/md'
@@ -20,13 +20,14 @@ export async function getStaticProps({ locale }) {
   let check = locale == "en-US" ? "Check my Projects" : "Veja meus Projetos"
   let about_title = locale == "en-US" ? "Hey, I'm Eduardo" : "Olá, Eu sou Eduardo"
   let about_desc_one = locale == "en-US" ? "I'm an Android Developer passionated about finding new ways to improve my projects in order to deliver clean and readable code as well as beautiful design" : "Eu sou um Desenvolvedor de Aplicativos Android em busca de novas maneiras de melhorar meus projetos, consequentemente me ajudando a construir um código cada vez mais limpo e gerar um produto de excelente"
-  let about_desc_two = locale == "en-US" ? "I have experience developing and designing native android apps with Java and Kotlin as well. I'm always concerned not only with the design of the product but also with the experience the user may have when using it" : "Eu tenho experiência desenvolvendo aplicativos nativos para Android em Java e também em Kotlin. Sempre prezo não somente pelo design do projeto, mas também pela experiência que o cliente virá a ter usando-o"
+  let about_desc_two = locale == "en-US" ? "I have experience developing and designing native android apps with Java and Kotlin as well. I'm always concerned not only with the design of the product but also with the experience the user may have when using it" : "Tenho experiência desenvolvendo aplicativos nativos para Android em Java e também em Kotlin. Sempre prezo não somente pelo design do projeto, mas também em fornecer a melhor experiência possível ao usuário"
   let latest = locale == "en-US" ? "Latest Projects" : "Últimos Projetos"
   let finn_desc = locale == "en-US" ? "Collection of Forums (Social Media)" : "Mídia Social baseada em Fóruns"
   let amazingnote_desc = locale == "en-US" ? "Note App" : "Aplicativo de Notas"
   let checkMe = locale == "en-US" ? "Check me out!" : "Me Encontre"
   let access = locale == "en-US" ? "Access" : "Acessar"
   let resume_link = locale == "en-US" ? "resume" : "curriculo"
+  let finnbackend_desc = locale == "en-US" ? "Backend for Finn app" : "Backend para o app Finn"
   return {
     props: {
       description,
@@ -43,7 +44,8 @@ export async function getStaticProps({ locale }) {
       amazingnote_desc,
       checkMe,
       access,
-      resume_link
+      resume_link,
+      finnbackend_desc
     },
   }
 }
@@ -137,30 +139,46 @@ function Home(props) {
         </AboutSection>
         <ProjectsSection id="projects">
           <h2>{props.latest}</h2>
+          <Project className="amazing-note" background="/amazingnote-bg.svg">
+            <div className="shadow">
+              <div className="wrap">
+                <h2>Amazing Note</h2>
+                <p>{props.amazingnote_desc}</p>
+                <div>
+                  <Link scroll={false} href="/projects/amazing-note">
+                    <a className="projectAnchor">{props.access}</a>
+                  </Link>
+                  <a href="https://github.com/edufelip/amazing-note" target="_blank"><FaGithub size="24"/></a>
+                  <a href="https://play.google.com/store/apps/details?id=com.edufelipe.amazing_note" target="_blank"><FaGooglePlay size="24"/></a>
+                </div>
+              </div>
+            </div>
+          </Project>
           <Project className="finn" background="/finn-bg.svg">
             <div className="shadow">
               <div className="wrap">
                 <h2>Finn</h2>
                 <p>{props.finn_desc}</p>
                 <div>
-                  <Link scroll={false} href="projects/finn">
+                  <Link scroll={false} href="/projects/finn">
                     <a className="projectAnchor">{props.access}</a>
                   </Link>
                   <a href="https://www.github.com/edufelip/finn" target="_blank"><FaGithub size="24"/></a>
+                  <a href="http://play.google.com/store/apps/details?id=com.projects.finn" target="_blank"><FaGooglePlay size="24"/></a>
                 </div>
               </div>
             </div>
           </Project>
-          <Project className="amazing-note">
+          <Project className="finn-backend" background="/finnbackend-bg.svg">
             <div className="shadow">
               <div className="wrap">
-                <h2>AmazingNote</h2>
-                <p>{props.amazingnote_desc}</p>
+                <h2>Finn Backend</h2>
+                <p>{props.finnbackend_desc}</p>
                 <div>
-                  <Link scroll={false} href="projects/amazing-note">
+                  <Link scroll={false} href="/projects/finn-backend">
                     <a className="projectAnchor">{props.access}</a>
                   </Link>
-                  <a href="google.com"><FaGithub size="24"/></a>
+                  <a href="https://github.com/edufelip/finn__backend" target="_blank"><FaGithub size="24"/></a>
                 </div>
               </div>
             </div>

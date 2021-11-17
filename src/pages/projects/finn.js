@@ -2,14 +2,41 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-
-import { RiCloseLine } from 'react-icons/ri'
-import { GiHamburgerMenu } from 'react-icons/gi'
+import { FaGithub, FaGooglePlay, FaAngleLeft } from 'react-icons/fa'
 import {MainPageFace, ContactSection, MobileMenu} from "~/styled/home"
+import { RiCloseLine } from 'react-icons/ri'
 import { BsArrowLeft } from 'react-icons/bs'
+import { useRouter } from 'next/router'
 import { FinnDetails } from '~/styled/finn'
 
-function Finn() {
+export async function getStaticProps({ locale }) {
+  let description = locale == "en-US" ? "Software Developer" : "Desenvolvedor de Software"
+  let about = locale == "en-US" ? "About me" : "Sobre Mim"
+  let projects = locale == "en-US" ? "Projects" : "Projetos"
+  let contact = locale == "en-US" ? "Contact" : "Contato"
+  let resume = locale == "en-US" ? "Resume" : "Currículo"
+  let back = locale == "en-US" ? "Turn Back" : "Voltar"
+  let projectAbout = locale == "en-US" ? "About" : "Sobre"
+  let projectAboutOne = locale == "en-US" ? "Finn came from the idea of a social media pretty much like reddit. Here users can create their communities and post about everything they want, as long as it's not sensitive or hate speech content. At the moment you subscribe to a community the posts about that subject will start appearing in your feed" : "Finn veio da ideia de ser uma rede social muito parecida com o reddit. Aqui usuário podem criar suas comunidades e postar sobre o que quiserem, contanto que não seja conteúdo sensível e nem discurso de ódio"
+  let projectAboutTwo = locale == "en-US" ? "I used Retrofit to make api calls to the backend and also connected the app to Firebase, which is responsible for the user's authentication" : "Eu usei Retrofit para realizar chamadas à api e também conectei o aplicativo ao serviço do Firebase, que é responsável pela autenticação do usuário"
+  return {
+    props: {
+      description,
+      about,
+      projects,
+      contact,
+      resume,
+      back,
+      projectAbout,
+      projectAboutOne,
+      projectAboutTwo
+    },
+  }
+}
+
+function Finn(props) {
+  let router = useRouter()
+
   useEffect(() => {
     window.scroll({
       top: 0
@@ -27,6 +54,9 @@ function Finn() {
     })
   }, [])
 
+  let resumeLink = props.resume_link == "resume" ?
+    <a href="./resume.pdf" target="_blank">{props.resume}</a>
+  : <a href="./curriculo.pdf" target="_blank">{props.resume}</a>;
   
   return (
     <motion.div 
@@ -35,7 +65,7 @@ function Finn() {
       animate={{opacity: 1}}
     >
       <Head>
-        <title>Eduardo Santos - AmazingNote</title>
+        <title>Eduardo Santos - Finn</title>
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
@@ -46,7 +76,7 @@ function Finn() {
             <li><a href='#projects'>Projects</a></li>
             <li><a href='#contact'>Contact</a></li>
             <li><a href="https://medium.com/@eduardofelipi" target="_blank">Blog</a></li>
-            <li><span><a href="/curriculo.pdf" target="_blank">Resume</a></span></li>
+            <li><span>{resumeLink}</span></li>
           </ul>
         </MobileMenu>
         <MainPageFace background="/finn-bg-sm.svg">
@@ -54,17 +84,48 @@ function Finn() {
             <ul>
               <li>
                 <Link href="/" scroll={false}>
-                  <a> <BsArrowLeft size={16}/> Turn Back</a>
+                  <a> <BsArrowLeft size={16}/> {props.back}</a>
                 </Link>
               </li>
-              <li><a href='#contact'>Contact</a></li>
+              <li><a href='#contact'>{props.contact}</a></li>
               <li><a href="https://medium.com/@eduardofelipi" target="_blank">Blog</a></li>
-              <li><span><a href="/curriculo.pdf" target="_blank">Resume</a></span></li>
+              <li><span>{resumeLink}</span></li>
             </ul>
-            <GiHamburgerMenu className="hambMenuBtn" size={36}/>
+            <Link href="/"><FaAngleLeft className="backMenuBtn" size={36}/></Link>
           </div>
           <FinnDetails>
-
+            <div className="project_spec">
+              <div className="project_spec_container">
+                <h1>Finn</h1>
+                <div> 
+                  <h5>Java</h5>
+                  <img src="/java_icon.png" alt="Java Icon" />
+                  <h5>Android</h5>
+                  <img className="android_icon" src="/android_icon.png" alt="Android Icon" />
+                </div>
+                <ul>
+                  <li><b>{props.projectAbout}</b></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+                <div className="tags">
+                  <p><b>Tags</b></p>
+                  <div className="tags_container">
+                    <p>MVVM</p>
+                    <p>Firebase</p>
+                    <p>LiveData</p>
+                    <p>Retrofit</p>
+                    <p>RxJava</p>
+                    <p>Hilt</p>
+                  </div>
+                </div>
+                <p className="btn_container_title"><b>Github - Playstore</b></p>
+                <div className="btn_container">
+                  <a href="https://github.com/edufelip/finn" target="_blank"><FaGithub size="24"/></a>
+                  <a href="http://play.google.com/store/apps/details?id=com.projects.finn" target="_blank"><FaGooglePlay size="24"/></a>
+                </div>
+              </div>
+            </div>
           </FinnDetails>
         </MainPageFace>
         <ContactSection id="contact">
