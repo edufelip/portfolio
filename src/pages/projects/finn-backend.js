@@ -3,13 +3,40 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { RiCloseLine } from 'react-icons/ri'
-import { FaGithub, FaGooglePlay, FaAngleLeft } from 'react-icons/fa'
+import { FaGithub, FaAngleLeft } from 'react-icons/fa'
 import {MainPageFace, ContactSection, MobileMenu } from "~/styled/home"
 import { BsArrowLeft } from 'react-icons/bs'
 import { FinnDetails } from '~/styled/finn'
+import { useRouter } from 'next/router'
 
+export async function getStaticProps({ locale }) {
+  let description = locale == "en-US" ? "Software Developer" : "Desenvolvedor de Software"
+  let about = locale == "en-US" ? "About me" : "Sobre Mim"
+  let projects = locale == "en-US" ? "Projects" : "Projetos"
+  let contact = locale == "en-US" ? "Contact" : "Contato"
+  let resume = locale == "en-US" ? "Resume" : "Currículo"
+  let back = locale == "en-US" ? "Turn Back" : "Voltar"
+  let projectAbout = locale == "en-US" ? "About" : "Sobre"
+  let projectAboutOne = locale == "en-US" ? "This project came from the necessity of a backend for the Finn Android app. Due to my previous experience in Javascript and Typescript, I felt that Node.js was the ideal choice, as well as using the postgreSQL Database." : "Esse projeto veio da necessidade de um backend para o aplicativo Finn para Android. Devido à minha prévia experiência em Typescript e Javascript, eu senti que Node.js seria a escolha ideal, assim como usar o banco de dados postgreSQL."
+  let projectAboutTwo = locale == "en-US" ? "The backend is being hosted on AWS and the Database is running in a Docker container. Lastly, this project follows TDD practices, so I used the Jest library to implement tests." : "O backend está sendo hospedado na AWS e o banco de dados está rodando em um container no Docker. Vale apontar que o projeto foi construído orientado a testes desde o início, sendo assim foi usada a biblioteca Jest para a implementação dos testes."
+  return {
+    props: {
+      description,
+      about,
+      projects,
+      contact,
+      resume,
+      back,
+      projectAbout,
+      projectAboutOne,
+      projectAboutTwo
+    },
+  }
+}
 
-function FinnBackend() {
+function FinnBackend(props) {
+  let router = useRouter()
+
   useEffect(() => {
     window.scroll({
       top: 0
@@ -26,6 +53,10 @@ function FinnBackend() {
       })
     })
   }, [])
+
+  let resumeLink = props.resume_link == "resume" ?
+    <a href="./resume.pdf" target="_blank">{props.resume}</a>
+  : <a href="./curriculo.pdf" target="_blank">{props.resume}</a>;
 
   return (
     <motion.div 
@@ -45,7 +76,7 @@ function FinnBackend() {
             <li><a href='#projects'>Projects</a></li>
             <li><a href='#contact'>Contact</a></li>
             <li><a href="https://medium.com/@eduardofelipi" target="_blank">Blog</a></li>
-            <li><span><a href="/curriculo.pdf" target="_blank">Resume</a></span></li>
+            <li><span>{resumeLink}</span></li>
           </ul>
         </MobileMenu>
         <MainPageFace background="/finnbackend-bg-sm.svg">
@@ -53,12 +84,12 @@ function FinnBackend() {
             <ul>
               <li>
                 <Link href="/" scroll={false}>
-                  <a> <BsArrowLeft size={16}/> Turn Back</a>
+                  <a> <BsArrowLeft size={16}/> {props.back}</a>
                 </Link>
               </li>
-              <li><a href='#contact'>Contact</a></li>
+              <li><a href='#contact'>{props.contact}</a></li>
               <li><a href="https://medium.com/@eduardofelipi" target="_blank">Blog</a></li>
-              <li><span><a href="/curriculo.pdf" target="_blank">Resume</a></span></li>
+              <li><span>{resumeLink}</span></li>
             </ul>
             <Link href="/"><FaAngleLeft className="backMenuBtn" size={36}/></Link>
           </div>
@@ -73,9 +104,9 @@ function FinnBackend() {
                   <img className="android_icon" src="/node_icon.png" alt="Node Icon" />
                 </div>
                 <ul>
-                  <li><b>About</b></li>
-                  <li>This project came from the necessity of a backend for the Finn Android app. Due to my previous experience in Javascript and Typescript, I felt that Node.js was the ideal choice, as well as using the postgreSQL Database</li>
-                  <li>The backend is being hosted on AWS and the Database is running in a Docker container</li>
+                  <li><b>{props.projectAbout}</b></li>
+                  <li>{props.projectAboutOne}</li>
+                  <li>{props.projectAboutTwo}</li>
                 </ul>
                 <div className="tags">
                   <p><b>Tags</b></p>
@@ -85,6 +116,7 @@ function FinnBackend() {
                     <p>Docker</p>
                     <p>Aws</p>
                     <p>Clean Architecture</p>
+                    <p>Jest</p>
                   </div>
                 </div>
                 <p className="btn_container_title"><b>Github - Playstore</b></p>

@@ -17,8 +17,8 @@ export async function getStaticProps({ locale }) {
   let resume = locale == "en-US" ? "Resume" : "Currículo"
   let back = locale == "en-US" ? "Turn Back" : "Voltar"
   let projectAbout = locale == "en-US" ? "About" : "Sobre"
-  let projectAboutOne = locale == "en-US" ? "Finn came from the idea of a social media pretty much like reddit. Here users can create their communities and post about everything they want, as long as it's not sensitive or hate speech content. At the moment you subscribe to a community the posts about that subject will start appearing in your feed" : "Finn veio da ideia de ser uma rede social muito parecida com o reddit. Aqui usuário podem criar suas comunidades e postar sobre o que quiserem, contanto que não seja conteúdo sensível e nem discurso de ódio"
-  let projectAboutTwo = locale == "en-US" ? "I used Retrofit to make api calls to the backend and also connected the app to Firebase, which is responsible for the user's authentication" : "Eu usei Retrofit para realizar chamadas à api e também conectei o aplicativo ao serviço do Firebase, que é responsável pela autenticação do usuário"
+  let projectAboutOne = locale == "en-US" ? "Finn came from the idea of a social media pretty much like reddit. Here users can create their communities and post about everything they want, as long as it's not sensitive or hate speech content. At the moment you subscribe to a community the posts about that subject will start appearing in your feed." : "Finn veio da ideia de ser uma rede social muito parecida com o reddit. Aqui usuário podem criar suas comunidades e postar sobre o que quiserem, contanto que não seja conteúdo sensível e nem discurso de ódio. A partir do momento que um usuário de inscreve em um comunidade, posts sobre aquele assunto começarão a aparecer em seu feed."
+  let projectAboutTwo = locale == "en-US" ? "I used Retrofit to make api calls to the backend and also connected the app to Firebase, which is responsible for the user's authentication. I should also point out that RxJava here is fundamental for processing events asynchronously." : "Eu usei Retrofit para realizar chamadas à api e também conectei o aplicativo ao serviço do Firebase, que é responsável pela autenticação do usuário. Vale também apontar para o papel fundamental que o RxJava tem no projeto, processando eventos de forma assíncrona."
   return {
     props: {
       description,
@@ -105,8 +105,8 @@ function Finn(props) {
                 </div>
                 <ul>
                   <li><b>{props.projectAbout}</b></li>
-                  <li></li>
-                  <li></li>
+                  <li>{props.projectAboutOne}</li>
+                  <li>{props.projectAboutTwo}</li>
                 </ul>
                 <div className="tags">
                   <p><b>Tags</b></p>

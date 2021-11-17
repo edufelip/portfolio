@@ -6,13 +6,14 @@ export const FinnDetails = styled.div`
   height:100%;
   display: flex;
   justify-content: start;
-  margin: 0px 0 50px 200px;
+  margin: 20px 0 0 200px;
   align-items: top;
   .project_spec {
     display: flex;
     align-items: center;
-    height: 100%;
+    height: 90%;
     width: 700px;
+    margin-bottom: 50px;
     background-color: #121212;
     border-radius: 24px;
     -webkit-box-shadow: 1px 0px 17px 2px rgba(0,0,0,0.6); 
