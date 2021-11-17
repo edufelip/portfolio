@@ -49,6 +49,7 @@ export const MainPageFace = styled.div`
   min-height: 400px;
   display: table;
   background: url(${props => props.background});
+  background-color: #121212;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
