@@ -13,6 +13,7 @@ export async function getStaticProps({ locale }) {
   let description = locale == "en-US" ? "Software Developer" : "Desenvolvedor de Software"
   let about = locale == "en-US" ? "About me" : "Sobre Mim"
   let projects = locale == "en-US" ? "Projects" : "Projetos"
+  let checkMe = locale == "en-US" ? "Check me out!" : "Me Encontre"
   let contact = locale == "en-US" ? "Contact" : "Contato"
   let resume = locale == "en-US" ? "Resume" : "Currículo"
   let back = locale == "en-US" ? "Turn Back" : "Voltar"
@@ -29,7 +30,8 @@ export async function getStaticProps({ locale }) {
       back,
       projectAbout,
       projectAboutOne,
-      projectAboutTwo
+      projectAboutTwo,
+      checkMe
     },
   }
 }
@@ -130,7 +132,7 @@ function AmazingNote(props) {
           </FinnDetails>
         </MainPageFace>
         <ContactSection id="contact">
-          <h2>Check me out!</h2>
+          <h2>{props.checkMe}</h2>
           <div className="bundle">
             <a href="https://github.com/edufelip" target="_blank">Github</a>
             <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>

@@ -16,6 +16,7 @@ export async function getStaticProps({ locale }) {
   let contact = locale == "en-US" ? "Contact" : "Contato"
   let resume = locale == "en-US" ? "Resume" : "Currículo"
   let back = locale == "en-US" ? "Turn Back" : "Voltar"
+  let checkMe = locale == "en-US" ? "Check me out!" : "Me Encontre"
   let projectAbout = locale == "en-US" ? "About" : "Sobre"
   let projectAboutOne = locale == "en-US" ? "This project came from the necessity of a backend for the Finn Android app. Due to my previous experience in Javascript and Typescript, I felt that Node.js was the ideal choice, as well as using the postgreSQL Database." : "Esse projeto veio da necessidade de um backend para o aplicativo Finn para Android. Devido à minha prévia experiência em Typescript e Javascript, eu senti que Node.js seria a escolha ideal, assim como usar o banco de dados postgreSQL."
   let projectAboutTwo = locale == "en-US" ? "The backend is being hosted on AWS and the Database is running in a Docker container. Lastly, this project follows TDD practices, so I used the Jest library to implement tests." : "O backend está sendo hospedado na AWS e o banco de dados está rodando em um container no Docker. Vale apontar que o projeto foi construído orientado a testes desde o início, sendo assim foi usada a biblioteca Jest para a implementação dos testes."
@@ -29,7 +30,8 @@ export async function getStaticProps({ locale }) {
       back,
       projectAbout,
       projectAboutOne,
-      projectAboutTwo
+      projectAboutTwo,
+      checkMe
     },
   }
 }
@@ -128,7 +130,7 @@ function FinnBackend(props) {
           </FinnDetails>
         </MainPageFace>
         <ContactSection id="contact">
-          <h2>Check me out!</h2>
+          <h2>{props.checkMe}</h2>
           <div className="bundle">
             <a href="https://github.com/edufelip" target="_blank">Github</a>
             <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>

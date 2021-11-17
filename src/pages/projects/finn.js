@@ -15,6 +15,7 @@ export async function getStaticProps({ locale }) {
   let projects = locale == "en-US" ? "Projects" : "Projetos"
   let contact = locale == "en-US" ? "Contact" : "Contato"
   let resume = locale == "en-US" ? "Resume" : "Currículo"
+  let checkMe = locale == "en-US" ? "Check me out!" : "Me Encontre"
   let back = locale == "en-US" ? "Turn Back" : "Voltar"
   let projectAbout = locale == "en-US" ? "About" : "Sobre"
   let projectAboutOne = locale == "en-US" ? "Finn came from the idea of a social media pretty much like reddit. Here users can create their communities and post about everything they want, as long as it's not sensitive or hate speech content. At the moment you subscribe to a community the posts about that subject will start appearing in your feed." : "Finn veio da ideia de ser uma rede social muito parecida com o reddit. Aqui usuário podem criar suas comunidades e postar sobre o que quiserem, contanto que não seja conteúdo sensível e nem discurso de ódio. A partir do momento que um usuário de inscreve em um comunidade, posts sobre aquele assunto começarão a aparecer em seu feed."
@@ -29,7 +30,8 @@ export async function getStaticProps({ locale }) {
       back,
       projectAbout,
       projectAboutOne,
-      projectAboutTwo
+      projectAboutTwo,
+      checkMe
     },
   }
 }
@@ -129,7 +131,7 @@ function Finn(props) {
           </FinnDetails>
         </MainPageFace>
         <ContactSection id="contact">
-          <h2>Check me out!</h2>
+          <h2>{props.checkMe}</h2>
           <div className="bundle">
             <a href="https://github.com/edufelip" target="_blank">Github</a>
             <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>
