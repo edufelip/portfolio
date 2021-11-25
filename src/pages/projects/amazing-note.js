@@ -138,7 +138,7 @@ function AmazingNote(props) {
             <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>
             <a href="https://medium.com/@eduardofelipi" target="_blank">Blog</a>
           </div>
-          <p>©2021 Eduardo Santos - edu_felip@hotmail.com</p>
+          <p>©2021 Eduardo Santos - eduardofelipi@gmail.com</p>
         </ContactSection>
       </main>
     </motion.div>

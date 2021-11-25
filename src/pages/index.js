@@ -126,7 +126,7 @@ function Home(props) {
               <div className="container">
                 <div className="block blockOne"><a href="https://github.com/edufelip" target="_blank"><FaGithub size={35} /></a></div>
                 <div className="block blockTwo"><a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank"><FaLinkedin size={35} /></a></div>
-                <div className="block blockThree"><a href="mailto:edu_felip@hotmail.com"><MdEmail size={35} /></a></div>
+                <div className="block blockThree"><a href="mailto:eduardofelipi@gmail.com"><MdEmail size={35} /></a></div>
               </div>  
             </div>
           </MainContent>
@@ -191,7 +191,7 @@ function Home(props) {
             <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>
             <a href="https://medium.com/@eduardofelipi" target="_blank">Blog</a>
           </div>
-          <p>©2021 Eduardo Santos - edu_felip@hotmail.com</p>
+          <p>©2021 Eduardo Santos - eduardofelipi@gmail.com</p>
         </ContactSection>
       </main>
     </motion.div>
