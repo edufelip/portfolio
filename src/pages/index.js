@@ -18,9 +18,9 @@ export async function getStaticProps({ locale }) {
   let contact = locale == "en-US" ? "Contact" : "Contato"
   let resume = locale == "en-US" ? "Resume" : "Currículo"
   let check = locale == "en-US" ? "Check my Projects" : "Veja meus Projetos"
-  let about_title = locale == "en-US" ? "Hey, I'm Eduardo" : "Olá, Eu sou Eduardo"
+  let about_title = locale == "en-US" ? "Hey, I'm Eduardo" : "Olá, eu sou Eduardo"
   let about_desc_one = locale == "en-US" ? "I'm an Android Developer passionated about finding new ways to improve my projects in order always deliver a beautiful product." : "Eu sou um desenvolvedor de aplicativos para Android apaixonado por encontrar novas maneiras de melhorar meus projetos, com o foco em sempre entregar um produto de qualidade."
-  let about_desc_two = locale == "en-US" ? "I first started coding in 2017 and besides my initial experience being with web development, what indeed captivated me was mobile development with Java and Kotlin, and since then one of my biggest priorities has been about building applications with clean, readable and maintainable code." : "Eu comecei a programar em 2017 e, apesar da minha experiência inicial ser em desenvolvimento para web, o que me cativou mesmo foi o desenvolvimento mobile com Java e Kotlin, e desde então uma das minhas maiores prioridades tem sido construir aplicativos com código limpo, legível e eficiente."
+  let about_desc_two = locale == "en-US" ? "I first started coding in 2017 and besides my initial experience being with web development, what indeed captivated me was mobile development with Java and Kotlin, and since then one of my biggest priorities has been about building applications with clean, readable and maintainable code." : "Eu comecei a programar em 2017, para ser mais específico eu estudava desenvolvimento para web, mas o que me cativou de fato foi o desenvolvimento mobile com Java e Kotlin, e desde então uma das minhas maiores prioridades tem sido construir aplicativos com código limpo, legível e eficiente."
   let latest = locale == "en-US" ? "Latest Projects" : "Últimos Projetos"
   let finn_desc = locale == "en-US" ? "Collection of Forums (Social Media)" : "Mídia Social baseada em Fóruns"
   let amazingnote_desc = locale == "en-US" ? "Note App" : "Aplicativo de Notas"
@@ -191,7 +191,7 @@ function Home(props) {
             <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>
             <a href="https://medium.com/@eduardofelipi" target="_blank">Blog</a>
           </div>
-          <p>©2021 Eduardo Santos - eduardofelipi@gmail.com</p>
+          <p>©2022 Eduardo Santos - eduardofelipi@gmail.com</p>
         </ContactSection>
       </main>
     </motion.div>
