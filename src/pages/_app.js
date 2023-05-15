@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import App from 'next/app'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { AnimatePresence } from "framer-motion"
 import mainReducer from '~/reducers/mainReducer'
-import logScreenView from '~/utils/analyticsUtils'
+import logScreenView from '~/utils/analytics/analyticsUtils'
+import initFirebaseAnalytics from '~/firebase'
+import EventDispatcher from '~/utils/analytics/analyticsUtils'
 
 const store = createStore(mainReducer)
 
@@ -33,8 +34,11 @@ function MyApp({ Component, pageProps, router }) {
   }, [])
 
   useEffect(() => {
+    // Analytics
+    initFirebaseAnalytics()
+
     router.events.on('routeChangeComplete', logScreenView);
-    logScreenView(window.location.pathname);
+    EventDispatcher.logScreenView(window.location.pathname)
     
     return () => {
       router.events.off('routeChangeComplete', logScreenView);

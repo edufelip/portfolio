@@ -1,4 +1,4 @@
-import firebase, { getApps, initializeApp, analytics } from "firebase/app";
+import { getApps, initializeApp } from "firebase/app";
 import 'firebase/analytics';
 import Secrets from "secrets";
 
@@ -12,8 +12,10 @@ const firebaseConfig = {
   measurementId: Secrets.firebaseMeasurementId
 };
 
-if (!getApps().length) {
-  initializeApp(firebaseConfig);
+const initFirebaseAnalytics = () => {
+  if (!getApps().length) {
+    initializeApp(firebaseConfig);
+  }
 }
 
-export { firebase, analytics };
+export default initFirebaseAnalytics
