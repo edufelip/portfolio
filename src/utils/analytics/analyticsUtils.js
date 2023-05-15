@@ -3,14 +3,14 @@ import { Events as GA4Events } from "./ga4Utils"
 const dispatchers = [GA4Events]
 
 const EventDispatcher = {
-  logScreenView: (screen_name) => {
+  logScreenView: (screenName) => {
     dispatchers.forEach((dispatcher) => {
-      dispatcher.logScreenView(screen_name)
+      dispatcher.logScreenView(screenName)
     })
   },
-  logSelectContent: (content_selected) => {
+  logSelectContent: (contentType, itemId) => {
     dispatchers.forEach((dispatcher) => {
-      dispatcher.logSelectContent(content_selected)
+      dispatcher.logSelectContent(contentType, itemId)
     })
   }
 }
