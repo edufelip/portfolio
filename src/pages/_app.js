@@ -4,6 +4,7 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { AnimatePresence } from "framer-motion"
 import mainReducer from '~/reducers/mainReducer'
+import logScreenView from '~/utils/analyticsUtils'
 
 const store = createStore(mainReducer)
 
@@ -29,6 +30,15 @@ function MyApp({ Component, pageProps, router }) {
       anchor.addEventListener("click", closeMenu)
     })
 
+  }, [])
+
+  useEffect(() => {
+    router.events.on('routeChangeComplete', logScreenView);
+    logScreenView(window.location.pathname);
+    
+    return () => {
+      router.events.off('routeChangeComplete', logScreenView);
+    };
   }, [])
   
   return (
