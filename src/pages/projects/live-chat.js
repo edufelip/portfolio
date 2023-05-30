@@ -100,8 +100,8 @@ function LiveChat(props) {
               <div className="project_spec_container">
                 <h1>LiveChat</h1>
                 <div> 
-                  <h5>Java</h5>
-                  <img src="/java_icon.png" alt="Java Icon" />
+                  <h5>Kotlin</h5>
+                  <img src="/kotlin_icon.png" alt="Kotlin Icon" />
                   <h5>Android</h5>
                   <img className="android_icon" src="/android_icon.png" alt="Android Icon" />
                 </div>
