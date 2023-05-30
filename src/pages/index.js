@@ -23,6 +23,7 @@ export async function getStaticProps({ locale }) {
   let about_desc_one = locale == "en-US" ? "I'm an Android Developer passionate about finding new ways to improve my projects in order always deliver a beautiful product." : "Eu sou um desenvolvedor de aplicativos para Android apaixonado por encontrar novas maneiras de melhorar meus projetos, com o foco em sempre entregar um produto de qualidade."
   let about_desc_two = locale == "en-US" ? "I first started coding in 2017 and besides my initial experience with web development, what indeed captivated me was mobile development with Java and Kotlin, and since then one of my biggest priorities has been building applications with clean, readable, and maintainable code." : "Eu comecei a programar em 2017, para ser mais específico eu estudava desenvolvimento para web, mas o que me cativou de fato foi o desenvolvimento mobile com Java e Kotlin, e desde então uma das minhas maiores prioridades tem sido construir aplicativos com código limpo, legível e eficiente."
   let latest = locale == "en-US" ? "Latest Projects" : "Últimos Projetos"
+  let livechat_desc = locale == "en-US" ? "Online Realtime Chat" : "Chat Online em Tempo Real"
   let finn_desc = locale == "en-US" ? "Collection of Forums (Social Media)" : "Mídia Social baseada em Fóruns"
   let amazingnote_desc = locale == "en-US" ? "Note App" : "Aplicativo de Notas"
   let checkMe = locale == "en-US" ? "Check me out!" : "Me Encontre"
@@ -41,6 +42,7 @@ export async function getStaticProps({ locale }) {
       about_desc_one,
       about_desc_two,
       latest,
+      livechat_desc,
       finn_desc,
       amazingnote_desc,
       checkMe,
@@ -142,6 +144,20 @@ function Home(props) {
         </AboutSection>
         <ProjectsSection id="projects">
           <h2>{props.latest}</h2>
+          <Project className="live-chat" background="/livechat-bg.svg">
+            <div className="shadow">
+              <div className="wrap">
+                <h2>LiveChat</h2>
+                <p>{props.livechat_desc} <b>(in progress...)</b></p>
+                <div>
+                  <Link scroll={false} href="/projects/live-chat">
+                    <a className="projectAnchor" onClick={ () => EventDispatcher.logSelectContent('project_btn', 'details_live_chat') }>{props.access}</a>
+                  </Link>
+                  <a href="https://github.com/edufelip/live-chat_android" target="_blank" onClick={ () => EventDispatcher.logSelectContent('project_btn', 'github_live_chat') }><FaGithub size="24"/></a>
+                </div>
+              </div>
+            </div>
+          </Project>
           <Project className="amazing-note" background="/amazingnote-bg.svg">
             <div className="shadow">
               <div className="wrap">
