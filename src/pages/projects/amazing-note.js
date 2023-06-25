@@ -58,8 +58,8 @@ function AmazingNote(props) {
   }, [])
 
   let resumeLink = props.resume_link == "resume" ?
-    <a href="./resume.pdf" target="_blank">{props.resume}</a>
-  : <a href="./curriculo.pdf" target="_blank">{props.resume}</a>;
+    <a href="/resume.pdf" target="_blank">{props.resume}</a>
+  : <a href="/curriculo.pdf" target="_blank">{props.resume}</a>;
 
   return (
     <motion.div 
@@ -120,12 +120,15 @@ function AmazingNote(props) {
                     <p>Hilt</p>
                     <p>RoomDB</p>
                     <p>TDD</p>
+                    <p>Mockito</p>
+                    <p>JUnit</p>
+                    <p>Espresso</p>
                   </div>
                 </div>
                 <p className="btn_container_title"><b>Github - Playstore</b></p>
                 <div className="btn_container">
                   <a href="https://github.com/edufelip/amazing-note" target="_blank"><FaGithub size="24"/></a>
-                  <a href="https://play.google.com/store/apps/details?id=com.edufelipe.amazing_note" target="_blank"><FaGooglePlay size="24"/></a>
+                  <a href="https://play.google.com/store/apps/details?id=com.edufelip.amazing_note" target="_blank"><FaGooglePlay size="24"/></a>
                 </div>
               </div>
             </div>
@@ -138,7 +141,7 @@ function AmazingNote(props) {
             <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>
             <a href="https://medium.com/@eduardofelipi" target="_blank">Blog</a>
           </div>
-          <p>©2021 Eduardo Santos - eduardofelipi@gmail.com</p>
+          <p>©2023 Eduardo Santos - eduardofelipi@gmail.com</p>
         </ContactSection>
       </main>
     </motion.div>

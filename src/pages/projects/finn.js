@@ -57,8 +57,8 @@ function Finn(props) {
   }, [])
 
   let resumeLink = props.resume_link == "resume" ?
-    <a href="./resume.pdf" target="_blank">{props.resume}</a>
-  : <a href="./curriculo.pdf" target="_blank">{props.resume}</a>;
+    <a href="/resume.pdf" target="_blank">{props.resume}</a>
+  : <a href="/curriculo.pdf" target="_blank">{props.resume}</a>;
   
   return (
     <motion.div 
@@ -102,6 +102,8 @@ function Finn(props) {
                 <div> 
                   <h5>Java</h5>
                   <img src="/java_icon.png" alt="Java Icon" />
+                  <h5>Kotlin</h5>
+                  <img src="/kotlin_icon.png" alt="Kotlin Icon" />
                   <h5>Android</h5>
                   <img className="android_icon" src="/android_icon.png" alt="Android Icon" />
                 </div>
@@ -113,18 +115,20 @@ function Finn(props) {
                 <div className="tags">
                   <p><b>Tags</b></p>
                   <div className="tags_container">
-                    <p>MVVM</p>
-                    <p>Firebase</p>
+                    <p>Firebase Remote Config</p>
+                    <p>OAuth</p>
                     <p>LiveData</p>
+                    <p>MVVM</p>
                     <p>Retrofit</p>
                     <p>RxJava</p>
-                    <p>Hilt</p>
+                    <p>Dependency Injection (Hilt)</p>
+                    <p>ViewPager</p>
                   </div>
                 </div>
                 <p className="btn_container_title"><b>Github - Playstore</b></p>
                 <div className="btn_container">
                   <a href="https://github.com/edufelip/finn" target="_blank"><FaGithub size="24"/></a>
-                  <a href="http://play.google.com/store/apps/details?id=com.projects.finn" target="_blank"><FaGooglePlay size="24"/></a>
+                  <a href="http://play.google.com/store/apps/details?id=com.edufelip.finn" target="_blank"><FaGooglePlay size="24"/></a>
                 </div>
               </div>
             </div>
@@ -137,7 +141,7 @@ function Finn(props) {
             <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>
             <a href="https://medium.com/@eduardofelipi" target="_blank">Blog</a>
           </div>
-          <p>©2021 Eduardo Santos - eduardofelipi@gmail.com</p>
+          <p>©2023 Eduardo Santos - eduardofelipi@gmail.com</p>
         </ContactSection>
       </main>
     </motion.div>

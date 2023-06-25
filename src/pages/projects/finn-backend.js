@@ -57,8 +57,8 @@ function FinnBackend(props) {
   }, [])
 
   let resumeLink = props.resume_link == "resume" ?
-    <a href="./resume.pdf" target="_blank">{props.resume}</a>
-  : <a href="./curriculo.pdf" target="_blank">{props.resume}</a>;
+    <a href="/resume.pdf" target="_blank">{props.resume}</a>
+  : <a href="/curriculo.pdf" target="_blank">{props.resume}</a>;
 
   return (
     <motion.div 
@@ -119,9 +119,12 @@ function FinnBackend(props) {
                     <p>Aws</p>
                     <p>Clean Architecture</p>
                     <p>Jest</p>
+                    <p>Supertest</p>
+                    <p>PGMock</p>
+                    <p>PM2</p>
                   </div>
                 </div>
-                <p className="btn_container_title"><b>Github - Playstore</b></p>
+                <p className="btn_container_title"><b>Github</b></p>
                 <div className="btn_container">
                   <a href="https://github.com/edufelip/finn__backend" target="_blank"><FaGithub size="24"/></a>
                 </div>
@@ -136,7 +139,7 @@ function FinnBackend(props) {
             <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank">Linkedin</a>
             <a href="https://medium.com/@eduardofelipi" target="_blank">Blog</a>
           </div>
-          <p>©2021 Eduardo Santos - eduardofelipi@gmail.com</p>
+          <p>©2023 Eduardo Santos - eduardofelipi@gmail.com</p>
         </ContactSection>
       </main>
     </motion.div>

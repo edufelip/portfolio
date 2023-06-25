@@ -266,7 +266,7 @@ export const MainContent = styled.div`
 
 export const AboutSection = styled.div`
   width: 100%;
-  height: 380px;
+  height: 430px;
   background-color: #0E0E0E;
   flex-direction: column;
   justify-content: center;
