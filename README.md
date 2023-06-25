@@ -1,32 +1,45 @@
-# My Portfolio
-[![Author](https://img.shields.io/static/v1?label=@author&message=Eduardo%20Santos&color=navy)](https://github.com/edufelip)
-[![LinkedIn](https://img.shields.io/static/v1?label=@linkedin&message=@edu_santos&color=blue)](https://www.linkedin.com/in/eduardo-felipe-dev/)
+<h1 align="center">My Portfolio</h1>
 
-My developer portfolio built with Next.js!
+<p align="center">
+  <a href="https://android-arsenal.com/api?level=24"><img alt="API" src="https://img.shields.io/badge/API-24%2B-brightgreen.svg?style=flat"/></a>
+  <a href="https://github.com/skydoves/Pokedex/actions"><img alt="Build Status" src="https://github.com/edufelip/amazing-note/assets/34727187/fb130185-05e9-4c68-9f9c-a0d41fcae499"/></a>
+  <a href="https://medium.com/@eduardofelipi"><img alt="Medium" src="https://github.com/edufelip/amazing-note/assets/34727187/494b0020-1436-4bd4-bfef-7123815cf3cb"/></a> <br>
+  <a href="https://www.youtube.com/channel/UCYcwwX7nDU_U0FP-TsXMwVg"><img alt="Profile" src="https://github.com/edufelip/amazing-note/assets/34727187/5700e2c9-dac0-4215-8a73-5ed4573cf83c"/></a> 
+  <a href="https://github.com/edufelip"><img alt="Profile" src="https://github.com/edufelip/amazing-note/assets/34727187/bcdd0cf0-bafa-4e90-b910-f438304dc169"/></a> 
+</p>
 
-This project uses:
-* Javascript
+<p align="center">  
+🗡️ This is my portfolio where I show my projects and my work!
+</p>
+
+<p align="center">
+<img src="https://github.com/edufelip/portfolio/assets/34727187/2a911e8c-272d-489e-bf89-82cab3693082"/>
+</p>
+
+## See it
+Go to this [Link](https://portfolio-edufelip.vercel.app/) to access my portfolio.
+
+## This project uses
 * React
-* Next.js
-* Styled Components
+* Next.JS
+* Javascript
+* Framer Motion
+* Firebase Analytics (GA4)
 * Redux
+* Styled Components
 
-## Clone
-
-Clone the repository from GitHub.
-
+## Installation
+Clone this repository and open it with VSCode (or another Text Editor), and then execute
+```bash
+yarn install
 ```
-$ git clone https://github.com/edufelip/portfolio.git
+Rename the ***.env.example*** to ***.env*** <br><br>
+Fill in the environment variables (You can put fake values since they serve just for ga4 purposes) <br><br>
+Run the code executing
+```bash
+yarn dev
 ```
-
-## Install Dependencies and Run the Server
-
-```
-$ yarn
-$ yarn dev
-```
-Now, the application will be running on http://localhost:3000.
-
+Now the project will be running at ***localhost:3000***
 
 ## Maintainers
 This project is mantained by:
