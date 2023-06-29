@@ -12,7 +12,7 @@ const store = createStore(mainReducer)
 function MyApp({ Component, pageProps, router }) {
   useEffect(() => {
     const mobileMenu = document.querySelector(".mobileMenu")
-    const mobileMenuLinks = mobileMenu.querySelector("ul").querySelectorAll("li")
+    const mobileMenuLinks = mobileMenu?.querySelector("ul").querySelectorAll("li")
     const hambMenuBtn = document.querySelector(".hambMenuBtn")
     const closeMenuBtn = document.querySelector(".closeMenuBtn")
     function closeMenu(){
@@ -23,11 +23,9 @@ function MyApp({ Component, pageProps, router }) {
       mobileMenu.style.left = "0"
       document.body.classList.add("stop-scrolling")
     }
-    if(hambMenuBtn) {
-      hambMenuBtn.addEventListener("click", openMenu)
-    }
-    closeMenuBtn.addEventListener("click", closeMenu)
-    mobileMenuLinks.forEach(anchor => {
+    hambMenuBtn?.addEventListener("click", openMenu)
+    closeMenuBtn?.addEventListener("click", closeMenu)
+    mobileMenuLinks?.forEach(anchor => {
       anchor.addEventListener("click", closeMenu)
     })
 
