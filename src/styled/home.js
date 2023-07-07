@@ -142,6 +142,7 @@ export const MainContent = styled.div`
       h2 {
         font-size: 35px;
         font-weight: 300;
+        text-align: center;
         letter-spacing: 1px;
         margin-top: -15px;
       }
@@ -407,7 +408,7 @@ export const Project = styled.div`
   @media (max-width: 780px) {
     width: 90%;
   }
-
+  
   @media (max-width: 500px) {
     height: 300px;
     .shadow {
@@ -416,6 +417,10 @@ export const Project = styled.div`
         top: 120px;
         left: 0;
         align-items: center;
+        p {
+          text-align: center;
+          padding: 0 4px;
+        }
       }
     }
   }
