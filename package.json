@@ -18,7 +18,7 @@
     "next-server": "^9.0.5",
     "node-fetch": "^2.6.7",
     "polished": "^3.6.5",
-    "postcss": "^7.0.36",
+    "postcss": "^8.4.31",
     "react": "16.14",
     "react-dom": "16.13.1",
     "react-ga": "^2.7.0",
