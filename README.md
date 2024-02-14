@@ -1,4 +1,4 @@
-<h1 align="center">My Portfolio</h1>
+<h1 align="center">Eduardo's Portfolio</h1>
 
 <p align="center">
   <a href="https://medium.com/@eduardofelipi"><img alt="Medium" src="https://img.shields.io/static/v1?label=Medium&message=@edu_santos&color=gray&logo=medium"/></a>
