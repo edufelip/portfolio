@@ -3,27 +3,28 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { useSelector, useDispatch } from 'react-redux'
-import { FaGithub, FaLinkedin, FaGooglePlay } from 'react-icons/fa'
+import { FaGithub, FaLinkedin, FaGooglePlay, FaYoutube } from 'react-icons/fa'
 import { RiCloseLine } from 'react-icons/ri'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { MdEmail } from 'react-icons/md'
 import {MainPageFace, MainContent, ProjectsSection, Project, AboutSection, ContactSection, MobileMenu} from "~/styled/home"
 import { useRouter } from 'next/router'
 import { ChangeY } from "~/actions/indexActions"
 import EventDispatcher from '~/utils/analytics/analyticsUtils'
 
 export async function getStaticProps({ locale }) {
-  let description = locale == "en-US" ? "Software Developer" : "Desenvolvedor de Software"
+  let description = locale == "en-US" ? "Software Engineer" : "Engenheiro de Software"
   let about = locale == "en-US" ? "About me" : "Sobre Mim"
   let projects = locale == "en-US" ? "Projects" : "Projetos"
   let contact = locale == "en-US" ? "Contact" : "Contato"
   let resume = locale == "en-US" ? "Resume" : "Currículo"
   let check = locale == "en-US" ? "Check my Projects" : "Veja meus Projetos"
   let about_title = locale == "en-US" ? "Hey, I'm Eduardo" : "Olá, eu sou Eduardo"
-  let about_desc_one = locale == "en-US" ? "I'm an exceptionally driven Android Developer who consistently strives to elevate my projects to deliver exceptional products. Passionate about innovation and staying ahead of the curve, I am constantly exploring novel approaches to enhance my work." 
-    : "Sou um Desenvolvedor Android extremamente cativado pelo que faz, que se esforça constantemente para melhorar meus projetos e entregar produtos excepcionais. Apaixonado por inovação e por estar sempre à frente das tendências, estou constantemente explorando abordagens inovadoras para aprimorar meu trabalho."
-  let about_desc_two   = locale == "en-US" ? "My coding journey began in 2017, and while I initially dabbled in web development, it was mobile development with Java and Kotlin that truly captured my imagination. By leveraging my expertise and staying abreast of the latest industry trends, I bring a fresh perspective to every project. My dedication to excellence allows me to craft visually stunning and functional applications that leave a lasting impression." 
-    : "Minha jornada na programação começou em 2017 e, embora tenha começado com desenvolvimento web, foi o desenvolvimento móvel com Java e Kotlin que realmente despertou minha imaginação. Ao aproveitar minha experiência e acompanhar as últimas tendências do setor, trago uma nova perspectiva para cada projeto. Minha dedicação à excelência me permite criar aplicativos visualmente impressionantes e funcionais."
+  let about_desc_one = locale == "en-US" 
+    ? "I am a highly motivated Android Engineer with a relentless focus on delivering outstanding products. Passionate about innovation, I continuously seek cutting-edge solutions to refine my work and stay ahead in an ever-evolving industry." 
+    : "Sou um Desenvolvedor Android altamente motivado, com um foco incansável em entregar produtos excepcionais. Apaixonado por inovação, busco continuamente soluções de ponta para aprimorar meu trabalho e me manter à frente em um setor em constante evolução."
+  let about_desc_two = locale == "en-US" 
+    ? "Since beginning my coding journey in 2017, I have transitioned from web development to specializing in mobile development with Java and Kotlin, where I found my true passion. Combining technical expertise with a commitment to staying current on industry trends, I deliver fresh, impactful solutions. My dedication ensures visually striking and highly functional applications that resonate with users." 
+    : "Desde o início da minha jornada na programação em 2017, transitei do desenvolvimento web para me especializar no desenvolvimento móvel com Java e Kotlin, onde encontrei minha verdadeira paixão. Combinando expertise técnica e comprometimento em acompanhar as tendências do setor, entrego soluções inovadoras e impactantes. Minha dedicação garante aplicativos visualmente atraentes e altamente funcionais, que encantam os usuários."
   let latest = locale == "en-US" ? "Latest Projects" : "Últimos Projetos"
   let livechat_desc = locale == "en-US" ? "Online Realtime Chat" : "Chat Online em Tempo Real"
   let finn_desc = locale == "en-US" ? "A Social Media of Forums (like Reddit)" : "Mídia Social baseada em Fóruns"
@@ -107,6 +108,7 @@ function Home(props) {
             <li><a href='#projects' onClick={ () => EventDispatcher.logSelectContent('header_btn_mobile', 'projects') }>{props.projects}</a></li>
             <li><a href='#contact' onClick={ () => EventDispatcher.logSelectContent('header_btn_mobile', 'contact') }>{props.contact}</a></li>
             <li><a href="https://medium.com/@eduardofelipi" target="_blank" onClick={ () => EventDispatcher.logSelectContent('header_btn_mobile', 'blog') }>Blog</a></li>
+            <li><a href="https://www.youtube.com/@eduardofelipedev" target="_blank" onClick={ () => EventDispatcher.logSelectContent('header_btn_mobile', 'ytb') }>Youtube</a></li>
             <li><span>{getResumeLink(true)}</span></li>
           </ul>
         </MobileMenu>
@@ -117,6 +119,7 @@ function Home(props) {
             <li><a href='#projects' onClick={ () => EventDispatcher.logSelectContent('header_btn', 'projects') }>{props.projects}</a></li>
             <li><a href='#contact' onClick={ () => EventDispatcher.logSelectContent('header_btn', 'contact') }>{props.contact}</a></li>
             <li><a href="https://medium.com/@eduardofelipi" target="_blank" onClick={ () => EventDispatcher.logSelectContent('header_btn', 'blog') }>Blog</a></li>
+            <li><a href="https://www.youtube.com/@eduardofelipedev" target="_blank" onClick={ () => EventDispatcher.logSelectContent('header_btn', 'ytb') }>Youtube</a></li>
             <li><span>{getResumeLink()}</span></li>
             </ul>
             <GiHamburgerMenu className="hambMenuBtn" size={36}/>
@@ -133,7 +136,7 @@ function Home(props) {
               <div className="container">
                 <div className="block blockOne"><a href="https://github.com/edufelip" target="_blank" onClick={ () => EventDispatcher.logSelectContent('cta_btn', 'github') }><FaGithub size={35} /></a></div>
                 <div className="block blockTwo"><a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank" onClick={ () => EventDispatcher.logSelectContent('cta_btn', 'linkedin') }><FaLinkedin size={35} /></a></div>
-                <div className="block blockThree"><a href="mailto:eduardofelipi@gmail.com" onClick={ () => EventDispatcher.logSelectContent('cta_btn', 'e-mail') }><MdEmail size={35} /></a></div>
+                <div className="block blockThree"><a href="https://www.youtube.com/@eduardofelipedev" target='_blank' onClick={ () => EventDispatcher.logSelectContent('cta_btn', 'ytb') }><FaYoutube size={35} /></a></div>
               </div>  
             </div>
           </MainContent>
@@ -211,6 +214,7 @@ function Home(props) {
             <a href="https://github.com/edufelip" target="_blank" onClick={ () => EventDispatcher.logSelectContent('bottom_nav_btn', 'github') }>Github</a>
             <a href="https://www.linkedin.com/in/eduardo-felipe-5593221a5/" target="_blank" onClick={ () => EventDispatcher.logSelectContent('bottom_nav_btn', 'linkedin') }>Linkedin</a>
             <a href="https://medium.com/@eduardofelipi" target="_blank" onClick={ () => EventDispatcher.logSelectContent('bottom_nav_btn', 'blog') }>Blog</a>
+            <a href="https://www.youtube.com/@eduardofelipedev" target="_blank" onClick={ () => EventDispatcher.logSelectContent('bottom_nav_btn', 'ytb') }>Youtube</a>
           </div>
           <p>©2023 Eduardo Santos - eduardofelipi@gmail.com</p>
         </ContactSection>
