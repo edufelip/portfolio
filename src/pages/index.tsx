@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import type { GetStaticProps, InferGetStaticPropsType } from 'next'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -11,7 +12,27 @@ import { useRouter } from 'next/router'
 import { ChangeY } from "~/actions/indexActions"
 import EventDispatcher from '~/utils/analytics/analyticsUtils'
 
-export async function getStaticProps({ locale }) {
+type HomeProps = {
+  description: string
+  about: string
+  projects: string
+  contact: string
+  resume: string
+  check: string
+  about_title: string
+  about_desc_one: string
+  about_desc_two: string
+  latest: string
+  livechat_desc: string
+  finn_desc: string
+  amazingnote_desc: string
+  checkMe: string
+  access: string
+  resume_link: string
+  finnbackend_desc: string
+}
+
+export const getStaticProps: GetStaticProps<HomeProps> = async ({ locale }) => {
   let description = locale == "en-US" ? "Software Engineer" : "Engenheiro de Software"
   let about = locale == "en-US" ? "About me" : "Sobre Mim"
   let projects = locale == "en-US" ? "Projects" : "Projetos"
@@ -56,35 +77,35 @@ export async function getStaticProps({ locale }) {
   }
 }
 
-function Home(props) {
+function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
   let router = useRouter()
 
-  const pageYOffset = useSelector(state => state.pageYOffset)
+  const pageYOffset = useSelector((state: any) => state.pageYOffset)
   const dispatch = useDispatch()
 
   useEffect(() => {
     window.scroll({
       top: pageYOffset
     })
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (event) => {
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener('click', (event: any) => {
         event.preventDefault()
         const href = event.target.href.split('#', 2)[1]
         const element = document.getElementById(href)
         window.scroll({
           behavior: "smooth",
-          top: href === "about" ? element.offsetTop - 150 : element.offsetTop
+          top: element ? (href === "about" ? element.offsetTop - 150 : element.offsetTop) : 0
         })
       })
     })
-    document.querySelectorAll('.projectAnchor').forEach(anchor => {
-      anchor.addEventListener('click', (event) => {
+    document.querySelectorAll('.projectAnchor').forEach((anchor) => {
+      anchor.addEventListener('click', () => {
         dispatch(ChangeY(window.pageYOffset))
       })
     })
   }, [])
 
-  function getResumeLink(isMobile) {
+  function getResumeLink(isMobile?: boolean) {
     return props.resume_link == "resume" ?
     <a href="./resume.pdf" target="_blank" onClick={ () => EventDispatcher.logSelectContent(isMobile == true ? 'header_btn_mobile' : 'header_btn', 'resume_us') } >{props.resume}</a>
   : <a href="./curriculo.pdf" target="_blank" onClick={ () => EventDispatcher.logSelectContent(isMobile == true ? 'header_btn_mobile' : 'header_btn', 'resume_br') }>{props.resume}</a>;

@@ -43,7 +43,7 @@ export const MobileMenu = styled.div`
   }
 `
 
-export const MainPageFace = styled.div`
+export const MainPageFace = styled.div<{ background?: string }>`
   width: 100%;
   height: 80vh;
   min-height: 400px;
@@ -322,7 +322,7 @@ export const ProjectsSection = styled.div`
   }
 `
 
-export const Project = styled.div`
+export const Project = styled.div<{ background?: string }>`
   display: block;
   width: 700px;
   height: 380px;

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -9,7 +10,21 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { FinnDetails } from '~/styled/finn'
 import { useRouter } from 'next/router'
 
-export async function getStaticProps({ locale }) {
+type PageProps = {
+  description: string
+  about: string
+  projects: string
+  contact: string
+  resume: string
+  back: string
+  checkMe: string
+  projectAbout: string
+  projectAboutOne: string
+  projectAboutTwo: string
+  resume_link: string
+}
+
+export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
   let description = locale == "en-US" ? "Software Developer" : "Desenvolvedor de Software"
   let about = locale == "en-US" ? "About me" : "Sobre Mim"
   let projects = locale == "en-US" ? "Projects" : "Projetos"
@@ -31,12 +46,13 @@ export async function getStaticProps({ locale }) {
       projectAbout,
       projectAboutOne,
       projectAboutTwo,
-      checkMe
+      checkMe,
+      resume_link: locale === 'en-US' ? 'resume' : 'curriculo'
     },
   }
 }
 
-function FinnBackend(props) {
+const FinnBackend: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
   let router = useRouter()
 
   useEffect(() => {
@@ -44,13 +60,13 @@ function FinnBackend(props) {
       top: 0
     })
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (event) => {
+      anchor.addEventListener('click', (event: any) => {
         event.preventDefault()
         const href = event.target.href.split('#', 2)[1]
         const element = document.getElementById(href)
         window.scroll({
           behavior: 'smooth',
-          top: element.offsetTop
+          top: element ? element.offsetTop : 0
         })
       })
     })
@@ -146,4 +162,4 @@ function FinnBackend(props) {
   )
 }
 
-export default (FinnBackend);
+export default FinnBackend

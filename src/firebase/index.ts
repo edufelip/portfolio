@@ -1,7 +1,17 @@
 import { getApps, initializeApp } from "firebase/app"
 import 'firebase/analytics'
 
-const firebaseConfig = {
+type FirebaseConfig = {
+  apiKey?: string
+  authDomain?: string
+  projectId?: string
+  storageBucket?: string
+  messagingSenderId?: string
+  appId?: string
+  measurementId?: string
+}
+
+const firebaseConfig: FirebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   projectId: process.env.FIREBASE_PROJECT_ID,
@@ -12,7 +22,7 @@ const firebaseConfig = {
 }
 
 const isConfigValid = () => {
-  const required = [
+  const required: (keyof FirebaseConfig)[] = [
     'apiKey',
     'authDomain',
     'projectId',

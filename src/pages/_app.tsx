@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { AnimatePresence } from "framer-motion"
@@ -8,32 +9,35 @@ import EventDispatcher from '~/utils/analytics/analyticsUtils'
 
 const store = createStore(mainReducer)
 
-function MyApp({ Component, pageProps, router }) {
+function MyApp({ Component, pageProps, router }: AppProps & { router: any }) {
   useEffect(() => {
-    const mobileMenu = document.querySelector(".mobileMenu")
-    const mobileMenuLinks = mobileMenu?.querySelector("ul").querySelectorAll("li")
+    const mobileMenu = document.querySelector(".mobileMenu") as HTMLElement | null
+    const ul = mobileMenu?.querySelector("ul")
+    const mobileMenuLinks = ul ? ul.querySelectorAll("li") : null
     const hambMenuBtn = document.querySelector(".hambMenuBtn")
     const closeMenuBtn = document.querySelector(".closeMenuBtn")
     function closeMenu(){
-      mobileMenu.style.left = "-100vw"
-      document.body.classList.remove("stop-scrolling")
+      if (mobileMenu) {
+        mobileMenu.style.left = "-100vw"
+        document.body.classList.remove("stop-scrolling")
+      }
     }
     function openMenu(){
-      mobileMenu.style.left = "0"
-      document.body.classList.add("stop-scrolling")
+      if (mobileMenu) {
+        mobileMenu.style.left = "0"
+        document.body.classList.add("stop-scrolling")
+      }
     }
     hambMenuBtn?.addEventListener("click", openMenu)
     closeMenuBtn?.addEventListener("click", closeMenu)
-    mobileMenuLinks?.forEach(anchor => {
-      anchor.addEventListener("click", closeMenu)
-    })
+    mobileMenuLinks?.forEach((anchor) => anchor.addEventListener("click", closeMenu))
 
   }, [])
 
   useEffect(() => {
     const initialized = initFirebaseAnalytics()
 
-    const handleRouteChange = (url) => {
+    const handleRouteChange = (url: string) => {
       EventDispatcher.logScreenView(url)
     }
 
@@ -51,7 +55,7 @@ function MyApp({ Component, pageProps, router }) {
   
   return (
     <Provider store={store}>
-      <AnimatePresence exitBeforeEnter>
+      <AnimatePresence mode="wait" initial={false}>
         <Component {...pageProps} key={router.route} />
       </AnimatePresence>
     </Provider>
