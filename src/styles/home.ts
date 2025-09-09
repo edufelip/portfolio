@@ -1,15 +1,15 @@
-import styled from 'styled-components';
-import { darken, lighten } from 'polished';
+import { darken, lighten } from 'polished'
+import styled from 'styled-components'
 
-export const MobileMenu = styled.div`
+export const MobileMenu = styled.div<{ open?: boolean }>`
   position: fixed;
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: #0E0E0E;
+  background-color: #0e0e0e;
   z-index: 1;
   transition: all 0.4s ease;
-  left: -100vw;
+  left: ${(props) => (props.open ? '0' : '-100vw')};
   svg {
     color: #f9f9f9;
     float: right;
@@ -18,7 +18,7 @@ export const MobileMenu = styled.div`
   ul {
     position: absolute;
     top: 100px;
-    left: 10%; 
+    left: 10%;
     list-style: none;
     li {
       margin: 0 0 20px 0;
@@ -39,7 +39,7 @@ export const MobileMenu = styled.div`
           font-size: 24px;
         }
       }
-    }  
+    }
   }
 `
 
@@ -48,7 +48,7 @@ export const MainPageFace = styled.div<{ background?: string }>`
   height: 80vh;
   min-height: 400px;
   display: table;
-  background: url(${props => props.background});
+  background: url(${(props) => props.background});
   background-color: #121212;
   background-repeat: no-repeat;
   background-size: cover;
@@ -85,7 +85,7 @@ export const MainPageFace = styled.div<{ background?: string }>`
           background: linear-gradient(to right, #f2f2f2 50%, transparent 50%);
           background-size: 200% 100%;
           background-position: right bottom;
-          &:hover{
+          &:hover {
             background-position: left bottom;
           }
           &:hover a {
@@ -120,17 +120,19 @@ export const MainPageFace = styled.div<{ background?: string }>`
 export const MainContent = styled.div`
   display: table-row;
   height: 100%;
-  .contentLeft{
+  .contentLeft {
     display: flex;
     align-items: center;
     justify-content: flex-end;
     float: left;
     width: 50%;
     height: 100%;
-    .container{
+    .container {
       float: right;
       margin-bottom: 100px;
-      h1, h2, a {
+      h1,
+      h2,
+      a {
         color: #f9f9f9;
       }
       h1 {
@@ -159,7 +161,7 @@ export const MainContent = styled.div`
       }
     }
   }
-  .contentRight{
+  .contentRight {
     float: left;
     width: 50%;
     height: 100%;
@@ -268,12 +270,13 @@ export const MainContent = styled.div`
 export const AboutSection = styled.div`
   width: 100%;
   height: 430px;
-  background-color: #0E0E0E;
+  background-color: #0e0e0e;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin-top: -1px;
-  h2, p {
+  h2,
+  p {
     width: 800px;
     margin: 0 auto;
     color: #f9f9f9;
@@ -297,7 +300,8 @@ export const AboutSection = styled.div`
 
   @media (max-width: 860px) {
     height: fit-content;
-    h2, p {
+    h2,
+    p {
       width: 90%;
     }
     p:nth-of-type(2) {
@@ -307,7 +311,6 @@ export const AboutSection = styled.div`
       width: 90%;
     }
   }
-
 `
 
 export const ProjectsSection = styled.div`
@@ -328,18 +331,18 @@ export const Project = styled.div<{ background?: string }>`
   height: 380px;
   margin: 0 auto 50px auto;
   box-shadow: 0px 0px 15px 1px #00000060;
-  background: url(${props => props.background});
+  background: url(${(props) => props.background});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  transition: all 0.3s ease;  
+  transition: all 0.3s ease;
   &:hover {
     transform: scale(1.009);
   }
   .shadow {
     width: 100%;
     height: 100%;
-    position:relative;
+    position: relative;
     overflow: hidden;
     .wrap {
       width: 270px;
@@ -351,7 +354,8 @@ export const Project = styled.div<{ background?: string }>`
       flex-direction: column;
       justify-content: center;
       align-items: start;
-      h2, p {
+      h2,
+      p {
         margin: 0;
       }
       h2 {
@@ -381,24 +385,25 @@ export const Project = styled.div<{ background?: string }>`
           border-radius: 6px;
           transition: all 0.3s ease;
         }
-        a:nth-of-type(1){
-          background-color: #0074BD;
+        a:nth-of-type(1) {
+          background-color: #0074bd;
           color: #f9f9f9;
           font-weight: regular;
           font-size: 14px;
           font-family: 'Montserrat', sans-serif;
           &:hover {
-            background-color: ${darken(0.07, "#0074BD")};
-            color: ${darken(0.04, "#f9f9f9")};
+            background-color: ${darken(0.07, '#0074BD')};
+            color: ${darken(0.04, '#f9f9f9')};
           }
         }
-        a:nth-of-type(2), a:nth-of-type(3){
+        a:nth-of-type(2),
+        a:nth-of-type(3) {
           background-color: #f8f8f8;
           color: #000000;
           font-size: 16px;
           &:hover {
-            background-color: ${lighten(0.08,"#f8f8f8")};
-            color: ${lighten(0.008, "#114B79")};
+            background-color: ${lighten(0.08, '#f8f8f8')};
+            color: ${lighten(0.008, '#114B79')};
           }
         }
       }
@@ -408,7 +413,7 @@ export const Project = styled.div<{ background?: string }>`
   @media (max-width: 780px) {
     width: 90%;
   }
-  
+
   @media (max-width: 500px) {
     height: 300px;
     .shadow {
@@ -424,14 +429,16 @@ export const Project = styled.div<{ background?: string }>`
       }
     }
   }
-` 
+`
 
 export const ContactSection = styled.div`
   width: 100%;
   height: 260px;
   background-color: #141414;
   text-align: center;
-  h2, a, p {
+  h2,
+  a,
+  p {
     color: #f9f9f9;
   }
   h2 {

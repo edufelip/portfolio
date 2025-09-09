@@ -1,9 +1,9 @@
+import { lighten } from 'polished'
 import styled from 'styled-components'
-import { darken, lighten } from 'polished';
 
 export const FinnDetails = styled.div`
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: start;
   margin: 20px 0 0 200px;
@@ -16,13 +16,14 @@ export const FinnDetails = styled.div`
     margin-bottom: 50px;
     background-color: #121212;
     border-radius: 24px;
-    -webkit-box-shadow: 1px 0px 17px 2px rgba(0,0,0,0.6); 
-    box-shadow: 1px 0px 17px 2px rgba(0,0,0,0.6);
+    -webkit-box-shadow: 1px 0px 17px 2px rgba(0, 0, 0, 0.6);
+    box-shadow: 1px 0px 17px 2px rgba(0, 0, 0, 0.6);
     .project_spec_container {
       width: 100%;
       height: 90%;
       margin: 40px 0 60px 0;
-      h1, h5 {
+      h1,
+      h5 {
         color: #fafafa;
         text-align: center;
         margin: 0px 0 0 0;
@@ -60,7 +61,7 @@ export const FinnDetails = styled.div`
         color: #c7c7c7;
         font-size: 15px;
         width: 80%;
-        display:block;
+        display: block;
         padding: 0 0 0 40px;
         margin: 25px auto 0 auto;
       }
@@ -84,8 +85,8 @@ export const FinnDetails = styled.div`
           color: #000000;
           font-size: 16px;
           &:hover {
-            background-color: ${lighten(0.08,"#f8f8f8")};
-            color: ${lighten(0.008, "#114B79")};
+            background-color: ${lighten(0.08, '#f8f8f8')};
+            color: ${lighten(0.008, '#114B79')};
           }
         }
       }
@@ -107,7 +108,7 @@ export const FinnDetails = styled.div`
             color: white;
             font-size: 14px;
             padding: 4px 12px;
-            background: #0074BD;
+            background: #0074bd;
             border-radius: 10px;
             margin: 10px 8px 0 0;
           }
@@ -127,12 +128,16 @@ export const FinnDetails = styled.div`
   @media (max-width: 580px) {
     .project_spec {
       .project_spec_container {
-        ul, .tags, .btn_container_title, .btn_container {
+        ul,
+        .tags,
+        .btn_container_title,
+        .btn_container {
           width: 90%;
           margin: 0 auto;
           padding: 0 5px;
         }
-        .btn_container_title, .btn_container {
+        .btn_container_title,
+        .btn_container {
           margin-top: 20px;
         }
       }

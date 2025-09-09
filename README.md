@@ -16,33 +16,77 @@
 </p>
 
 ## See it
+
 Go to this [Link](https://portfolio-edufelip.vercel.app/) to access my portfolio.
 
-## This project uses
-* React
-* Next.JS
-* Javascript
-* Framer Motion
-* Firebase Analytics (GA4)
-* Redux
-* Styled Components
+## Stack
 
-## Installation
-Clone this repository and open it with VSCode (or another Text Editor), and then execute
-```bash
-yarn install
-```
-Rename the ***.env.example*** to ***.env*** <br><br>
-Fill in the environment variables (You can put fake values since they serve just for ga4 purposes) <br><br>
-Run the code executing
-```bash
-yarn dev
-```
-Now the project will be running at ***localhost:3000***
+- Next.js (pages router)
+- React 18
+- TypeScript
+- Styled‑components
+- Framer Motion 12
+- Firebase (Analytics GA4; optional via provider)
+- ESLint + Prettier + Husky (pre‑commit)
+- Jest + Testing Library (unit tests)
+
+## Getting Started
+
+- Install deps: `yarn install`
+- Copy envs: `cp .env.example .env` and fill values (see below)
+- Dev server: `yarn dev` → http://localhost:3000
+- Production build: `yarn build` then `yarn start`
+
+## Environment
+
+These keys enable GA4 analytics (optional for local dev):
+
+- `FIREBASE_API_KEY`
+- `FIREBASE_AUTH_DOMAIN`
+- `FIREBASE_PROJECT_ID`
+- `FIREBASE_STORAGE_BUCKET`
+- `FIREBASE_MESSAGING_SENDER_ID`
+- `FIREBASE_APP_ID`
+- `FIREBASE_MEASUREMENT_ID`
+
+Analytics provider (defaults to GA4 when valid Firebase config is present):
+
+- `NEXT_PUBLIC_ANALYTICS_PROVIDER=ga4` (set another provider later as needed)
+
+If envs are missing, analytics falls back to a safe no‑op.
+
+## Architecture
+
+- `src/pages/` — Next.js routes
+- `src/components/` — reusable UI (e.g., `Header`, `MobileMenu`)
+- `src/styles/` — styled‑components + `global.ts` (global CSS)
+- `src/lib/` — framework‑agnostic code
+  - `lib/analytics/` — provider‑based analytics (GA4 client + Noop)
+  - `lib/firebase/` — Firebase bootstrap
+- `src/hooks/` — custom hooks (e.g., `useScrollMemory`)
+- `src/types/` — shared TypeScript types
+
+## Scripts
+
+- `yarn dev` — run locally
+- `yarn build` / `yarn start` — production build/serve
+- `yarn typecheck` — TypeScript only
+- `yarn lint` / `yarn format` — code quality
+- `yarn test` — unit tests (Jest + RTL)
+
+## Analytics Provider (extensible)
+
+The app uses a SOLID‑friendly provider pattern:
+
+- Implement `Analytics` (see `src/lib/analytics/types.ts`).
+- Add a client under `src/lib/analytics/clients/`.
+- Select via `NEXT_PUBLIC_ANALYTICS_PROVIDER` or extend the provider switch.
 
 ## Maintainers
+
 This project is mantained by:
-* [Eduardo Felipe](http://github.com/edufelip)
+
+- [Eduardo Felipe](http://github.com/edufelip)
 
 ## Contributing
 

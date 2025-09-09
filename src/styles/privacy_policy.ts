@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const PrivacyPolicyBody = styled.div`
   display: flex;
@@ -25,7 +25,7 @@ export const PrivacyPolicyBody = styled.div`
     flex-direction: column;
   }
 
-  @media(max-width: 1110px) {
+  @media (max-width: 1110px) {
     margin: 40px 40px;
   }
 `

@@ -1,64 +1,34 @@
-import React, { useEffect } from 'react'
+import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
-import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import { AnimatePresence } from "framer-motion"
-import mainReducer from '~/reducers/mainReducer'
-import initFirebaseAnalytics from '~/firebase'
-import EventDispatcher from '~/utils/analytics/analyticsUtils'
+import { useRouter } from 'next/router'
+import React from 'react'
 
-const store = createStore(mainReducer)
+import { AnalyticsProvider, useAnalytics } from '~/lib/analytics/provider'
+import { GlobalStyle } from '~/styles/global'
 
-function MyApp({ Component, pageProps, router }: AppProps & { router: any }) {
-  useEffect(() => {
-    const mobileMenu = document.querySelector(".mobileMenu") as HTMLElement | null
-    const ul = mobileMenu?.querySelector("ul")
-    const mobileMenuLinks = ul ? ul.querySelectorAll("li") : null
-    const hambMenuBtn = document.querySelector(".hambMenuBtn")
-    const closeMenuBtn = document.querySelector(".closeMenuBtn")
-    function closeMenu(){
-      if (mobileMenu) {
-        mobileMenu.style.left = "-100vw"
-        document.body.classList.remove("stop-scrolling")
-      }
-    }
-    function openMenu(){
-      if (mobileMenu) {
-        mobileMenu.style.left = "0"
-        document.body.classList.add("stop-scrolling")
-      }
-    }
-    hambMenuBtn?.addEventListener("click", openMenu)
-    closeMenuBtn?.addEventListener("click", closeMenu)
-    mobileMenuLinks?.forEach((anchor) => anchor.addEventListener("click", closeMenu))
-
-  }, [])
-
-  useEffect(() => {
-    const initialized = initFirebaseAnalytics()
-
-    const handleRouteChange = (url: string) => {
-      EventDispatcher.logScreenView(url)
-    }
-
-    if (initialized) {
-      router.events.on('routeChangeComplete', handleRouteChange)
-      EventDispatcher.logScreenView(window.location.pathname)
-    }
-
+function RouteTracker() {
+  const analytics = useAnalytics()
+  const router = useRouter()
+  React.useEffect(() => {
+    analytics.logScreenView(window.location.pathname)
+    const handler = (url: string) => analytics.logScreenView(url)
+    router.events.on('routeChangeComplete', handler)
     return () => {
-      if (initialized) {
-        router.events.off('routeChangeComplete', handleRouteChange)
-      }
+      router.events.off('routeChangeComplete', handler)
     }
-  }, [])
-  
+  }, [analytics, router.events])
+  return null
+}
+
+function MyApp({ Component, pageProps, router }: AppProps) {
   return (
-    <Provider store={store}>
+    <AnalyticsProvider>
+      <GlobalStyle />
+      <RouteTracker />
       <AnimatePresence mode="wait" initial={false}>
         <Component {...pageProps} key={router.route} />
       </AnimatePresence>
-    </Provider>
+    </AnalyticsProvider>
   )
 }
 
