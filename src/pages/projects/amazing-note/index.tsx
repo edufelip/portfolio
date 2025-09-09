@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
 import Link from 'next/link'
 import { useEffect } from 'react'
 import { motion } from 'framer-motion'
@@ -9,40 +10,50 @@ import { BsArrowLeft } from 'react-icons/bs'
 import { useRouter } from 'next/router'
 import { FinnDetails } from '~/styled/finn'
 
-export async function getStaticProps({ locale }) {
-  let dict = {
-    "pt-BR": {
-      description: "Desenvolvedor de Software",
-      about: "Sobre Mim",
-      projects: "Projetos",
-      contact: "Contato",
-      resume: "Currículo",
-      checkMe: "Me Encontre",
-      back: "Voltar",
-      projectAbout: "Sobre",
-      projectAboutOne: "Live chat veio de uma idea de fazer um chat muito similar com o Telegram, mas que pudesse permitir o usuário catalogar os seus contatos de acordo com categorias, afim de se ter uma melhor organização de suas conversas",
-      projectAboutTwo: "Esse projeto está sendo construído 100% em Jetpack Compose, usando amplamente o recurso de RealTime Database do Firebase, que faz a parte do Backend, permitindo a comunicação em tempo real. Também utilizei o recurso de RoomDB para armazenar as conversas localmente, assim como coroutines e Kotlin Flow para a comunicação assíncrona. Quanto a injeção de dependência usei Hilt"
-    },
-    "en-US": {
-      description: "Software Developer",
-      about: "About me",
-      projects: "Projects",
-      contact: "Contact",
-      resume: "Resume",
-      checkMe: "Check me out",
-      back: "Go back <",
-      projectAbout: "About",
-      projectAboutOne: "Live chat came from an idea of creating a chat very similar to Telegram but that would allow users to categorize their contacts according to categories in order to have better organization of their conversations",
-      projectAboutTwo: "This project is being built 100% in Jetpack Compose, extensively utilizing the Realtime Database feature of Firebase for the backend, enabling real-time communication. I have also used the RoomDB feature to store conversations locally, as well as coroutines and Kotlin Flow for asynchronous communication. As for dependency injection, I have used Hilt"
-    }
-  }
-  
+type PageProps = {
+  description: string
+  about: string
+  projects: string
+  contact: string
+  resume: string
+  back: string
+  checkMe: string
+  projectAbout: string
+  projectAboutOne: string
+  projectAboutTwo: string
+  resume_link: string
+}
+
+export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
+  let description = locale == "en-US" ? "Software Developer" : "Desenvolvedor de Software"
+  let about = locale == "en-US" ? "About me" : "Sobre Mim"
+  let projects = locale == "en-US" ? "Projects" : "Projetos"
+  let checkMe = locale == "en-US" ? "Check me out!" : "Me Encontre"
+  let contact = locale == "en-US" ? "Contact" : "Contato"
+  let resume = locale == "en-US" ? "Resume" : "Currículo"
+  let back = locale == "en-US" ? "Turn Back" : "Voltar"
+  let projectAbout = locale == "en-US" ? "About" : "Sobre"
+  let projectAboutOne = locale == "en-US" ? "My idea was to create a beautiful and clean product focusing on being subtle. With the feature that allows the user to label their notes according to priorities, Amazing Note is the perfect app for someone who wants a simple yet efficient note taking app." : "Minha ideia foi criar um aplicativo bem limpo e preciso no que faz. Com a funcionalidade que permite que o usuário classifique uma nota de acordo com sua prioridade, o Amazing Note é o aplicativo perfeito para quem quer um aplicativos de notas que, apesar de simples, é bonito e eficiente."
+  let projectAboutTwo = locale == "en-US" ? "I used RoomDB to store the note data locally inside the user's phone, as well as Coroutines to perform the database operations asynchronously. I also used JUnit and Espresso for Unit and UI Tests." : "Eu usei RoomDB para guardar as notas localmente no aparelho do usuário, assim como Coroutines para a realização das operações no banco de dados assíncronamente. Também utilizei JUnit e Espresso para a realização de testes unitários e de UI."
   return {
-    props: dict[locale] || dict["en-US"],
+    props: {
+      description,
+      about,
+      projects,
+      contact,
+      resume,
+      back,
+      projectAbout,
+      projectAboutOne,
+      projectAboutTwo,
+      checkMe,
+      resume_link: locale === 'en-US' ? 'resume' : 'curriculo'
+    },
   }
 }
 
-function LiveChat(props) {
+
+const AmazingNote: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
   let router = useRouter()
 
   useEffect(() => {
@@ -50,13 +61,13 @@ function LiveChat(props) {
       top: 0
     })
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', (event) => {
+      anchor.addEventListener('click', (event: any) => {
         event.preventDefault()
         const href = event.target.href.split('#', 2)[1]
         const element = document.getElementById(href)
         window.scroll({
           behavior: 'smooth',
-          top: element.offsetTop
+          top: element ? element.offsetTop : 0
         })
       })
     })
@@ -65,7 +76,7 @@ function LiveChat(props) {
   let resumeLink = props.resume_link == "resume" ?
     <a href="/resume.pdf" target="_blank">{props.resume}</a>
   : <a href="/curriculo.pdf" target="_blank">{props.resume}</a>;
-  
+
   return (
     <motion.div 
       exit={{opacity: 0}} 
@@ -73,7 +84,7 @@ function LiveChat(props) {
       animate={{opacity: 1}}
     >
       <Head>
-        <title>Eduardo Santos - LiveChat</title>
+        <title>Eduardo Santos - AmazingNote</title>
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
@@ -87,7 +98,7 @@ function LiveChat(props) {
             <li><span>{resumeLink}</span></li>
           </ul>
         </MobileMenu>
-        <MainPageFace background="/livechat-bg.svg">
+        <MainPageFace background="/amazingnote-bg-sm.svg">
           <div className="header">
             <ul>
               <li>
@@ -104,7 +115,7 @@ function LiveChat(props) {
           <FinnDetails>
             <div className="project_spec">
               <div className="project_spec_container">
-                <h1>LiveChat</h1>
+                <h1>Amazing Note</h1>
                 <div> 
                   <h5>Kotlin</h5>
                   <img src="/kotlin_icon.png" alt="Kotlin Icon" />
@@ -119,20 +130,21 @@ function LiveChat(props) {
                 <div className="tags">
                   <p><b>Tags</b></p>
                   <div className="tags_container">
-                    <p>Jetpack Compose</p>
-                    <p>Kotlin Flow</p>
-                    <p>Firebase Realtime Database</p>
-                    <p>Firebase Cloud Messaging</p>
-                    <p>RoomDB</p>
+                    <p>MVVM</p>
+                    <p>Coroutines</p>
+                    <p>LiveData</p>
                     <p>Hilt</p>
-                    <p>JUnit</p>
+                    <p>RoomDB</p>
+                    <p>TDD</p>
                     <p>Mockito</p>
+                    <p>JUnit</p>
                     <p>Espresso</p>
                   </div>
                 </div>
-                <p className="btn_container_title"><b>Github</b></p>
+                <p className="btn_container_title"><b>Github - Playstore</b></p>
                 <div className="btn_container">
-                  <a href="https://github.com/edufelip/live-chat_android" target="_blank"><FaGithub size="24"/></a>
+                  <a href="https://github.com/edufelip/amazing-note" target="_blank"><FaGithub size="24"/></a>
+                  <a href="https://play.google.com/store/apps/details?id=com.edufelip.amazing_note" target="_blank"><FaGooglePlay size="24"/></a>
                 </div>
               </div>
             </div>
@@ -152,4 +164,4 @@ function LiveChat(props) {
   )
 }
 
-export default (LiveChat);
+export default AmazingNote

@@ -1,7 +1,8 @@
 import Head from 'next/head'
+import type { NextPage } from 'next'
 import { PrivacyPolicyBody } from '~/styled/privacy_policy';
 
-function FinnPrivacyPolicy(props) {
+const FinnPrivacyPolicy: NextPage = () => {
 
   return (
     <div>
@@ -64,4 +65,4 @@ This policy is effective as of 2023-06-24
   )
 }
 
-export default (FinnPrivacyPolicy);
+export default FinnPrivacyPolicy

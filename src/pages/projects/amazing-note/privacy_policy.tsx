@@ -1,7 +1,8 @@
 import Head from 'next/head'
+import type { NextPage } from 'next'
 import { PrivacyPolicyBody } from '~/styled/privacy_policy';
 
-function AmazingNotePrivacyPolicy(props) {
+const AmazingNotePrivacyPolicy: NextPage = () => {
 
   return (
     <div>
@@ -65,4 +66,4 @@ This policy is effective as of 2023-06-22
   )
 }
 
-export default (AmazingNotePrivacyPolicy);
+export default AmazingNotePrivacyPolicy

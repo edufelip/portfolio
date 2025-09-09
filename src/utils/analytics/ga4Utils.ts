@@ -1,6 +1,6 @@
 import { getAnalytics, logEvent } from "firebase/analytics"
 
-const getAnalyticsSafe = () => {
+const getAnalyticsSafe = (): ReturnType<typeof getAnalytics> | null => {
   try {
     if (typeof window === 'undefined') return null
     return getAnalytics()
@@ -10,17 +10,17 @@ const getAnalyticsSafe = () => {
 }
 
 const Events = {
-  logScreenView: (screenName) => {
+  logScreenView: (screenName: string) => {
     const analytics = getAnalyticsSafe()
     if (!analytics) return
-    logEvent(analytics, 'screen_view', {
+    ;(logEvent as any)(analytics, 'screen_view', {
       firebase_screen: screenName,
     })
   },
-  logSelectContent: (contentType, itemId) => {
+  logSelectContent: (contentType: string, itemId: string) => {
     const analytics = getAnalyticsSafe()
     if (!analytics) return
-    logEvent(analytics, 'select_content', {
+    ;(logEvent as any)(analytics, 'select_content', {
       content_type: contentType,
       item_id: itemId,
     })
