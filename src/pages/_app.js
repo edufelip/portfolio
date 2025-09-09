@@ -3,7 +3,6 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import { AnimatePresence } from "framer-motion"
 import mainReducer from '~/reducers/mainReducer'
-import logScreenView from '~/utils/analytics/analyticsUtils'
 import initFirebaseAnalytics from '~/firebase'
 import EventDispatcher from '~/utils/analytics/analyticsUtils'
 
@@ -32,15 +31,22 @@ function MyApp({ Component, pageProps, router }) {
   }, [])
 
   useEffect(() => {
-    // Analytics
-    initFirebaseAnalytics()
+    const initialized = initFirebaseAnalytics()
 
-    router.events.on('routeChangeComplete', logScreenView);
-    EventDispatcher.logScreenView(window.location.pathname)
-    
+    const handleRouteChange = (url) => {
+      EventDispatcher.logScreenView(url)
+    }
+
+    if (initialized) {
+      router.events.on('routeChangeComplete', handleRouteChange)
+      EventDispatcher.logScreenView(window.location.pathname)
+    }
+
     return () => {
-      router.events.off('routeChangeComplete', logScreenView);
-    };
+      if (initialized) {
+        router.events.off('routeChangeComplete', handleRouteChange)
+      }
+    }
   }, [])
   
   return (
