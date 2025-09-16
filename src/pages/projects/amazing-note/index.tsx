@@ -28,11 +28,11 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
   const back = isUS ? 'Turn Back' : 'Voltar'
   const projectAbout = isUS ? 'About' : 'Sobre'
   const projectAboutOne = isUS
-    ? 'Amazing Note is now built with Compose Multiplatform UI (shared Android/iOS), providing a clean, responsive note‑taking experience with categorized notes and a modern design.'
-    : 'O Amazing Note agora é construído com Compose Multiplatform UI (compartilhado Android/iOS), oferecendo uma experiência de anotações limpa e responsiva com categorização de notas e design moderno.'
+    ? 'Amazing Note is a simple, fast note‑taking app to collect and organize text. It uses Compose Multiplatform UI with a shared Android/iOS codebase and targets Android API 24+ on JDK 17.'
+    : 'Amazing Note é um app de notas simples e rápido para coletar e organizar textos. Usa Compose Multiplatform UI com base compartilhada entre Android/iOS e suporta Android API 24+ em JDK 17.'
   const projectAboutTwo = isUS
-    ? 'The app follows Clean Architecture (UI → ViewModel → UseCases → Repository → Data Source). It uses SQLDelight for persistence, Kotlin Coroutines for async work, and Hilt for DI. Tests are covered with JUnit and Mockito.'
-    : 'O app segue Clean Architecture (UI → ViewModel → UseCases → Repository → Data Source). Usa SQLDelight para persistência, Kotlin Coroutines para tarefas assíncronas e Hilt para injeção de dependências. Os testes são feitos com JUnit e Mockito.'
+    ? 'It follows Clean Architecture (UI → ViewModel → UseCases → Repository → Data Source). The shared UI consumes a platform ViewModel (KmpNoteViewModel); data uses SQLDelight, async work uses Kotlin Coroutines, and Android DI is powered by Dagger Hilt. Unit tests run with JUnit and Mockito, and strings are localized via shared keys with Android/iOS providers.'
+    : 'Segue Clean Architecture (UI → ViewModel → UseCases → Repository → Data Source). A UI compartilhada consome um ViewModel de plataforma (KmpNoteViewModel); a persistência usa SQLDelight, tarefas assíncronas usam Kotlin Coroutines e a DI no Android é feita com Dagger Hilt. Os testes usam JUnit e Mockito, e as strings são localizadas via chaves compartilhadas com provedores Android/iOS.'
   return {
     props: {
       description,
@@ -127,10 +127,11 @@ const AmazingNote: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
                     <p>Kotlin Multiplatform</p>
                     <p>SQLDelight</p>
                     <p>Coroutines</p>
-                    <p>Hilt</p>
+                    <p>Dagger Hilt</p>
                     <p>Clean Architecture</p>
-                    <p>Mockito</p>
                     <p>JUnit</p>
+                    <p>Mockito</p>
+                    <p>Localization (i18n)</p>
                   </div>
                 </div>
                 <p className="btn_container_title">
