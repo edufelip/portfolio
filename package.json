@@ -27,7 +27,7 @@
     "browserslist": "^4.16.5",
     "elliptic": "^6.5.4",
     "false": "0.0.4",
-    "firebase": "^9.22.0",
+    "firebase": "^10.9.0",
     "framer-motion": "^12.23.12",
     "next": "^12.3.4",
     "polished": "^3.6.5",
