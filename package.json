@@ -12,7 +12,8 @@
     "typecheck": "tsc --noEmit",
     "prepare": "husky install",
     "test": "jest",
-    "optimize:images": "node scripts/optimize-images.js"
+    "optimize:images": "node scripts/optimize-images.js",
+    "analyze": "ANALYZE=true yarn build"
   },
   "jest": {
     "testEnvironment": "jsdom",
@@ -35,7 +36,7 @@
     "next": "^12.3.4",
     "next-i18next": "^15.4.2",
     "polished": "^3.6.5",
-    "postcss": "^7.0.36",
+    "postcss": "^8.4.35",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-ga": "^3.3.1",
@@ -47,6 +48,8 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "@next/bundle-analyzer": "^15.5.3",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "6.6.3",
     "@testing-library/react": "16.0.1",
@@ -71,6 +74,8 @@
     "jest-environment-jsdom": "^29.7.0",
     "lint-staged": "^15.2.10",
     "next": "^12.3.4",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-preset-env": "^10.3.1",
     "prettier": "^3.3.3",
     "sharp": "^0.34.4",
     "svgo": "^4.0.0",
