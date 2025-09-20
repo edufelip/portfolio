@@ -1,6 +1,7 @@
 import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
+import { appWithTranslation } from 'next-i18next'
 import React from 'react'
 
 import { AnalyticsProvider, useAnalytics } from '~/lib/analytics/provider'
@@ -32,4 +33,4 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   )
 }
 
-export default MyApp
+export default appWithTranslation(MyApp)

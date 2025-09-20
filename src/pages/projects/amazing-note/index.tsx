@@ -1,56 +1,26 @@
 import { motion } from 'framer-motion'
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 import { FaGithub, FaGooglePlay } from 'react-icons/fa'
 
 import Header from '~/components/Header'
 import { FinnDetails } from '~/styles/finn'
 import { MainPageFace, ContactSection } from '~/styles/home'
-import type { NavLabels } from '~/types/content'
+import { getResumeContent } from '~/utils/i18n/resume'
 
-type PageProps = NavLabels & {
-  description: string
-  projectAbout: string
-  projectAboutOne: string
-  projectAboutTwo: string
-}
-
-export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
-  const isUS = locale === 'en-US'
-  const description = isUS ? 'Software Developer' : 'Desenvolvedor de Software'
-  const about = isUS ? 'About me' : 'Sobre Mim'
-  const projects = isUS ? 'Projects' : 'Projetos'
-  const checkMe = isUS ? 'Check me out!' : 'Me Encontre'
-  const contact = isUS ? 'Contact' : 'Contato'
-  const resume = isUS ? 'Resume' : 'Currículo'
-  const back = isUS ? 'Turn Back' : 'Voltar'
-  const projectAbout = isUS ? 'About' : 'Sobre'
-  const projectAboutOne = isUS
-    ? 'Amazing Note is a simple, fast note‑taking app to collect and organize text. It uses Compose Multiplatform UI with a shared Android/iOS codebase and targets Android API 24+ on JDK 17.'
-    : 'Amazing Note é um app de notas simples e rápido para coletar e organizar textos. Usa Compose Multiplatform UI com base compartilhada entre Android/iOS e suporta Android API 24+ em JDK 17.'
-  const projectAboutTwo = isUS
-    ? 'It follows Clean Architecture (UI → ViewModel → UseCases → Repository → Data Source). The shared UI consumes a platform ViewModel (KmpNoteViewModel); data uses SQLDelight, async work uses Kotlin Coroutines, and Android DI is powered by Dagger Hilt. Unit tests run with JUnit and Mockito, and strings are localized via shared keys with Android/iOS providers.'
-    : 'Segue Clean Architecture (UI → ViewModel → UseCases → Repository → Data Source). A UI compartilhada consome um ViewModel de plataforma (KmpNoteViewModel); a persistência usa SQLDelight, tarefas assíncronas usam Kotlin Coroutines e a DI no Android é feita com Dagger Hilt. Os testes usam JUnit e Mockito, e as strings são localizadas via chaves compartilhadas com provedores Android/iOS.'
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      description,
-      about,
-      projects,
-      contact,
-      resume,
-      back,
-      projectAbout,
-      projectAboutOne,
-      projectAboutTwo,
-      checkMe,
-      resume_link: isUS ? 'resume' : 'curriculo',
+      ...(await serverSideTranslations(locale ?? 'en-US', ['common', 'amazing-note'])),
     },
   }
 }
 
-const AmazingNote: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
+const AmazingNote: NextPage = () => {
   useEffect(() => {
     window.scroll({
       top: 0,
@@ -68,31 +38,29 @@ const AmazingNote: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
     })
   }, [])
 
-  const resumeLink =
-    props.resume_link == 'resume' ? (
-      <a href="/resume.pdf" target="_blank">
-        {props.resume}
-      </a>
-    ) : (
-      <a href="/curriculo.pdf" target="_blank">
-        {props.resume}
-      </a>
-    )
+  const { t: tCommon } = useTranslation('common')
+  const { t } = useTranslation('amazing-note')
+  const resumeContent = getResumeContent(tCommon)
+  const renderResumeLink = () => (
+    <a href={resumeContent.href} target="_blank" rel="noreferrer">
+      {resumeContent.label}
+    </a>
+  )
 
   return (
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Head>
-        <title>Eduardo Santos - AmazingNote</title>
+        <title>Eduardo Santos - Amazing Note</title>
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
         <MainPageFace background="/amazingnote-bg-sm.svg">
           <Header
-            about={props.about}
-            projects={props.projects}
-            contact={props.contact}
-            resumeNode={resumeLink}
-            backLabel={props.back}
+            about={tCommon('nav.about')}
+            projects={tCommon('nav.projects')}
+            contact={tCommon('nav.contact')}
+            renderResumeLink={renderResumeLink}
+            backLabel={tCommon('back')}
             backHref="/"
           />
           <FinnDetails>
@@ -113,10 +81,10 @@ const AmazingNote: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
                 </div>
                 <ul>
                   <li>
-                    <b>{props.projectAbout}</b>
+                    <b>{t('sections.about')}</b>
                   </li>
-                  <li>{props.projectAboutOne}</li>
-                  <li>{props.projectAboutTwo}</li>
+                  <li>{t('paragraphs.one')}</li>
+                  <li>{t('paragraphs.two')}</li>
                 </ul>
                 <div className="tags">
                   <p>
@@ -158,7 +126,7 @@ const AmazingNote: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
           </FinnDetails>
         </MainPageFace>
         <ContactSection id="contact">
-          <h2>{props.checkMe}</h2>
+          <h2>{tCommon('contactSection.title')}</h2>
           <div className="bundle">
             <a href="https://github.com/edufelip" target="_blank" rel="noreferrer">
               Github

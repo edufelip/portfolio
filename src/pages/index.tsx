@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import type { GetStaticProps, InferGetStaticPropsType } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-// import { useRouter } from 'next/router'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 import { FaGithub, FaLinkedin, FaGooglePlay, FaYoutube } from 'react-icons/fa'
 
@@ -17,83 +18,36 @@ import {
   AboutSection,
   ContactSection,
 } from '~/styles/home'
+import { getResumeContent } from '~/utils/i18n/resume'
 
-type HomeProps = {
+type ProjectCardContent = {
+  title: string
   description: string
-  about: string
-  projects: string
-  contact: string
-  resume: string
-  check: string
-  about_title: string
-  about_desc_one: string
-  about_desc_two: string
-  latest: string
-  livechat_desc: string
-  finn_desc: string
-  amazingnote_desc: string
-  checkMe: string
-  access: string
-  resume_link: string
-  finnbackend_desc: string
+  status?: string
 }
 
-export const getStaticProps: GetStaticProps<HomeProps> = async ({ locale }) => {
-  const isUS = locale === 'en-US'
-  const description = isUS ? 'Software Engineer' : 'Engenheiro de Software'
-  const about = isUS ? 'About me' : 'Sobre Mim'
-  const projects = isUS ? 'Projects' : 'Projetos'
-  const contact = isUS ? 'Contact' : 'Contato'
-  const resume = isUS ? 'Resume' : 'Currículo'
-  const check = isUS ? 'Check my Projects' : 'Veja meus Projetos'
-  const about_title = isUS ? "Hey, I'm Eduardo" : 'Olá, eu sou Eduardo'
-  const about_desc_one = isUS
-    ? 'I am a highly motivated Android Engineer with a relentless focus on delivering outstanding products. Passionate about innovation, I continuously seek cutting-edge solutions to refine my work and stay ahead in an ever-evolving industry.'
-    : 'Sou um Desenvolvedor Android altamente motivado, com um foco incansável em entregar produtos excepcionais. Apaixonado por inovação, busco continuamente soluções de ponta para aprimorar meu trabalho e me manter à frente em um setor em constante evolução.'
-  const about_desc_two = isUS
-    ? 'Since beginning my coding journey in 2017, I have transitioned from web development to specializing in mobile development with Java and Kotlin, where I found my true passion. Combining technical expertise with a commitment to staying current on industry trends, I deliver fresh, impactful solutions. My dedication ensures visually striking and highly functional applications that resonate with users.'
-    : 'Desde o início da minha jornada na programação em 2017, transitei do desenvolvimento web para me especializar no desenvolvimento móvel com Java e Kotlin, onde encontrei minha verdadeira paixão. Combinando expertise técnica e comprometimento em acompanhar as tendências do setor, entrego soluções inovadoras e impactantes. Minha dedicação garante aplicativos visualmente atraentes e altamente funcionais, que encantam os usuários.'
-  const latest = isUS ? 'Latest Projects' : 'Últimos Projetos'
-  const livechat_desc = isUS ? 'Online Realtime Chat' : 'Chat Online em Tempo Real'
-  const finn_desc = isUS
-    ? 'A Social Media of Forums (like Reddit)'
-    : 'Mídia Social baseada em Fóruns'
-  const amazingnote_desc = isUS ? 'Your Note App' : 'Aplicativo de Notas'
-  const checkMe = isUS ? 'Check me out!' : 'Me Encontre'
-  const access = isUS ? 'Access' : 'Acessar'
-  const resume_link = isUS ? 'resume' : 'curriculo'
-  const finnbackend_desc = isUS ? 'Backend for Finn app' : 'Backend para o app Finn'
+type HomeProjectsContent = {
+  livechat: ProjectCardContent
+  amazingNote: ProjectCardContent
+  finn: ProjectCardContent
+  finnBackend: ProjectCardContent
+}
+
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
     props: {
-      description,
-      about,
-      projects,
-      contact,
-      resume,
-      check,
-      about_title,
-      about_desc_one,
-      about_desc_two,
-      latest,
-      livechat_desc,
-      finn_desc,
-      amazingnote_desc,
-      checkMe,
-      access,
-      resume_link,
-      finnbackend_desc,
+      ...(await serverSideTranslations(locale ?? 'en-US', ['common', 'home'])),
     },
   }
 }
 
-function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
-  // const router = useRouter()
-
+const Home: NextPage = () => {
   const { bindProjectAnchorClicks } = useScrollMemory()
   const analytics = useAnalytics()
+  const { t: tCommon, i18n } = useTranslation('common')
+  const { t } = useTranslation('home')
 
   useEffect(() => {
-    // restore handled by useScrollMemory
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', (event: Event) => {
         event.preventDefault()
@@ -108,37 +62,28 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
     bindProjectAnchorClicks()
   }, [bindProjectAnchorClicks])
 
-  function getResumeLink(isMobile?: boolean) {
-    return props.resume_link == 'resume' ? (
-      <a
-        href="./resume.pdf"
-        target="_blank"
-        rel="noreferrer"
-        onClick={() =>
-          analytics.logSelectContent(
-            isMobile == true ? 'header_btn_mobile' : 'header_btn',
-            'resume_us'
-          )
-        }
-      >
-        {props.resume}
-      </a>
-    ) : (
-      <a
-        href="./curriculo.pdf"
-        target="_blank"
-        rel="noreferrer"
-        onClick={() =>
-          analytics.logSelectContent(
-            isMobile == true ? 'header_btn_mobile' : 'header_btn',
-            'resume_br'
-          )
-        }
-      >
-        {props.resume}
-      </a>
-    )
-  }
+  const resumeContent = getResumeContent(tCommon)
+  const resumeAnalyticsKey = i18n.language === 'pt-BR' ? 'resume_br' : 'resume_us'
+
+  const renderResumeLink = (isMobile?: boolean) => (
+    <a
+      href={resumeContent.href}
+      target="_blank"
+      rel="noreferrer"
+      onClick={() =>
+        analytics.logSelectContent(
+          isMobile === true ? 'header_btn_mobile' : 'header_btn',
+          resumeAnalyticsKey
+        )
+      }
+    >
+      {resumeContent.label}
+    </a>
+  )
+
+  const projectsContent = t('projects.cards', {
+    returnObjects: true,
+  }) as HomeProjectsContent
 
   return (
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -149,10 +94,10 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
       <main>
         <MainPageFace background="/background.svg">
           <Header
-            about={props.about}
-            projects={props.projects}
-            contact={props.contact}
-            resumeNode={getResumeLink()}
+            about={tCommon('nav.about')}
+            projects={tCommon('nav.projects')}
+            contact={tCommon('nav.contact')}
+            renderResumeLink={renderResumeLink}
             onAboutClick={() => analytics.logSelectContent('header_btn', 'about_me')}
             onProjectsClick={() => analytics.logSelectContent('header_btn', 'projects')}
             onContactClick={() => analytics.logSelectContent('header_btn', 'contact')}
@@ -162,12 +107,12 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
             <div className="contentLeft">
               <div className="container">
                 <h1>Eduardo Santos</h1>
-                <h2>{props.description}</h2>
+                <h2>{t('hero.subtitle')}</h2>
                 <a
                   href="#projects"
                   onClick={() => analytics.logSelectContent('cta_btn', 'check_my_projects')}
                 >
-                  {props.check}
+                  {tCommon('cta.checkProjects')}
                 </a>
               </div>
             </div>
@@ -208,19 +153,25 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
           </MainContent>
         </MainPageFace>
         <AboutSection id="about">
-          <h2>{props.about_title}</h2>
-          <p>{props.about_desc_one}</p>
+          <h2>{t('about.title')}</h2>
+          <p>{t('about.descriptionOne')}</p>
           <div className="bar"></div>
-          <p>{props.about_desc_two}</p>
+          <p>{t('about.descriptionTwo')}</p>
         </AboutSection>
         <ProjectsSection id="projects">
-          <h2>{props.latest}</h2>
+          <h2>{t('projects.title')}</h2>
           <Project className="live-chat" background="/livechat-bg.svg">
             <div className="shadow">
               <div className="wrap">
-                <h2>LiveChat</h2>
+                <h2>{projectsContent.livechat.title}</h2>
                 <p>
-                  {props.livechat_desc} <b>(in progress...)</b>
+                  {projectsContent.livechat.description}
+                  {projectsContent.livechat.status && (
+                    <>
+                      {' '}
+                      <b>{projectsContent.livechat.status}</b>
+                    </>
+                  )}
                 </p>
                 <div>
                   <Link scroll={false} href="/projects/live-chat">
@@ -228,7 +179,7 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
                       className="projectAnchor"
                       onClick={() => analytics.logSelectContent('project_btn', 'details_live_chat')}
                     >
-                      {props.access}
+                      {tCommon('cta.access')}
                     </a>
                   </Link>
                   <a
@@ -246,8 +197,8 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
           <Project className="amazing-note" background="/amazingnote-bg.svg">
             <div className="shadow">
               <div className="wrap">
-                <h2>Amazing Note</h2>
-                <p>{props.amazingnote_desc}</p>
+                <h2>{projectsContent.amazingNote.title}</h2>
+                <p>{projectsContent.amazingNote.description}</p>
                 <div>
                   <Link scroll={false} href="/projects/amazing-note">
                     <a
@@ -256,7 +207,7 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
                         analytics.logSelectContent('project_btn', 'details_amazing_note')
                       }
                     >
-                      {props.access}
+                      {tCommon('cta.access')}
                     </a>
                   </Link>
                   <a
@@ -284,15 +235,15 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
           <Project className="finn" background="/finn-bg.svg">
             <div className="shadow">
               <div className="wrap">
-                <h2>Finn</h2>
-                <p>{props.finn_desc}</p>
+                <h2>{projectsContent.finn.title}</h2>
+                <p>{projectsContent.finn.description}</p>
                 <div>
                   <Link scroll={false} href="/projects/finn">
                     <a
                       className="projectAnchor"
                       onClick={() => analytics.logSelectContent('project_btn', 'details_finn')}
                     >
-                      {props.access}
+                      {tCommon('cta.access')}
                     </a>
                   </Link>
                   <a
@@ -318,8 +269,8 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
           <Project className="finn-backend" background="/finnbackend-bg.svg">
             <div className="shadow">
               <div className="wrap">
-                <h2>Finn Backend</h2>
-                <p>{props.finnbackend_desc}</p>
+                <h2>{projectsContent.finnBackend.title}</h2>
+                <p>{projectsContent.finnBackend.description}</p>
                 <div>
                   <Link scroll={false} href="/projects/finn-backend">
                     <a
@@ -328,7 +279,7 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
                         analytics.logSelectContent('project_btn', 'details_finn_backend')
                       }
                     >
-                      {props.access}
+                      {tCommon('cta.access')}
                     </a>
                   </Link>
                   <a
@@ -345,7 +296,7 @@ function Home(props: InferGetStaticPropsType<typeof getStaticProps>) {
           </Project>
         </ProjectsSection>
         <ContactSection id="contact">
-          <h2>{props.checkMe}!</h2>
+          <h2>{tCommon('contactSection.title')}</h2>
           <div className="bundle">
             <a
               href="https://github.com/edufelip"

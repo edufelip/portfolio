@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "about": "About"
+  },
+  "paragraphs": {
+    "one": "LiveChat is a Kotlin Multiplatform chat experience that shares the same data/domain stack between the Android Jetpack Compose client and a SwiftUI conversation prototype, both driven by a shared ConversationPresenter via CStateFlow bridges.",
+    "two": "Koin handles dependency injection, Coroutines/Flow keep message streams reactive, and SQLDelight provides persistence with per-platform drivers. A Ktor REST client talks to Firebase Auth and Firestore, and Gradle tasks produce the XCFramework consumed by the SwiftUI layer."
+  }
+}

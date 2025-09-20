@@ -8,7 +8,7 @@ type Props = {
   about: string
   projects: string
   contact: string
-  resumeNode: ReactNode
+  renderResumeLink: (isMobile?: boolean) => ReactNode
   backLabel?: string
   backHref?: string
   onAboutClick?: () => void
@@ -21,7 +21,7 @@ export default function Header({
   about,
   projects,
   contact,
-  resumeNode,
+  renderResumeLink,
   backLabel,
   backHref,
   onAboutClick,
@@ -67,7 +67,7 @@ export default function Header({
           </a>
         </li>
         <li>
-          <span>{resumeNode}</span>
+          <span>{renderResumeLink()}</span>
         </li>
       </ul>
       <MobileMenu>
@@ -106,7 +106,7 @@ export default function Header({
           </a>
         </li>
         <li>
-          <span>{resumeNode}</span>
+          <span>{renderResumeLink(true)}</span>
         </li>
       </MobileMenu>
     </div>

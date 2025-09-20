@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+const { i18n } = require('./next-i18next.config')
+
 module.exports = {
-  i18n: {
-    locales: ['en-US', 'pt-BR'],
-    defaultLocale: 'en-US',
-  },
+  i18n,
   reactStrictMode: true,
   async headers() {
     return [

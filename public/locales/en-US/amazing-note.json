@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "about": "About"
+  },
+  "paragraphs": {
+    "one": "Amazing Note is a simple, fast note-taking app to collect and organize text. It uses Compose Multiplatform UI with a shared Android/iOS codebase and targets Android API 24+ on JDK 17.",
+    "two": "It follows Clean Architecture (UI → ViewModel → UseCases → Repository → Data Source). The shared UI consumes a platform ViewModel (KmpNoteViewModel); data uses SQLDelight, async work uses Kotlin Coroutines, and Android DI is powered by Dagger Hilt. Unit tests run with JUnit and Mockito, and strings are localized via shared keys with Android/iOS providers."
+  }
+}

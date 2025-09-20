@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "about": "Sobre Mim",
+    "projects": "Projetos",
+    "contact": "Contato",
+    "blog": "Blog"
+  },
+  "back": "Voltar",
+  "resume": {
+    "label": "Currículo",
+    "href": "/curriculo.pdf"
+  },
+  "contactSection": {
+    "title": "Me Encontre!"
+  },
+  "cta": {
+    "access": "Acessar",
+    "checkProjects": "Veja meus Projetos"
+  }
+}

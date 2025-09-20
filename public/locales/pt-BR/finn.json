@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "about": "Sobre"
+  },
+  "paragraphs": {
+    "one": "Finn é uma rede social desenvolvida em Kotlin com Jetpack Compose Multiplatform, permitindo que Android e iOS compartilhem a mesma camada de interface. Coroutines e Flow mantêm os feeds, as discussões das comunidades e as notificações push reativos.",
+    "two": "O app segue uma Clean Architecture dividida em camadas de domínio, dados e apresentação, usando Hilt para injeção de dependências, Retrofit com OkHttp para rede, SQLDelight para cache e módulos do Firebase (Auth, Remote Config, FCM) para autenticação, feature flags e mensagens. Navigation Compose, Coil no Android, Kamel no iOS e um pipeline com GitHub Actions, ktlint, detekt e Lint reforçam uma experiência multiplataforma fluida."
+  }
+}

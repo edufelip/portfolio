@@ -1,0 +1,32 @@
+{
+  "hero": {
+    "subtitle": "Engenheiro de Software"
+  },
+  "about": {
+    "title": "Olá, eu sou Eduardo",
+    "descriptionOne": "Sou um Desenvolvedor Android altamente motivado, com um foco incansável em entregar produtos excepcionais. Apaixonado por inovação, busco continuamente soluções de ponta para aprimorar meu trabalho e me manter à frente em um setor em constante evolução.",
+    "descriptionTwo": "Desde o início da minha jornada na programação em 2017, transitei do desenvolvimento web para me especializar no desenvolvimento móvel com Java e Kotlin, onde encontrei minha verdadeira paixão. Combinando expertise técnica e comprometimento em acompanhar as tendências do setor, entrego soluções inovadoras e impactantes. Minha dedicação garante aplicativos visualmente atraentes e altamente funcionais, que encantam os usuários."
+  },
+  "projects": {
+    "title": "Últimos Projetos",
+    "cards": {
+      "livechat": {
+        "title": "LiveChat",
+        "description": "Chat Online em Tempo Real",
+        "status": "(em andamento...)"
+      },
+      "amazingNote": {
+        "title": "Amazing Note",
+        "description": "Aplicativo de Notas"
+      },
+      "finn": {
+        "title": "Finn",
+        "description": "Mídia Social baseada em Fóruns"
+      },
+      "finnBackend": {
+        "title": "Finn Backend",
+        "description": "Backend para o app Finn"
+      }
+    }
+  }
+}

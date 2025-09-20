@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion'
-import type { GetStaticProps, InferGetStaticPropsType, NextPage } from 'next'
+import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { useEffect } from 'react'
 import { BsArrowLeft } from 'react-icons/bs'
 import { FaGithub, FaAngleLeft } from 'react-icons/fa'
@@ -10,53 +12,17 @@ import { FaGithub, FaAngleLeft } from 'react-icons/fa'
 import { MobileMenu } from '~/components/MobileMenu'
 import { FinnDetails } from '~/styles/finn'
 import { MainPageFace, ContactSection } from '~/styles/home'
-import type { NavLabels } from '~/types/content'
-type PageProps = NavLabels & {
-  description: string
-  projectAbout: string
-  projectAboutOne: string
-  projectAboutTwo: string
-}
+import { getResumeContent } from '~/utils/i18n/resume'
 
-export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
-  const dict = {
-    'pt-BR': {
-      description: 'Desenvolvedor de Software',
-      about: 'Sobre Mim',
-      projects: 'Projetos',
-      contact: 'Contato',
-      resume: 'Currículo',
-      checkMe: 'Me Encontre',
-      back: 'Voltar',
-      projectAbout: 'Sobre',
-      projectAboutOne:
-        'LiveChat é uma experiência de chat multiplataforma em Kotlin que compartilha camadas de dados e domínio entre Android (Jetpack Compose) e um protótipo em SwiftUI. O mesmo presenter abastece as duas interfaces via wrappers multiplataforma como CStateFlow.',
-      projectAboutTwo:
-        'O app usa Koin para injeção de dependências, coroutines e Flow para estados reativos e SQDelight para persistência com drivers específicos por plataforma. O cliente remoto utiliza Ktor/OkHttp para falar com Firebase (Auth, Firestore) e scripts Gradle geram o XCFramework consumido pelo SwiftUI.',
-    },
-    'en-US': {
-      description: 'Software Developer',
-      about: 'About me',
-      projects: 'Projects',
-      contact: 'Contact',
-      resume: 'Resume',
-      checkMe: 'Check me out',
-      back: 'Go back <',
-      projectAbout: 'About',
-      projectAboutOne:
-        'LiveChat is a Kotlin Multiplatform chat experience that shares the same data/domain stack between the Android Jetpack Compose client and a SwiftUI conversation prototype, both driven by a shared ConversationPresenter via CStateFlow bridges.',
-      projectAboutTwo:
-        'Koin handles dependency injection, Coroutines/Flow keep message streams reactive, and SQLDelight provides persistence with per-platform drivers. A Ktor REST client talks to Firebase Auth and Firestore, and Gradle tasks produce the XCFramework consumed by the SwiftUI layer.',
-    },
-  }
-
-  const base: PageProps = (dict as Record<string, PageProps>)[String(locale)] || dict['en-US']
+export const getStaticProps: GetStaticProps = async ({ locale }) => {
   return {
-    props: { ...base, resume_link: locale === 'en-US' ? 'resume' : 'curriculo' },
+    props: {
+      ...(await serverSideTranslations(locale ?? 'en-US', ['common', 'live-chat'])),
+    },
   }
 }
 
-const LiveChat: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) => {
+const LiveChat: NextPage = () => {
   useEffect(() => {
     window.scroll({
       top: 0,
@@ -74,16 +40,14 @@ const LiveChat: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (prop
     })
   }, [])
 
-  const resumeLink =
-    props.resume_link == 'resume' ? (
-      <a href="/resume.pdf" target="_blank">
-        {props.resume}
-      </a>
-    ) : (
-      <a href="/curriculo.pdf" target="_blank">
-        {props.resume}
-      </a>
-    )
+  const { t: tCommon } = useTranslation('common')
+  const { t } = useTranslation('live-chat')
+  const resumeContent = getResumeContent(tCommon)
+  const resumeLink = (
+    <a href={resumeContent.href} target="_blank" rel="noreferrer">
+      {resumeContent.label}
+    </a>
+  )
 
   return (
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -98,17 +62,16 @@ const LiveChat: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (prop
               <li>
                 <Link href="/" scroll={false}>
                   <a>
-                    {' '}
-                    <BsArrowLeft size={16} /> {props.back}
+                    <BsArrowLeft size={16} /> {tCommon('back')}
                   </a>
                 </Link>
               </li>
               <li>
-                <a href="#contact">{props.contact}</a>
+                <a href="#contact">{tCommon('nav.contact')}</a>
               </li>
               <li>
                 <a href="https://medium.com/@eduardofelipi" target="_blank" rel="noreferrer">
-                  Blog
+                  {tCommon('nav.blog')}
                 </a>
               </li>
               <li>
@@ -120,17 +83,17 @@ const LiveChat: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (prop
             </Link>
             <MobileMenu>
               <li>
-                <a href="#about">{props.about}</a>
+                <a href="#about">{tCommon('nav.about')}</a>
               </li>
               <li>
-                <a href="#projects">{props.projects}</a>
+                <a href="#projects">{tCommon('nav.projects')}</a>
               </li>
               <li>
-                <a href="#contact">{props.contact}</a>
+                <a href="#contact">{tCommon('nav.contact')}</a>
               </li>
               <li>
                 <a href="https://medium.com/@eduardofelipi" target="_blank" rel="noreferrer">
-                  Blog
+                  {tCommon('nav.blog')}
                 </a>
               </li>
               <li>
@@ -164,10 +127,10 @@ const LiveChat: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (prop
                 </div>
                 <ul>
                   <li>
-                    <b>{props.projectAbout}</b>
+                    <b>{t('sections.about')}</b>
                   </li>
-                  <li>{props.projectAboutOne}</li>
-                  <li>{props.projectAboutTwo}</li>
+                  <li>{t('paragraphs.one')}</li>
+                  <li>{t('paragraphs.two')}</li>
                 </ul>
                 <div className="tags">
                   <p>
@@ -204,7 +167,7 @@ const LiveChat: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (prop
           </FinnDetails>
         </MainPageFace>
         <ContactSection id="contact">
-          <h2>{props.checkMe}</h2>
+          <h2>{tCommon('contactSection.title')}</h2>
           <div className="bundle">
             <a href="https://github.com/edufelip" target="_blank" rel="noreferrer">
               Github

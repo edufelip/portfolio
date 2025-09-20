@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "about": "Sobre"
+  },
+  "paragraphs": {
+    "one": "Finn Server é a API em Kotlin + Spring Boot que alimenta o aplicativo social Finn, expondo endpoints REST documentados com OpenAPI/Swagger. Ela persiste comunidades, posts e comentários em PostgreSQL com migrações Flyway e oferece artefatos Docker para executar localmente ou na nuvem.",
+    "two": "A configuração orientada a variáveis de ambiente injeta credenciais do banco e chaves do Firebase Admin enquanto camadas de segurança (cabeçalho do app, Firebase App Check, Firebase Auth) protegem cada requisição. Scripts Gradle (`run-local.sh`, `run-tests.sh`) sobem Postgres via Testcontainers para testes de integração e o CI no GitHub Actions mantém os pipelines com lint e verificações em dia."
+  }
+}
