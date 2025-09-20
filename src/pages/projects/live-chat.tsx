@@ -65,18 +65,17 @@ const LiveChat: NextPage = () => {
             <Image
               src="/livechat-bg.svg"
               alt="LiveChat project background"
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="100vw"
+              style={{ objectFit: 'cover' }}
               priority
             />
           </HeroBackground>
           <div className="header">
             <ul>
               <li>
-                <Link href="/" scroll={false}>
-                  <a>
-                    <BsArrowLeft size={16} /> {tCommon('back')}
-                  </a>
+                <Link href="/" scroll={false} className="backLink">
+                  <BsArrowLeft size={16} /> {tCommon('back')}
                 </Link>
               </li>
               <li>
@@ -91,7 +90,7 @@ const LiveChat: NextPage = () => {
                 <span>{resumeLink}</span>
               </li>
             </ul>
-            <Link href="/">
+            <Link href="/" className="backMenuBtnLink">
               <FaAngleLeft className="backMenuBtn" size={36} />
             </Link>
             <MobileMenu>

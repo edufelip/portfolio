@@ -103,8 +103,9 @@ const Home: NextPage = () => {
             <Image
               src="/background.svg"
               alt="Abstract gradient background"
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="100vw"
+              style={{ objectFit: 'cover' }}
               priority
             />
           </HeroBackground>
@@ -192,13 +193,13 @@ const Home: NextPage = () => {
                   )}
                 </p>
                 <div>
-                  <Link scroll={false} href="/projects/live-chat">
-                    <a
-                      className="projectAnchor"
-                      onClick={() => analytics.logSelectContent('project_btn', 'details_live_chat')}
-                    >
-                      {tCommon('cta.access')}
-                    </a>
+                  <Link
+                    scroll={false}
+                    href="/projects/live-chat"
+                    className="projectAnchor"
+                    onClick={() => analytics.logSelectContent('project_btn', 'details_live_chat')}
+                  >
+                    {tCommon('cta.access')}
                   </Link>
                   <a
                     href="https://github.com/edufelip/live-chat_android"
@@ -219,15 +220,15 @@ const Home: NextPage = () => {
                 <h2>{projectsContent.amazingNote.title}</h2>
                 <p>{projectsContent.amazingNote.description}</p>
                 <div>
-                  <Link scroll={false} href="/projects/amazing-note">
-                    <a
-                      className="projectAnchor"
-                      onClick={() =>
-                        analytics.logSelectContent('project_btn', 'details_amazing_note')
-                      }
-                    >
-                      {tCommon('cta.access')}
-                    </a>
+                  <Link
+                    scroll={false}
+                    href="/projects/amazing-note"
+                    className="projectAnchor"
+                    onClick={() =>
+                      analytics.logSelectContent('project_btn', 'details_amazing_note')
+                    }
+                  >
+                    {tCommon('cta.access')}
                   </Link>
                   <a
                     href="https://github.com/edufelip/amazing-note"
@@ -259,13 +260,13 @@ const Home: NextPage = () => {
                 <h2>{projectsContent.finn.title}</h2>
                 <p>{projectsContent.finn.description}</p>
                 <div>
-                  <Link scroll={false} href="/projects/finn">
-                    <a
-                      className="projectAnchor"
-                      onClick={() => analytics.logSelectContent('project_btn', 'details_finn')}
-                    >
-                      {tCommon('cta.access')}
-                    </a>
+                  <Link
+                    scroll={false}
+                    href="/projects/finn"
+                    className="projectAnchor"
+                    onClick={() => analytics.logSelectContent('project_btn', 'details_finn')}
+                  >
+                    {tCommon('cta.access')}
                   </Link>
                   <a
                     href="https://www.github.com/edufelip/finn"
@@ -295,15 +296,15 @@ const Home: NextPage = () => {
                 <h2>{projectsContent.finnBackend.title}</h2>
                 <p>{projectsContent.finnBackend.description}</p>
                 <div>
-                  <Link scroll={false} href="/projects/finn-backend">
-                    <a
-                      className="projectAnchor"
-                      onClick={() =>
-                        analytics.logSelectContent('project_btn', 'details_finn_backend')
-                      }
-                    >
-                      {tCommon('cta.access')}
-                    </a>
+                  <Link
+                    scroll={false}
+                    href="/projects/finn-backend"
+                    className="projectAnchor"
+                    onClick={() =>
+                      analytics.logSelectContent('project_btn', 'details_finn_backend')
+                    }
+                  >
+                    {tCommon('cta.access')}
                   </Link>
                   <a
                     href="https://github.com/edufelip/finn__backend"

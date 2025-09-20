@@ -63,8 +63,9 @@ const AmazingNote: NextPage = () => {
             <Image
               src="/amazingnote-bg-sm.svg"
               alt="Amazing Note project background"
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="100vw"
+              style={{ objectFit: 'cover' }}
               priority
             />
           </HeroBackground>

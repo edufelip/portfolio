@@ -63,8 +63,9 @@ const Finn: NextPage = () => {
             <Image
               src="/finn-bg-sm.svg"
               alt="Finn project background"
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="100vw"
+              style={{ objectFit: 'cover' }}
               priority
             />
           </HeroBackground>

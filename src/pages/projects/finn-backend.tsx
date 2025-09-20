@@ -63,8 +63,9 @@ const FinnBackend: NextPage = () => {
             <Image
               src="/finnbackend-bg-sm.svg"
               alt="Finn Backend project background"
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="100vw"
+              style={{ objectFit: 'cover' }}
               priority
             />
           </HeroBackground>

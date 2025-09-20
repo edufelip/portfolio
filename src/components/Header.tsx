@@ -34,10 +34,8 @@ export default function Header({
       <ul>
         {backLabel && backHref && (
           <li>
-            <Link href={backHref} scroll={false}>
-              <a>
-                <FaAngleLeft size={16} /> {backLabel}
-              </a>
+            <Link href={backHref} scroll={false} className="backLink">
+              <FaAngleLeft size={16} /> {backLabel}
             </Link>
           </li>
         )}
@@ -73,10 +71,8 @@ export default function Header({
       <MobileMenu>
         {backLabel && backHref && (
           <li>
-            <Link href={backHref} scroll={false}>
-              <a>
-                <FaAngleLeft size={16} /> {backLabel}
-              </a>
+            <Link href={backHref} scroll={false} className="backLink">
+              <FaAngleLeft size={16} /> {backLabel}
             </Link>
           </li>
         )}
