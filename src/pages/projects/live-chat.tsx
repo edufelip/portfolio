@@ -11,7 +11,7 @@ import { FaGithub, FaAngleLeft } from 'react-icons/fa'
 
 import { MobileMenu } from '~/components/MobileMenu'
 import { FinnDetails } from '~/styles/finn'
-import { MainPageFace, ContactSection } from '~/styles/home'
+import { MainPageFace, ContactSection, HeroBackground } from '~/styles/home'
 import { getResumeContent } from '~/utils/i18n/resume'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
@@ -56,7 +56,15 @@ const LiveChat: NextPage = () => {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
-        <MainPageFace background="/livechat-bg.svg">
+        <MainPageFace>
+          <HeroBackground>
+            <Image
+              src="/livechat-bg.svg"
+              alt="LiveChat project background"
+              layout="fill"
+              objectFit="cover"
+            />
+          </HeroBackground>
           <div className="header">
             <ul>
               <li>

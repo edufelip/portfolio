@@ -43,16 +43,18 @@ export const MobileMenu = styled.div<{ open?: boolean }>`
   }
 `
 
-export const MainPageFace = styled.div<{ background?: string }>`
+export const MainPageFace = styled.div`
   width: 100%;
   height: 80vh;
   min-height: 400px;
   display: table;
-  background: url(${(props) => props.background});
   background-color: #121212;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  position: relative;
+  overflow: hidden;
+  > :not(:first-child) {
+    position: relative;
+    z-index: 1;
+  }
   .header {
     height: 60px;
     display: table-row;
@@ -67,7 +69,20 @@ export const MainPageFace = styled.div<{ background?: string }>`
         display: inline-block;
         margin-right: 35px;
         a {
-          font-family: 'Montserrat';
+          font-family:
+            'Montserrat',
+            'Josefin Sans',
+            -apple-system,
+            BlinkMacSystemFont,
+            'Segoe UI',
+            Roboto,
+            Oxygen,
+            Ubuntu,
+            Cantarell,
+            'Fira Sans',
+            'Droid Sans',
+            'Helvetica Neue',
+            sans-serif;
           font-weight: 300;
           font-size: 16px;
           letter-spacing: 0.5px;
@@ -120,6 +135,8 @@ export const MainPageFace = styled.div<{ background?: string }>`
 export const MainContent = styled.div`
   display: table-row;
   height: 100%;
+  position: relative;
+  z-index: 1;
   .contentLeft {
     display: flex;
     align-items: center;
@@ -267,6 +284,21 @@ export const MainContent = styled.div`
   }
 `
 
+export const HeroBackground = styled.div`
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  span {
+    inset: 0 !important;
+  }
+
+  img {
+    object-fit: cover;
+  }
+`
+
 export const AboutSection = styled.div`
   width: 100%;
   height: 430px;
@@ -362,7 +394,20 @@ export const Project = styled.div<{ background?: string }>`
         color: #f9f9f9;
         opacity: 0.85;
         font-size: 35px;
-        font-family: 'Montserrat', sans-serif;
+        font-family:
+          'Montserrat',
+          'Josefin Sans',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          'Fira Sans',
+          'Droid Sans',
+          'Helvetica Neue',
+          sans-serif;
       }
       p {
         opacity: 0.9;
@@ -390,7 +435,20 @@ export const Project = styled.div<{ background?: string }>`
           color: #f9f9f9;
           font-weight: regular;
           font-size: 14px;
-          font-family: 'Montserrat', sans-serif;
+          font-family:
+            'Montserrat',
+            'Josefin Sans',
+            -apple-system,
+            BlinkMacSystemFont,
+            'Segoe UI',
+            Roboto,
+            Oxygen,
+            Ubuntu,
+            Cantarell,
+            'Fira Sans',
+            'Droid Sans',
+            'Helvetica Neue',
+            sans-serif;
           &:hover {
             background-color: ${darken(0.07, '#0074BD')};
             color: ${darken(0.04, '#f9f9f9')};

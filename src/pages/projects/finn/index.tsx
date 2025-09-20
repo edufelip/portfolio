@@ -9,7 +9,7 @@ import { FaGithub, FaGooglePlay } from 'react-icons/fa'
 
 import Header from '~/components/Header'
 import { FinnDetails } from '~/styles/finn'
-import { MainPageFace, ContactSection } from '~/styles/home'
+import { MainPageFace, ContactSection, HeroBackground } from '~/styles/home'
 import { getResumeContent } from '~/utils/i18n/resume'
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
@@ -54,7 +54,15 @@ const Finn: NextPage = () => {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
-        <MainPageFace background="/finn-bg-sm.svg">
+        <MainPageFace>
+          <HeroBackground>
+            <Image
+              src="/finn-bg-sm.svg"
+              alt="Finn project background"
+              layout="fill"
+              objectFit="cover"
+            />
+          </HeroBackground>
           <Header
             about={tCommon('nav.about')}
             projects={tCommon('nav.projects')}

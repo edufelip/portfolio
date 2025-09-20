@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
@@ -17,6 +18,7 @@ import {
   Project,
   AboutSection,
   ContactSection,
+  HeroBackground,
 } from '~/styles/home'
 import { getResumeContent } from '~/utils/i18n/resume'
 
@@ -92,7 +94,16 @@ const Home: NextPage = () => {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
-        <MainPageFace background="/background.svg">
+        <MainPageFace>
+          <HeroBackground>
+            <Image
+              src="/background.svg"
+              alt="Abstract gradient background"
+              layout="fill"
+              objectFit="cover"
+              priority
+            />
+          </HeroBackground>
           <Header
             about={tCommon('nav.about')}
             projects={tCommon('nav.projects')}
