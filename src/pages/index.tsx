@@ -135,6 +135,7 @@ const Home: NextPage = () => {
                     target="_blank"
                     onClick={() => analytics.logSelectContent('cta_btn', 'github')}
                     rel="noreferrer"
+                    aria-label="Open Eduardo's GitHub profile"
                   >
                     <FaGithub size={35} />
                   </a>
@@ -145,6 +146,7 @@ const Home: NextPage = () => {
                     target="_blank"
                     onClick={() => analytics.logSelectContent('cta_btn', 'linkedin')}
                     rel="noreferrer"
+                    aria-label="Open Eduardo's LinkedIn profile"
                   >
                     <FaLinkedin size={35} />
                   </a>
@@ -155,6 +157,7 @@ const Home: NextPage = () => {
                     target="_blank"
                     onClick={() => analytics.logSelectContent('cta_btn', 'ytb')}
                     rel="noreferrer"
+                    aria-label="Open Eduardo's YouTube channel"
                   >
                     <FaYoutube size={35} />
                   </a>
@@ -198,6 +201,7 @@ const Home: NextPage = () => {
                     target="_blank"
                     onClick={() => analytics.logSelectContent('project_btn', 'github_live_chat')}
                     rel="noreferrer"
+                    aria-label="View LiveChat source on GitHub"
                   >
                     <FaGithub size="24" />
                   </a>
@@ -226,6 +230,7 @@ const Home: NextPage = () => {
                     target="_blank"
                     onClick={() => analytics.logSelectContent('project_btn', 'github_amazing_note')}
                     rel="noreferrer"
+                    aria-label="View Amazing Note source on GitHub"
                   >
                     <FaGithub size="24" />
                   </a>
@@ -236,6 +241,7 @@ const Home: NextPage = () => {
                       analytics.logSelectContent('project_btn', 'playstore_amazing_note')
                     }
                     rel="noreferrer"
+                    aria-label="Open Amazing Note on Google Play"
                   >
                     <FaGooglePlay size="24" />
                   </a>
@@ -262,6 +268,7 @@ const Home: NextPage = () => {
                     target="_blank"
                     onClick={() => analytics.logSelectContent('project_btn', 'github_finn')}
                     rel="noreferrer"
+                    aria-label="View Finn source on GitHub"
                   >
                     <FaGithub size="24" />
                   </a>
@@ -270,6 +277,7 @@ const Home: NextPage = () => {
                     target="_blank"
                     onClick={() => analytics.logSelectContent('project_btn', 'playstore_finn')}
                     rel="noreferrer"
+                    aria-label="Open Finn on Google Play"
                   >
                     <FaGooglePlay size="24" />
                   </a>
@@ -298,6 +306,7 @@ const Home: NextPage = () => {
                     target="_blank"
                     onClick={() => analytics.logSelectContent('project_btn', 'github_finn_backend')}
                     rel="noreferrer"
+                    aria-label="View Finn Backend source on GitHub"
                   >
                     <FaGithub size="24" />
                   </a>

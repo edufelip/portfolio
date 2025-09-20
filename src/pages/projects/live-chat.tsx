@@ -166,6 +166,7 @@ const LiveChat: NextPage = () => {
                     href="https://github.com/edufelip/live-chat_android"
                     target="_blank"
                     rel="noreferrer"
+                    aria-label="View LiveChat source on GitHub"
                   >
                     <FaGithub size="24" />
                   </a>

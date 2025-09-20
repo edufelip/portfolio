@@ -130,13 +130,19 @@ const Finn: NextPage = () => {
                   <b>Github - Playstore</b>
                 </p>
                 <div className="btn_container">
-                  <a href="https://github.com/edufelip/finn" target="_blank" rel="noreferrer">
+                  <a
+                    href="https://github.com/edufelip/finn"
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="View Finn source on GitHub"
+                  >
                     <FaGithub size="24" />
                   </a>
                   <a
                     href="http://play.google.com/store/apps/details?id=com.edufelip.finn"
                     target="_blank"
                     rel="noreferrer"
+                    aria-label="Open Finn on Google Play"
                   >
                     <FaGooglePlay size="24" />
                   </a>

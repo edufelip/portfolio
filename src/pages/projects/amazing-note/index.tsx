@@ -118,6 +118,7 @@ const AmazingNote: NextPage = () => {
                     href="https://github.com/edufelip/amazing-note"
                     target="_blank"
                     rel="noreferrer"
+                    aria-label="View Amazing Note source on GitHub"
                   >
                     <FaGithub size="24" />
                   </a>
@@ -125,6 +126,7 @@ const AmazingNote: NextPage = () => {
                     href="https://play.google.com/store/apps/details?id=com.edufelip.amazing_note"
                     target="_blank"
                     rel="noreferrer"
+                    aria-label="Open Amazing Note on Google Play"
                   >
                     <FaGooglePlay size="24" />
                   </a>

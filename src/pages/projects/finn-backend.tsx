@@ -131,6 +131,7 @@ const FinnBackend: NextPage = () => {
                     href="https://github.com/edufelip/finn__backend"
                     target="_blank"
                     rel="noreferrer"
+                    aria-label="View Finn Backend source on GitHub"
                   >
                     <FaGithub size="24" />
                   </a>
