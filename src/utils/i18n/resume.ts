@@ -5,6 +5,6 @@ export type ResumeContent = {
   href: string
 }
 
-export function getResumeContent(t: TFunction<'common'>): ResumeContent {
+export function getResumeContent(t: TFunction): ResumeContent {
   return t('resume', { returnObjects: true }) as ResumeContent
 }
