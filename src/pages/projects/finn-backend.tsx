@@ -28,11 +28,11 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
   const checkMe = isUS ? 'Check me out!' : 'Me Encontre'
   const projectAbout = isUS ? 'About' : 'Sobre'
   const projectAboutOne = isUS
-    ? 'This project came from the necessity of a backend for the Finn Android app. Due to my previous experience in Javascript and Typescript, I felt that Node.js was the ideal choice, as well as using the postgreSQL Database.'
-    : 'Esse projeto veio da necessidade de um backend para o aplicativo Finn para Android. Devido à minha prévia experiência em Typescript e Javascript, eu senti que Node.js seria a escolha ideal, assim como usar o banco de dados postgreSQL.'
+    ? 'Finn Server is the Kotlin + Spring Boot API that powers the Finn social app, exposing REST endpoints documented with OpenAPI/Swagger. It persists communities, posts, and comments in PostgreSQL with Flyway migrations and ships Docker assets for local or cloud deployments.'
+    : 'Finn Server é a API em Kotlin + Spring Boot que alimenta o aplicativo social Finn, expondo endpoints REST documentados com OpenAPI/Swagger. Ela persiste comunidades, posts e comentários em PostgreSQL com migrações Flyway e oferece artefatos Docker para executar localmente ou na nuvem.'
   const projectAboutTwo = isUS
-    ? 'The backend is being hosted on AWS and the Database is running in a Docker container. Lastly, this project follows TDD practices, so I used the Jest library to implement tests.'
-    : 'O backend está sendo hospedado na AWS e o banco de dados está rodando em um container no Docker. Vale apontar que o projeto foi construído orientado a testes desde o início, sendo assim foi usada a biblioteca Jest para a implementação dos testes.'
+    ? 'Environment-driven configuration wires DB credentials and Firebase Admin keys while layered guards (App header, Firebase App Check, Firebase Auth) protect every request. Gradle scripts (`run-local.sh`, `run-tests.sh`) spin up Testcontainers Postgres for integration tests and CI on GitHub Actions keeps the pipelines linted and healthy.'
+    : 'A configuração orientada a variáveis de ambiente injeta credenciais do banco e chaves do Firebase Admin enquanto camadas de segurança (cabeçalho do app, Firebase App Check, Firebase Auth) protegem cada requisição. Scripts Gradle (`run-local.sh`, `run-tests.sh`) sobem Postgres via Testcontainers para testes de integração e o CI no GitHub Actions mantém os pipelines com lint e verificações em dia.'
   return {
     props: {
       description,
@@ -82,7 +82,7 @@ const FinnBackend: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
   return (
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Head>
-        <title>Eduardo Santos - Finn Backend</title>
+        <title>Eduardo Santos - Finn Server</title>
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
@@ -98,15 +98,23 @@ const FinnBackend: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
           <FinnDetails>
             <div className="project_spec">
               <div className="project_spec_container">
-                <h1>Finn Backend</h1>
+                <h1>Finn Server</h1>
                 <div>
-                  <h5>Typescript</h5>
-                  <Image src="/typescript_icon.png" alt="Typescript Icon" width={18} height={18} />
-                  <h5>Node.js</h5>
+                  <h5>Kotlin</h5>
+                  <Image src="/kotlin_icon.png" alt="Kotlin Icon" width={18} height={18} />
+                  <h5>Spring Boot</h5>
                   <Image
                     className="android_icon"
-                    src="/node_icon.png"
-                    alt="Node Icon"
+                    src="/spring-logo.png"
+                    alt="Spring Icon"
+                    width={22}
+                    height={22}
+                  />
+                  <h5>PostgreSQL</h5>
+                  <Image
+                    className="android_icon"
+                    src="/postgre.png"
+                    alt="Postgre Icon"
                     width={22}
                     height={22}
                   />
@@ -123,15 +131,20 @@ const FinnBackend: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
                     <b>Tags</b>
                   </p>
                   <div className="tags_container">
-                    <p>Express</p>
+                    <p>Spring Boot</p>
+                    <p>Kotlin</p>
                     <p>PostgreSQL</p>
+                    <p>Flyway</p>
                     <p>Docker</p>
-                    <p>Aws</p>
-                    <p>Clean Architecture</p>
-                    <p>Jest</p>
-                    <p>Supertest</p>
-                    <p>PGMock</p>
-                    <p>PM2</p>
+                    <p>Testcontainers</p>
+                    <p>Firebase Admin</p>
+                    <p>Firebase App Check</p>
+                    <p>Firebase Auth</p>
+                    <p>Guard Filters</p>
+                    <p>Swagger UI</p>
+                    <p>OpenAPI</p>
+                    <p>Gradle</p>
+                    <p>GitHub Actions CI</p>
                   </div>
                 </div>
                 <p className="btn_container_title">

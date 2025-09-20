@@ -28,11 +28,11 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
   const back = isUS ? 'Turn Back' : 'Voltar'
   const projectAbout = isUS ? 'About' : 'Sobre'
   const projectAboutOne = isUS
-    ? "Finn came from the idea of a social media pretty much like reddit. Here users can create their communities and post about everything they want, as long as it's not sensitive or hate speech content. At the moment you subscribe to a community the posts about that subject will start appearing in your feed."
-    : 'Finn veio da ideia de ser uma rede social muito parecida com o reddit. Aqui usuário podem criar suas comunidades e postar sobre o que quiserem, contanto que não seja conteúdo sensível e nem discurso de ódio. A partir do momento que um usuário de inscreve em um comunidade, posts sobre aquele assunto começarão a aparecer em seu feed.'
+    ? 'Finn is a Kotlin-first social network built with Jetpack Compose Multiplatform so Android and iOS share the same UI layer. Coroutines and Flow keep feeds, community discussions, and push notifications reactive.'
+    : 'Finn é uma rede social desenvolvida em Kotlin com Jetpack Compose Multiplatform, permitindo que Android e iOS compartilhem a mesma camada de interface. Coroutines e Flow mantêm os feeds, as discussões das comunidades e as notificações push reativos.'
   const projectAboutTwo = isUS
-    ? "I used Retrofit to make api calls to the backend and also connected the app to Firebase, which is responsible for the user's authentication. I should also point out that RxJava here is fundamental for processing events asynchronously."
-    : 'Eu usei Retrofit para realizar chamadas à api e também conectei o aplicativo ao serviço do Firebase, que é responsável pela autenticação do usuário. Vale também apontar para o papel fundamental que o RxJava tem no projeto, processando eventos de forma assíncrona.'
+    ? 'The app follows a Clean Architecture split into domain, data, and presentation layers, powered by Hilt for dependency injection, Retrofit plus OkHttp for networking, SQLDelight for caching, and Firebase modules (Auth, Remote Config, FCM) for authentication, feature flags, and messaging. Navigation Compose, Coil on Android, Kamel on iOS, and a pipeline with GitHub Actions, ktlint, detekt, and Lint reinforce a smooth cross-platform experience.'
+    : 'O app segue uma Clean Architecture dividida em camadas de domínio, dados e apresentação, usando Hilt para injeção de dependências, Retrofit com OkHttp para rede, SQLDelight para cache e módulos do Firebase (Auth, Remote Config, FCM) para autenticação, feature flags e mensagens. Navigation Compose, Coil no Android, Kamel no iOS e um pipeline com GitHub Actions, ktlint, detekt e Lint reforçam uma experiência multiplataforma fluida.'
   return {
     props: {
       description,
@@ -100,10 +100,16 @@ const Finn: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) =
               <div className="project_spec_container">
                 <h1>Finn</h1>
                 <div>
-                  <h5>Java</h5>
-                  <Image src="/java_icon.png" alt="Java Icon" width={18} height={18} />
                   <h5>Kotlin</h5>
                   <Image src="/kotlin_icon.png" alt="Kotlin Icon" width={18} height={18} />
+                  <h5>Compose Multiplatform</h5>
+                  <Image
+                    className="android_icon"
+                    src="/jetpack_compose_icon.png"
+                    alt="Compose Icon"
+                    width={22}
+                    height={22}
+                  />
                   <h5>Android</h5>
                   <Image
                     className="android_icon"
@@ -125,14 +131,23 @@ const Finn: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (props) =
                     <b>Tags</b>
                   </p>
                   <div className="tags_container">
-                    <p>Firebase Remote Config</p>
-                    <p>OAuth</p>
-                    <p>LiveData</p>
-                    <p>MVVM</p>
+                    <p>Jetpack Compose Multiplatform</p>
+                    <p>Coroutines</p>
+                    <p>Flow</p>
+                    <p>Clean Architecture</p>
+                    <p>Hilt</p>
                     <p>Retrofit</p>
-                    <p>RxJava</p>
-                    <p>Dependency Injection (Hilt)</p>
-                    <p>ViewPager</p>
+                    <p>OkHttp</p>
+                    <p>SQLDelight</p>
+                    <p>Firebase Auth</p>
+                    <p>Remote Config</p>
+                    <p>Firebase Cloud Messaging</p>
+                    <p>Navigation Compose</p>
+                    <p>Coil</p>
+                    <p>Kamel</p>
+                    <p>ktlint</p>
+                    <p>detekt</p>
+                    <p>GitHub Actions CI</p>
                   </div>
                 </div>
                 <p className="btn_container_title">

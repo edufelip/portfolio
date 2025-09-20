@@ -30,9 +30,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
       back: 'Voltar',
       projectAbout: 'Sobre',
       projectAboutOne:
-        'Live chat veio de uma idea de fazer um chat muito similar com o Telegram, mas que pudesse permitir o usuário catalogar os seus contatos de acordo com categorias, afim de se ter uma melhor organização de suas conversas',
+        'LiveChat é uma experiência de chat multiplataforma em Kotlin que compartilha camadas de dados e domínio entre Android (Jetpack Compose) e um protótipo em SwiftUI. O mesmo presenter abastece as duas interfaces via wrappers multiplataforma como CStateFlow.',
       projectAboutTwo:
-        'Esse projeto está sendo construído 100% em Jetpack Compose, usando amplamente o recurso de RealTime Database do Firebase, que faz a parte do Backend, permitindo a comunicação em tempo real. Também utilizei o recurso de RoomDB para armazenar as conversas localmente, assim como coroutines e Kotlin Flow para a comunicação assíncrona. Quanto a injeção de dependência usei Hilt',
+        'O app usa Koin para injeção de dependências, coroutines e Flow para estados reativos e SQDelight para persistência com drivers específicos por plataforma. O cliente remoto utiliza Ktor/OkHttp para falar com Firebase (Auth, Firestore) e scripts Gradle geram o XCFramework consumido pelo SwiftUI.',
     },
     'en-US': {
       description: 'Software Developer',
@@ -44,9 +44,9 @@ export const getStaticProps: GetStaticProps<PageProps> = async ({ locale }) => {
       back: 'Go back <',
       projectAbout: 'About',
       projectAboutOne:
-        'Live chat came from an idea of creating a chat very similar to Telegram but that would allow users to categorize their contacts according to categories in order to have better organization of their conversations',
+        'LiveChat is a Kotlin Multiplatform chat experience that shares the same data/domain stack between the Android Jetpack Compose client and a SwiftUI conversation prototype, both driven by a shared ConversationPresenter via CStateFlow bridges.',
       projectAboutTwo:
-        'This project is being built 100% in Jetpack Compose, extensively utilizing the Realtime Database feature of Firebase for the backend, enabling real-time communication. I have also used the RoomDB feature to store conversations locally, as well as coroutines and Kotlin Flow for asynchronous communication. As for dependency injection, I have used Hilt',
+        'Koin handles dependency injection, Coroutines/Flow keep message streams reactive, and SQLDelight provides persistence with per-platform drivers. A Ktor REST client talks to Firebase Auth and Firestore, and Gradle tasks produce the XCFramework consumed by the SwiftUI layer.',
     },
   }
 
@@ -145,11 +145,19 @@ const LiveChat: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (prop
                 <div>
                   <h5>Kotlin</h5>
                   <Image src="/kotlin_icon.png" alt="Kotlin Icon" width={18} height={18} />
-                  <h5>Android</h5>
+                  <h5>Compose Multiplatform</h5>
                   <Image
                     className="android_icon"
-                    src="/android_icon.png"
-                    alt="Android Icon"
+                    src="/jetpack_compose_icon.png"
+                    alt="Compose Icon"
+                    width={22}
+                    height={22}
+                  />
+                  <h5>Swift UI</h5>
+                  <Image
+                    className="android_icon"
+                    src="/swift_ui.png"
+                    alt="Swift UI Icon"
                     width={22}
                     height={22}
                   />
@@ -167,14 +175,16 @@ const LiveChat: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (prop
                   </p>
                   <div className="tags_container">
                     <p>Jetpack Compose</p>
-                    <p>Kotlin Flow</p>
-                    <p>Firebase Realtime Database</p>
-                    <p>Firebase Cloud Messaging</p>
-                    <p>RoomDB</p>
-                    <p>Hilt</p>
-                    <p>JUnit</p>
-                    <p>Mockito</p>
-                    <p>Espresso</p>
+                    <p>SwiftUI</p>
+                    <p>Kotlin Coroutines</p>
+                    <p>Flow</p>
+                    <p>Koin</p>
+                    <p>SQLDelight</p>
+                    <p>Ktor</p>
+                    <p>Firebase Auth</p>
+                    <p>Firestore REST</p>
+                    <p>XCFramework</p>
+                    <p>Gradle</p>
                   </div>
                 </div>
                 <p className="btn_container_title">

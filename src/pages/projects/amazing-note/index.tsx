@@ -102,11 +102,11 @@ const AmazingNote: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = (p
                 <div>
                   <h5>Kotlin</h5>
                   <Image src="/kotlin_icon.png" alt="Kotlin Icon" width={18} height={18} />
-                  <h5>Android</h5>
+                  <h5>Compose Multiplatform</h5>
                   <Image
                     className="android_icon"
-                    src="/android_icon.png"
-                    alt="Android Icon"
+                    src="/jetpack_compose_icon.png"
+                    alt="Compose Icon"
                     width={22}
                     height={22}
                   />
