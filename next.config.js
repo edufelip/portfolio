@@ -9,9 +9,6 @@ module.exports = withBundleAnalyzer({
   i18n,
   compress: true,
   reactStrictMode: true,
-  experimental: {
-    modern: true,
-  },
   async headers() {
     return [
       {

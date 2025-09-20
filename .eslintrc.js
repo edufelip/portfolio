@@ -10,7 +10,7 @@ module.exports = {
   settings: {
     react: { version: 'detect' },
   },
-  plugins: ['@typescript-eslint', 'react', 'react-hooks', 'import', 'unused-imports'],
+  plugins: ['@typescript-eslint', 'react', 'import', 'unused-imports'],
   extends: [
     'next',
     'next/core-web-vitals',

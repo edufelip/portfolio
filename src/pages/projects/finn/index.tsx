@@ -65,6 +65,7 @@ const Finn: NextPage = () => {
               alt="Finn project background"
               layout="fill"
               objectFit="cover"
+              priority
             />
           </HeroBackground>
           <Header

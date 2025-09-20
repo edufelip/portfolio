@@ -65,6 +65,7 @@ const AmazingNote: NextPage = () => {
               alt="Amazing Note project background"
               layout="fill"
               objectFit="cover"
+              priority
             />
           </HeroBackground>
           <Header

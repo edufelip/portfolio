@@ -65,6 +65,7 @@ const FinnBackend: NextPage = () => {
               alt="Finn Backend project background"
               layout="fill"
               objectFit="cover"
+              priority
             />
           </HeroBackground>
           <Header

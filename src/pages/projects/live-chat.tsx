@@ -67,6 +67,7 @@ const LiveChat: NextPage = () => {
               alt="LiveChat project background"
               layout="fill"
               objectFit="cover"
+              priority
             />
           </HeroBackground>
           <div className="header">
