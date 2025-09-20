@@ -51,6 +51,10 @@ const AmazingNote: NextPage = () => {
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Head>
         <title>Eduardo Santos - Amazing Note</title>
+        <meta
+          name="description"
+          content="Amazing Note is a Compose Multiplatform note-taking app featuring clean architecture, SQLDelight, and Kotlin Multiplatform tooling. View highlights and download links."
+        />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>

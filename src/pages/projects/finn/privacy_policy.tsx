@@ -8,6 +8,10 @@ const FinnPrivacyPolicy: NextPage = () => {
     <div>
       <Head>
         <title>Eduardo Santos - Finn Privacy Policy</title>
+        <meta
+          name="description"
+          content="Privacy policy outlining data practices for the Finn application, including information about third-party services and user rights."
+        />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>

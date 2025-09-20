@@ -91,6 +91,10 @@ const Home: NextPage = () => {
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Head>
         <title>Eduardo Santos</title>
+        <meta
+          name="description"
+          content="Eduardo Santos is an Android engineer showcasing cross-platform projects, backend services, and contact links. Explore recent apps, resumes, and ways to connect."
+        />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>

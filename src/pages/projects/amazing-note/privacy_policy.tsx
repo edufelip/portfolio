@@ -8,6 +8,10 @@ const AmazingNotePrivacyPolicy: NextPage = () => {
     <div>
       <Head>
         <title>Eduardo Santos - Finn Privacy Policy</title>
+        <meta
+          name="description"
+          content="Privacy policy for the Amazing Note app describing data usage, third-party services, and user contact information."
+        />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>

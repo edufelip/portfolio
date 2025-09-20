@@ -51,6 +51,10 @@ const Finn: NextPage = () => {
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Head>
         <title>Eduardo Santos - Finn</title>
+        <meta
+          name="description"
+          content="Finn is a Kotlin social network built with Compose Multiplatform, Firebase, and clean architecture. Learn about tech stack, features, and links to source and releases."
+        />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>

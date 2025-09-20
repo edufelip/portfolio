@@ -51,6 +51,10 @@ const FinnBackend: NextPage = () => {
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Head>
         <title>Eduardo Santos - Finn Server</title>
+        <meta
+          name="description"
+          content="Finn Server is a Kotlin + Spring Boot backend with PostgreSQL, Firebase security, and CI pipelines. Explore architecture details and repository links."
+        />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>

@@ -53,6 +53,10 @@ const LiveChat: NextPage = () => {
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Head>
         <title>Eduardo Santos - LiveChat</title>
+        <meta
+          name="description"
+          content="LiveChat is a Kotlin Multiplatform chat prototype sharing data layers across Android and SwiftUI. Review its stack, features, and GitHub repository."
+        />
         <link rel="icon" href="/icon.ico" />
       </Head>
       <main>
