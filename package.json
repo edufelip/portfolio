@@ -25,6 +25,7 @@
     }
   },
   "dependencies": {
+    "@vercel/speed-insights": "^1.2.0",
     "babel-plugin-root-import": "^6.5.0",
     "babel-plugin-styled-components": "^1.10.7",
     "browserslist": "^4.16.5",

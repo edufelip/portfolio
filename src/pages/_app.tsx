@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
@@ -25,6 +26,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   return (
     <AnalyticsProvider>
       <GlobalStyle />
+      <SpeedInsights />
       <RouteTracker />
       <AnimatePresence mode="wait" initial={false}>
         <Component {...pageProps} key={router.route} />
