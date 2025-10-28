@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import React, { type ReactNode } from 'react'
-import { FaAngleLeft } from 'react-icons/fa'
 
+import { FaAngleLeft } from '~/components/icons'
 import { MobileMenu } from '~/components/MobileMenu'
 
 type Props = {

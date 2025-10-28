@@ -1,6 +1,3 @@
-import { getApps, initializeApp } from 'firebase/app'
-import 'firebase/analytics'
-
 type FirebaseConfig = {
   apiKey?: string
   authDomain?: string
@@ -33,15 +30,31 @@ const isConfigValid = () => {
   return required.every((k) => Boolean(firebaseConfig[k]))
 }
 
-const initFirebaseAnalytics = () => {
+type FirebaseApp = import('firebase/app').FirebaseApp
+let firebaseAppPromise: Promise<FirebaseApp | null> | null = null
+
+const ensureFirebaseApp = async (): Promise<FirebaseApp | null> => {
+  if (typeof window === 'undefined') {
+    return null
+  }
   if (!isConfigValid()) {
-    return false
+    return null
   }
-  if (!getApps().length) {
-    initializeApp(firebaseConfig)
+  if (!firebaseAppPromise) {
+    firebaseAppPromise = import('firebase/app')
+      .then(({ getApps, initializeApp }) => {
+        const apps = getApps()
+        if (apps.length) {
+          return apps[0]
+        }
+        return initializeApp(firebaseConfig)
+      })
+      .catch((error) => {
+        console.error('Failed to initialize Firebase app', error)
+        return null
+      })
   }
-  return true
+  return firebaseAppPromise
 }
 
-export { isConfigValid }
-export default initFirebaseAnalytics
+export { ensureFirebaseApp, isConfigValid }

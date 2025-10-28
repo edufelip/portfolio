@@ -1,46 +1,76 @@
-import { getAnalytics, logEvent } from 'firebase/analytics'
+import { ensureFirebaseApp, isConfigValid } from '~/lib/firebase'
 
-const getAnalyticsSafe = (): ReturnType<typeof getAnalytics> | null => {
-  try {
-    if (typeof window === 'undefined') {
-      return null
-    }
-    return getAnalytics()
-  } catch {
-    return null
-  }
+type FirebaseAnalytics = import('firebase/analytics').Analytics
+type LogEventFn = (
+  analytics: FirebaseAnalytics,
+  eventName: string,
+  eventParams?: Record<string, unknown>
+) => void
+
+type AnalyticsClient = {
+  analytics: FirebaseAnalytics
+  logEvent: LogEventFn
 }
 
-type LogEventFn = (a: unknown, n: string, p?: Record<string, unknown>) => void
+let analyticsClientPromise: Promise<AnalyticsClient | null> | null = null
+
+const loadAnalyticsClient = async (): Promise<AnalyticsClient | null> => {
+  if (typeof window === 'undefined') {
+    return null
+  }
+  if (!isConfigValid()) {
+    return null
+  }
+  if (!analyticsClientPromise) {
+    analyticsClientPromise = ensureFirebaseApp()
+      .then(async (app) => {
+        if (!app) {
+          return null
+        }
+        const analyticsModule = await import('firebase/analytics')
+        return {
+          analytics: analyticsModule.getAnalytics(app),
+          logEvent: analyticsModule.logEvent as unknown as LogEventFn,
+        }
+      })
+      .catch((error) => {
+        console.error('Failed to load Firebase analytics', error)
+        return null
+      })
+  }
+  return analyticsClientPromise
+}
+
+const withAnalytics = (fn: (client: AnalyticsClient) => void) => {
+  void loadAnalyticsClient().then((client) => {
+    if (!client) {
+      return
+    }
+    fn(client)
+  })
+}
 
 const Events = {
   logScreenView: (screenName: string) => {
-    const analytics = getAnalyticsSafe()
-    if (!analytics) {
-      return
-    }
-    ;(logEvent as unknown as LogEventFn)(analytics, 'screen_view', {
-      firebase_screen: screenName,
+    withAnalytics(({ analytics, logEvent }) => {
+      logEvent(analytics, 'screen_view', {
+        firebase_screen: screenName,
+      })
     })
   },
   logSelectContent: (contentType: string, itemId: string) => {
-    const analytics = getAnalyticsSafe()
-    if (!analytics) {
-      return
-    }
-    ;(logEvent as unknown as LogEventFn)(analytics, 'select_content', {
-      content_type: contentType,
-      item_id: itemId,
+    withAnalytics(({ analytics, logEvent }) => {
+      logEvent(analytics, 'select_content', {
+        content_type: contentType,
+        item_id: itemId,
+      })
     })
   },
 }
 
 export { Events }
 export const log = (name: string, params?: Record<string, unknown>) => {
-  const analytics = getAnalyticsSafe()
-  if (!analytics) {
-    return
-  }
-  type LogEventFn = (a: unknown, n: string, p?: Record<string, unknown>) => void
-  ;(logEvent as unknown as LogEventFn)(analytics, name, params)
+  withAnalytics(({ analytics, logEvent }) => {
+    logEvent(analytics, name, params)
+  })
 }

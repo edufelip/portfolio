@@ -289,13 +289,23 @@ export const HeroBackground = styled.div`
   inset: 0;
   z-index: 0;
   pointer-events: none;
+  overflow: hidden;
+  transform: translateZ(0);
+  will-change: opacity;
+  background-color: #0e0e0e;
 
-  span {
-    inset: 0 !important;
+  .heroBackgroundImage {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: opacity 0.5s ease;
+    opacity: 0;
   }
 
-  img {
-    object-fit: cover;
+  .heroBackgroundImage.is-loaded {
+    opacity: 1;
   }
 `
 

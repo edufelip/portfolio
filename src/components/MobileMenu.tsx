@@ -1,7 +1,6 @@
 import React, { useState, type ReactNode } from 'react'
-import { GiHamburgerMenu } from 'react-icons/gi'
-import { RiCloseLine } from 'react-icons/ri'
 
+import { GiHamburgerMenu, RiCloseLine } from '~/components/icons'
 import { MobileMenu as MobileMenuContainer } from '~/styles/home'
 
 type Props = {

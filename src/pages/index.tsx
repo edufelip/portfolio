@@ -1,14 +1,13 @@
 import { motion } from 'framer-motion'
 import type { GetStaticProps, NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import { useEffect } from 'react'
-import { FaGithub, FaLinkedin, FaGooglePlay, FaYoutube } from 'react-icons/fa'
+import { useEffect, useRef } from 'react'
 
 import Header from '~/components/Header'
+import { FaGithub, FaGooglePlay, FaLinkedin, FaYoutube } from '~/components/icons'
 import { useScrollMemory } from '~/hooks/useScrollMemory'
 import { useAnalytics } from '~/lib/analytics/provider'
 import {
@@ -45,6 +44,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
 const Home: NextPage = () => {
   const { bindProjectAnchorClicks } = useScrollMemory()
+  const heroImageRef = useRef<HTMLSpanElement | null>(null)
   const analytics = useAnalytics()
   const { t: tCommon, i18n } = useTranslation('common')
   const { t } = useTranslation('home')
@@ -63,6 +63,42 @@ const Home: NextPage = () => {
     })
     bindProjectAnchorClicks()
   }, [bindProjectAnchorClicks])
+
+  useEffect(() => {
+    const element = heroImageRef.current
+    if (!element) {
+      return
+    }
+    const image = new window.Image()
+    const imageUrl = `${window.location.origin}/background.svg`
+
+    const handleLoad = () => {
+      element.style.backgroundImage = `url(${imageUrl})`
+      element.classList.add('is-loaded')
+    }
+
+    const handleError = () => {
+      element.classList.add('is-loaded')
+    }
+
+    if (document.readyState === 'complete') {
+      image.loading = 'eager'
+    }
+
+    image.addEventListener('load', handleLoad)
+    image.addEventListener('error', handleError)
+
+    image.src = imageUrl
+
+    if (image.complete) {
+      handleLoad()
+    }
+
+    return () => {
+      image.removeEventListener('load', handleLoad)
+      image.removeEventListener('error', handleError)
+    }
+  }, [])
 
   const resumeContent = getResumeContent(tCommon)
   const resumeAnalyticsKey = i18n.language === 'pt-BR' ? 'resume_br' : 'resume_us'
@@ -100,14 +136,7 @@ const Home: NextPage = () => {
       <main>
         <MainPageFace>
           <HeroBackground>
-            <Image
-              src="/background.svg"
-              alt="Abstract gradient background"
-              fill
-              sizes="100vw"
-              style={{ objectFit: 'cover' }}
-              priority
-            />
+            <span aria-hidden="true" className="heroBackgroundImage" ref={heroImageRef} />
           </HeroBackground>
           <Header
             about={tCommon('nav.about')}
