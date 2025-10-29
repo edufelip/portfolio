@@ -3,13 +3,15 @@ import styled from 'styled-components'
 
 export const MobileMenu = styled.div<{ open?: boolean }>`
   position: fixed;
-  width: 100%;
-  height: 100%;
-  position: absolute;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: #0e0e0e;
-  z-index: 1;
-  transition: all 0.4s ease;
-  left: ${(props) => (props.open ? '0' : '-100vw')};
+  z-index: 1000;
+  transform: translateX(${(props) => (props.open ? '0' : '-100%')});
+  transition: transform 0.4s ease;
+  pointer-events: ${(props) => (props.open ? 'auto' : 'none')};
+  will-change: transform;
   svg {
     color: #f9f9f9;
     float: right;
@@ -58,7 +60,8 @@ export const MainPageFace = styled.div`
   .header {
     height: 60px;
     display: table-row;
-    ul {
+    z-index: 10;
+    > ul {
       height: 60px;
       display: flex;
       align-items: center;
@@ -122,7 +125,7 @@ export const MainPageFace = styled.div`
 
   @media (max-width: 860px) {
     .header {
-      ul {
+      > ul {
         display: none;
       }
       svg {
