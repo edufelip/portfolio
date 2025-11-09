@@ -18,8 +18,20 @@ import {
   AboutSection,
   ContactSection,
   HeroBackground,
+  ArticlesSection,
+  ArticlesRow,
+  ArticleCard,
+  ArticleCover,
+  ArticleContent,
+  ArticleMeta,
+  ArticleTitle,
+  ArticleDescription,
+  ArticlesCTAButton,
+  ArticlesEmpty,
+  ArticlesCTAWrapper,
 } from '~/styles/home'
 import { getResumeContent } from '~/utils/i18n/resume'
+import { fetchMediumArticles, MediumArticle } from '~/utils/medium-articles'
 
 type ProjectCardContent = {
   title: string
@@ -34,15 +46,38 @@ type HomeProjectsContent = {
   finnBackend: ProjectCardContent
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+type HomeProps = {
+  articles: MediumArticle[]
+}
+
+const formatMediumDate = (value: string, locale: string) => {
+  const parsed = new Date(value)
+  if (Number.isNaN(parsed.getTime())) {
+    return value
+  }
+  return new Intl.DateTimeFormat(locale, {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  }).format(parsed)
+}
+
+export const getStaticProps: GetStaticProps<HomeProps> = async ({ locale }) => {
+  const [translations, articles] = await Promise.all([
+    serverSideTranslations(locale ?? 'en-US', ['common', 'home']),
+    fetchMediumArticles(),
+  ])
+
   return {
     props: {
-      ...(await serverSideTranslations(locale ?? 'en-US', ['common', 'home'])),
+      ...translations,
+      articles,
     },
+    revalidate: 60 * 60 * 24 * 3,
   }
 }
 
-const Home: NextPage = () => {
+const Home: NextPage<HomeProps> = ({ articles }) => {
   const { bindProjectAnchorClicks } = useScrollMemory()
   const heroImageRef = useRef<HTMLSpanElement | null>(null)
   const analytics = useAnalytics()
@@ -349,6 +384,42 @@ const Home: NextPage = () => {
             </div>
           </Project>
         </ProjectsSection>
+        <ArticlesSection id="articles">
+          <h2>{t('articles.title')}</h2>
+          {articles.length === 0 ? (
+            <ArticlesEmpty>{t('articles.empty')}</ArticlesEmpty>
+          ) : (
+            <ArticlesRow>
+              {articles.map((article) => (
+                <ArticleCard
+                  key={article.id}
+                  href={article.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => analytics.logSelectContent('cta_btn', article.id)}
+                  aria-label={`Open ${article.title} on Medium`}
+                >
+                  <ArticleCover image={article.image} />
+                  <ArticleContent>
+                    <ArticleMeta>{formatMediumDate(article.pubDate, i18n.language)}</ArticleMeta>
+                    <ArticleTitle>{article.title}</ArticleTitle>
+                    <ArticleDescription>{article.description}</ArticleDescription>
+                  </ArticleContent>
+                </ArticleCard>
+              ))}
+            </ArticlesRow>
+          )}
+          <ArticlesCTAWrapper>
+            <ArticlesCTAButton
+              href="https://medium.com/@eduardofelipi"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => analytics.logEvent('article-see-more')}
+            >
+              {t('articles.seeMore')}
+            </ArticlesCTAButton>
+          </ArticlesCTAWrapper>
+        </ArticlesSection>
         <ContactSection id="contact">
           <h2>{tCommon('contactSection.title')}</h2>
           <div className="bundle">

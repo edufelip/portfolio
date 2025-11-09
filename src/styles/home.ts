@@ -370,6 +370,125 @@ export const ProjectsSection = styled.div`
   }
 `
 
+export const ArticlesSection = styled.section`
+  background-color: #fafafa;
+  padding: 60px 20px 60px;
+  > h2 {
+    font-size: 34px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 0 auto 20px;
+    color: #111;
+    text-align: center;
+  }
+`
+
+export const ArticlesRow = styled.div`
+  width: min(1180px, 100%);
+  margin: 0 auto 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+`
+
+export const ArticleCard = styled.a`
+  width: 320px;
+  background-color: #fff;
+  border-radius: 24px;
+  border: 1px solid #dedede;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: #b4b4b4;
+  }
+  @media (max-width: 640px) {
+    width: 100%;
+    max-width: 480px;
+  }
+`
+
+export const ArticleCover = styled.div<{ image?: string }>`
+  width: 100%;
+  height: 190px;
+  background: ${(props) =>
+    props.image
+      ? `url(${props.image}) center/cover no-repeat`
+      : 'linear-gradient(135deg, #111 0%, #2f2f2f 100%)'};
+`
+
+export const ArticleContent = styled.div`
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 220px;
+`
+
+export const ArticleMeta = styled.p`
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #7d7d7d;
+  margin: 0;
+`
+
+export const ArticleTitle = styled.h3`
+  margin: 0;
+  font-size: 20px;
+  color: #111;
+  line-height: 1.4;
+`
+
+export const ArticleDescription = styled.p`
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #3d3d3d;
+`
+
+export const ArticlesEmpty = styled.p`
+  margin: 0 auto 20px;
+  font-size: 16px;
+  color: #4c4c4c;
+`
+
+export const ArticlesCTAButton = styled.a`
+  display: inline-flex;
+  margin: 0 auto;
+  padding: 10px 32px;
+  border-radius: 999px;
+  border: 1px solid #111;
+  background-color: transparent;
+  color: #111;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  &:hover,
+  &:focus-visible {
+    background-color: #111;
+    color: #fff;
+  }
+`
+export const ArticlesCTAWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+`
+
 export const Project = styled.div<{ background?: string }>`
   display: block;
   width: 700px;

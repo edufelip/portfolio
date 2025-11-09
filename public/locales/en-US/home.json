@@ -28,5 +28,10 @@
         "description": "Backend for Finn app"
       }
     }
+  },
+  "articles": {
+    "title": "Articles",
+    "seeMore": "See more",
+    "empty": "Nothing found right now"
   }
 }
