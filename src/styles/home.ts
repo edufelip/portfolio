@@ -372,13 +372,13 @@ export const ProjectsSection = styled.div`
 
 export const ArticlesSection = styled.section`
   background-color: #fafafa;
-  padding: 60px 20px 60px;
+  padding: 30px 20px 30px;
   > h2 {
-    font-size: 34px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    margin: 0 auto 20px;
-    color: #111;
+    opacity: 0.9;
+    display: block;
+    width: fit-content;
+    height: fit-content;
+    margin: 0 auto 30px;
     text-align: center;
   }
 `
