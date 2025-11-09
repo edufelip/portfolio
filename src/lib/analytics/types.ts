@@ -1,4 +1,4 @@
-export type AnalyticsEventName = 'screen_view' | 'select_content'
+export type AnalyticsEventName = 'screen_view' | 'select_content' | 'article-see-more'
 
 export type ContentType =
   | 'header_btn'
