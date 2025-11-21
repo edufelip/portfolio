@@ -32,7 +32,7 @@
     "cheerio": "1.0.0-rc.12",
     "elliptic": "^6.5.4",
     "false": "0.0.4",
-    "fast-xml-parser": "4.0.1",
+    "fast-xml-parser": "4.1.2",
     "firebase": "^9.22.0",
     "framer-motion": "^12.23.12",
     "i18next": "^25.5.2",
