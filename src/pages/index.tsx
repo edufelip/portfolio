@@ -158,6 +158,8 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
     returnObjects: true,
   }) as HomeProjectsContent
 
+  const visibleArticles = articles.slice(0, 3)
+
   return (
     <motion.div exit={{ opacity: 0 }} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <Head>
@@ -386,11 +388,11 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
         </ProjectsSection>
         <ArticlesSection id="articles">
           <h2>{t('articles.title')}</h2>
-          {articles.length === 0 ? (
+          {visibleArticles.length === 0 ? (
             <ArticlesEmpty>{t('articles.empty')}</ArticlesEmpty>
           ) : (
             <ArticlesRow>
-              {articles.map((article) => (
+              {visibleArticles.map((article) => (
                 <ArticleCard
                   key={article.id}
                   href={article.link}

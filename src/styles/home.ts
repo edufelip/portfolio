@@ -148,6 +148,8 @@ export const MainContent = styled.div`
     width: 50%;
     height: 100%;
     .container {
+      position: relative;
+      z-index: 2;
       float: right;
       margin-bottom: 100px;
       h1,
