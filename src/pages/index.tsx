@@ -40,10 +40,12 @@ type ProjectCardContent = {
 }
 
 type HomeProjectsContent = {
+  meer: ProjectCardContent
   livechat: ProjectCardContent
   amazingNote: ProjectCardContent
   finn: ProjectCardContent
   finnBackend: ProjectCardContent
+  meerBackend: ProjectCardContent
 }
 
 type HomeProps = {
@@ -245,6 +247,33 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
         </AboutSection>
         <ProjectsSection id="projects">
           <h2>{t('projects.title')}</h2>
+          <Project className="meer" background="/meer-bg.png">
+            <div className="shadow">
+              <div className="wrap">
+                <h2>{projectsContent.meer.title}</h2>
+                <p>{projectsContent.meer.description}</p>
+                <div>
+                  <Link
+                    scroll={false}
+                    href="/projects/meer"
+                    className="projectAnchor"
+                    onClick={() => analytics.logSelectContent('project_btn', 'details_meer')}
+                  >
+                    {tCommon('cta.access')}
+                  </Link>
+                  <a
+                    href="https://github.com/edufelip/meer"
+                    target="_blank"
+                    onClick={() => analytics.logSelectContent('project_btn', 'github_meer')}
+                    rel="noreferrer"
+                    aria-label="View Meer source on GitHub"
+                  >
+                    <FaGithub size="24" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Project>
           <Project className="live-chat" background="/livechat-bg.svg">
             <div className="shadow">
               <div className="wrap">
@@ -378,6 +407,35 @@ const Home: NextPage<HomeProps> = ({ articles }) => {
                     onClick={() => analytics.logSelectContent('project_btn', 'github_finn_backend')}
                     rel="noreferrer"
                     aria-label="View Finn Backend source on GitHub"
+                  >
+                    <FaGithub size="24" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </Project>
+          <Project className="meer-backend" background="/meerbackend-bg.png">
+            <div className="shadow">
+              <div className="wrap">
+                <h2>{projectsContent.meerBackend.title}</h2>
+                <p>{projectsContent.meerBackend.description}</p>
+                <div>
+                  <Link
+                    scroll={false}
+                    href="/projects/meer-backend"
+                    className="projectAnchor"
+                    onClick={() =>
+                      analytics.logSelectContent('project_btn', 'details_meer_backend')
+                    }
+                  >
+                    {tCommon('cta.access')}
+                  </Link>
+                  <a
+                    href="https://github.com/edufelip/meer-api"
+                    target="_blank"
+                    onClick={() => analytics.logSelectContent('project_btn', 'github_meer_backend')}
+                    rel="noreferrer"
+                    aria-label="View Meer Backend source on GitHub"
                   >
                     <FaGithub size="24" />
                   </a>

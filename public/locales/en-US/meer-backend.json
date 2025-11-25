@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "about": "About"
+  },
+  "paragraphs": {
+    "one": "Meer Backend is the Java + Spring Boot API that supplies the Meer mobile app with curated thrift store data, exposing REST endpoints for stores, cities, and filters.",
+    "two": "It persists data in PostgreSQL with Gradle-driven builds, keeps controllers, services, and repositories separated, documents routes with OpenAPI/Swagger, and ships Docker-friendly configs to run the stack locally or in CI."
+  }
+}

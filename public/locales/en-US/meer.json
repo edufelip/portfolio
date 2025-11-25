@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "about": "About"
+  },
+  "paragraphs": {
+    "one": "Meer is a React Native app built with Expo that guides people to thrift stores through clear cards that highlight distance, address, and what makes each place unique.",
+    "two": "The client stays entirely in TypeScript, leverages Expo tooling for navigation and assets, requests device location to sort nearby options, and fetches fresh store data from the Meer API so Android and iOS share the same codebase."
+  }
+}

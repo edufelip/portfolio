@@ -1,0 +1,9 @@
+{
+  "sections": {
+    "about": "Sobre"
+  },
+  "paragraphs": {
+    "one": "Meer é um app em React Native, feito com Expo, que ajuda pessoas a encontrar brechós mostrando cartões com distância, endereço e o que torna cada loja especial.",
+    "two": "O cliente roda todo em TypeScript, usa as ferramentas do Expo para navegação e assets, pede a localização do aparelho para ordenar opções próximas e busca os dados mais recentes dos brechós pela API do Meer, mantendo Android e iOS no mesmo código."
+  }
+}

@@ -10,6 +10,10 @@
   "projects": {
     "title": "Latest Projects",
     "cards": {
+      "meer": {
+        "title": "Meer",
+        "description": "A guide for finding thrift stores"
+      },
       "livechat": {
         "title": "LiveChat",
         "description": "Online Realtime Chat",
@@ -26,6 +30,10 @@
       "finnBackend": {
         "title": "Finn Backend",
         "description": "Backend for Finn app"
+      },
+      "meerBackend": {
+        "title": "Meer Backend",
+        "description": "API for Meer built with Java and Spring Boot"
       }
     }
   },
